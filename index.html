@@ -53,7 +53,7 @@
             height: 100%;
             background: url('images/Banner.png') no-repeat center center;
             background-size: cover;
-            opacity: 0.05; /* ปรับจางมากๆ 5% เพื่อให้เห็นรายละเอียดประตูท่าแพโดยไม่รบกวนการอ่านข้อมูลบนเว็บ */
+            opacity: 0.05; /* ปรับจางมากๆ 5% เพื่อรักษาความสวยงามและไม่ทำให้อ่านยาก */
             z-index: -1; 
             pointer-events: none; 
         }
@@ -274,7 +274,7 @@
         .menu-img-wrapper {
             position: relative;
             width: 100%;
-            height: 200px; /* ป้องกันการขยายตัวกระตุกขณะดาวน์โหลดภาพ */
+            height: 200px;
             overflow: hidden;
             background-color: #EAECEE; 
         }
@@ -529,7 +529,99 @@
             border-color: var(--primary-color);
         }
 
-        /* เอฟเฟกต์การแสดงราคาแบบ Realtime */
+        /* ========================================================
+           ⚡ NEW CSS FOR MULTI-ITEM ORDER SHEET (EXCEEDS UX)
+           ======================================================== */
+        .order-items-list {
+            max-height: 350px;
+            overflow-y: auto;
+            border: 1px solid #E5E7EB;
+            border-radius: 10px;
+            padding: 10px 15px;
+            background-color: #FAF9F6;
+            margin-bottom: 20px;
+        }
+
+        /* สไตล์ Scrollbar ของใบสั่งซื้อ */
+        .order-items-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        .order-items-list::-webkit-scrollbar-track {
+            background: #FAF9F6;
+        }
+        .order-items-list::-webkit-scrollbar-thumb {
+            background-color: #BDC3C7;
+            border-radius: 10px;
+        }
+
+        .order-item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #EAECEE;
+        }
+
+        .order-item-row:last-child {
+            border-bottom: none;
+        }
+
+        .order-item-details {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .order-item-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--dark-color);
+        }
+
+        .order-item-price-tag {
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .order-qty-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .qty-btn {
+            background-color: #E5E7EB;
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .qty-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: scale(1.08);
+        }
+
+        .qty-input {
+            width: 45px;
+            text-align: center;
+            border: 1px solid #DCDDE1;
+            border-radius: 6px;
+            padding: 4px 0;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--dark-color);
+        }
+
         .price-calculator-preview {
             background-color: #FFF5F0;
             border: 1px solid rgba(211, 84, 0, 0.2);
@@ -550,6 +642,7 @@
             font-size: 1.4rem;
             font-weight: 800;
             color: var(--primary-color);
+            text-shadow: 0 0 1px rgba(211, 84, 0, 0.1);
         }
 
         .btn-submit {
@@ -654,7 +747,7 @@
     <!-- แถบเมนูนำทางด้านบน -->
     <nav>
         <div class="nav-container">
-            <!-- ⚡ High Fetch Priority: เร่งการประมวลผลโลโก้หัวเว็บทันทีเมื่อเปิดเบราว์เซอร์ เพื่อคะแนน Exceeds ความเร็วสูงสุด -->
+            <!-- ⚡ High Fetch Priority: เร่งความเร็วแสดงผลโลโก้แบรนด์เป็นสิ่งแรกสุด -->
             <a href="#" class="nav-logo">
                 <img src="images/ilovecnx_logo.jpg" alt="iLove.cnx Logo" class="nav-logo-img" fetchpriority="high" decoding="async" width="48" height="48">
                 iLove<span>.cnx</span>
@@ -667,11 +760,11 @@
         </div>
     </nav>
 
-    <!-- แบนเนอร์หน้าแรก (Hero Section) ตกแต่งใหม่พรีเมียม -->
+    <!-- แบนเนอร์หน้าแรก (Hero Section) ตกแต่งพรีเมียม -->
     <header class="hero">
         <div class="banner-badge">✦ ORIGINAL NORTHERN & FUSION KITCHEN ✦</div>
         <h1>iLove<span class="banner-dot">.</span><span class="banner-cnx">cnx</span></h1>
-        <p>"สัมผัสความอร่อยเหนือระดับกับอาหารเหนือต้นตำรับเจียงใหม่ และเมนูฟิวชันนานาชาติยอดนิยม ปรุงสดใหม่ด้วยวัตถุดิบคุณภาพเยี่ยม พร้อมเสิร์ฟร้อนส่งตรงถึงบ้านคุณ" [5]</p>
+        <p>"สัมผัสความอร่อยเหนือระดับกับอาหารเหนือต้นตำรับเจียงใหม่ และเมนูฟิวชันนานาชาติยอดนิยม ปรุงสดใหม่ด้วยวัตถุดิบคุณภาพเยี่ยม พร้อมเสิร์ฟร้อนส่งตรงถึงบ้านคุณ"</p>
         <a href="#order" class="hero-btn">สั่งซื้ออาหาร/ติดต่อเราเจ้า</a>
     </header>
 
@@ -686,7 +779,7 @@
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag">อาหารเหนือ</span>
-                        <!-- ⚡ Lazy Loading & Async Decoding: ดาวน์โหลดเฉพาะตอนเลื่อนหน้าจอมาถึง ประหยัดเน็ตมือถือและช่วยให้เว็บเปิดเร็ว -->
+                        <!-- ⚡ Lazy Loading & Async Decoding: ดาวน์โหลดเฉพาะตอนเลื่อนหน้าจอมาถึง ป้องกันเน็ตช้า -->
                         <img src="images/khao-soikai.png" alt="ข้าวซอยไก่" class="menu-img" loading="lazy" decoding="async" width="300" height="200">
                     </div>
                     <div class="menu-info">
@@ -694,7 +787,7 @@
                             <span class="menu-name">ข้าวซอยไก่<br><small style="color:var(--text-muted);">Khao Soi Chicken</small></span>
                             <span class="menu-price">69 ฿</span>
                         </div>
-                        <p class="menu-desc">น่องไก่นุ่มชิ้นโตเคี่ยวจนเข้าเนื้อ ในน้ำแกงข้าวซอยสูตรลับเข้มข้นถึงเครื่องแกง โรยหน้าด้วยหมี่กรอบเหลืองทอง [5]</p>
+                        <p class="menu-desc">น่องไก่นุ่มชิ้นโตเคี่ยวจนเข้าเนื้อ ในน้ำแกงข้าวซอยสูตรลับเข้มข้นถึงเครื่องแกง โรยหน้าด้วยหมี่กรอบเหลืองทอง</p>
                     </div>
                 </div>
 
@@ -709,7 +802,7 @@
                             <span class="menu-name">ข้าวซอยทะเล<br><small style="color:var(--text-muted);">Khao Soi Seafood</small></span>
                             <span class="menu-price">99 ฿</span>
                         </div>
-                        <p class="menu-desc">ฟิวชันรสทะเลเดือด กุ้งแม่น้ำสดและปลาหมึกวงเนื้อหนึบ ในน้ำแกงข้าวซอยสูตรเข้มข้นหอมกลมกล่อม [5]</p>
+                        <p class="menu-desc">ฟิวชันรสทะเลเดือด กุ้งแม่น้ำสดและปลาหมึกวงเนื้อหนึบ ในน้ำแกงข้าวซอยสูตรเข้มข้นหอมกลมกล่อม</p>
                     </div>
                 </div>
 
@@ -724,7 +817,7 @@
                             <span class="menu-name">ขนมจีนน้ำเงี้ยว<br><small style="color:var(--text-muted);">Khanom Jeen Nam Ngiao</small></span>
                             <span class="menu-price">59 ฿</span>
                         </div>
-                        <p class="menu-desc">ขนมจีนน้ำเงี้ยวสูตรเชียงรายแท้ รสเข้มหอมดอกงิ้ว กระดูกหมูอ่อนเคี่ยวจนเปื่อยนุ่มและเลือดก้อนเต็มคำ [6]</p>
+                        <p class="menu-desc">ขนมจีนน้ำเงี้ยวสูตรเชียงรายแท้ รสเข้มหอมดอกงิ้ว กระดูกหมูอ่อนเคี่ยวจนเปื่อยนุ่มและเลือดก้อนเต็มคำ</p>
                     </div>
                 </div>
 
@@ -739,7 +832,7 @@
                             <span class="menu-name">ไส้อั่วสมุนไพร<br><small style="color:var(--text-muted);">Sai Ua Sausage</small></span>
                             <span class="menu-price">49 ฿</span>
                         </div>
-                        <p class="menu-desc">ไส้อั่วโฮมเมดย่างเตาถ่านจนหอมกรุ่น สมุนไพรอัดแน่น รสชาติเผ็ดร้อนกลมกล่อมกำลังดี [6]</p>
+                        <p class="menu-desc">ไส้อั่วโฮมเมดย่างเตาถ่านจนหอมกรุ่น สมุนไพรอัดแน่น รสชาติเผ็ดร้อนกลมกล่อมกำลังดี</p>
                     </div>
                 </div>
 
@@ -754,7 +847,7 @@
                             <span class="menu-name">แคบหมูทอดกรอบ<br><small style="color:var(--text-muted);">Pork Crackling</small></span>
                             <span class="menu-price">39 ฿</span>
                         </div>
-                        <p class="menu-desc">แคบหมูทอดใหม่สด กรอบฟู ไร้กลิ่นหืน อร่อยเข้ากันที่สุดเมื่อกินแกล้มคู่กับข้าวซอยหรือน้ำเงี้ยว [6]</p>
+                        <p class="menu-desc">แคบหมูทอดใหม่สด กรอบฟู ไร้กลิ่นหืน อร่อยเข้ากันที่สุดเมื่อกินแกล้มคู่กับข้าวซอยหรือน้ำเงี้ยว</p>
                     </div>
                 </div>
 
@@ -769,7 +862,7 @@
                             <span class="menu-name">ขาหมูเยอรมัน<br><small style="color:var(--text-muted);">German Pork Knuckle</small></span>
                             <span class="menu-price">399 ฿</span>
                         </div>
-                        <p class="menu-desc">ขาหมูเยอรมันคัดพิเศษ ทอดจนหนังกรอบพองฟูสะท้านใจ แต่เนื้อข้างในยังนุ่มฉ่ำ เสิร์ฟพร้อมมันบดและน้ำจิ้มซีฟู้ดรสแซ่บ [6]</p>
+                        <p class="menu-desc">ขาหมูเยอรมันคัดพิเศษ ทอดจนหนังกรอบพองฟูสะท้านใจ แต่เนื้อข้างในยังนุ่มฉ่ำ เสิร์ฟพร้อมมันบดและน้ำจิ้มซีฟู้ดรสแซ่บ</p>
                     </div>
                 </div>
 
@@ -784,7 +877,7 @@
                             <span class="menu-name">สเต็กปลาแซลมอน<br><small style="color:var(--text-muted);">Salmon Steak</small></span>
                             <span class="menu-price">320 ฿</span>
                         </div>
-                        <p class="menu-desc">ปลาแซลมอนกริลล์สุกกำลังดีหนังกรอบเนื้อฉ่ำหวาน เสิร์ฟเคียงสลัดผักออร์แกนิกและซอสครีมเข้มข้น [7]</p>
+                        <p class="menu-desc">ปลาแซลมอนกริลล์สุกกำลังดีหนังกรอบเนื้อฉ่ำหวาน เสิร์ฟเคียงสลัดผักออร์แกนิกและซอสครีมเข้มข้น</p>
                     </div>
                 </div>
 
@@ -792,7 +885,6 @@
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag fusion">ฟิวชัน / อินเตอร์</span>
-                        <!-- ⚡ แสดงภาพ Seafood-Bucket.png ที่อัปโหลดใหม่และไม่ซ้ำซ้อนกับข้าวไข่ข้นแน่นอน! -->
                         <img src="images/Seafood-Bucket.png" alt="กุ้งสาดดด ทะเลถัง" class="menu-img" loading="lazy" decoding="async" width="300" height="200">
                     </div>
                     <div class="menu-info">
@@ -800,7 +892,7 @@
                             <span class="menu-name">กุ้งสาดดด ทะเลถัง<br><small style="color:var(--text-muted);">Spicy Seafood Bucket</small></span>
                             <span class="menu-price">399 ฿</span>
                         </div>
-                        <p class="menu-desc">รวมมิตรซีฟู้ดสดใหม่คลุกเคล้าซอสเผ็ดคาจุนเข้มข้นจัดจ้าน รสร้อนแรงหอมเนย เสิร์ฟร้อนเดือดๆ ทานสนุก [7]</p>
+                        <p class="menu-desc">รวมมิตรซีฟู้ดสดใหม่คลุกเคล้าซอสเผ็ดคาจุนเข้มข้นจัดจ้าน รสร้อนแรงหอมเนย เสิร์ฟร้อนเดือดๆ ทานสนุก</p>
                     </div>
                 </div>
 
@@ -815,7 +907,7 @@
                             <span class="menu-name">ข้าวไข่ข้นซอสต้มยำกุ้ง<br><small style="color:var(--text-muted);">Creamy Omelet Tom Yum</small></span>
                             <span class="menu-price">180 ฿</span>
                         </div>
-                        <p class="menu-desc">ไข่ข้นสีเหลืองทองละมุน ราดซอสต้มยำรสเข้มข้นถึงเครื่องแกง ตกแต่งด้วยกุ้งแม่น้ำตัวใหญ่และไข่กุ้งเคี้ยวกรุบ [7]</p>
+                        <p class="menu-desc">ไข่ข้นสีเหลืองทองละมุน ราดซอสต้มยำรสเข้มข้นถึงเครื่องแกง ตกแต่งด้วยกุ้งแม่น้ำตัวใหญ่และไข่กุ้งเคี้ยวกรุบ</p>
                     </div>
                 </div>
 
@@ -830,35 +922,35 @@
                             <span class="menu-name">บิงซูสายไหมหมีขี้เซา<br><small style="color:var(--text-muted);">Bear Bingsu Thread</small></span>
                             <span class="menu-price">189 ฿</span>
                         </div>
-                        <p class="menu-desc">บิงซูเกล็ดสายไหมรสหวานละมุน นุ่มฟูดุจปุยเมฆ ตกแต่งด้วยไอศกรีมน้องหมีนอนหลับปุ๋ยพร้อมท็อปปิ้งล้นถาดแสนอร่อย [8]</p>
+                        <p class="menu-desc">บิงซูเกล็ดสายไหมรสหวานละมุน นุ่มฟูดุจปุยเมฆ ตกแต่งด้วยไอศกรีมน้องหมีนอนหลับปุ๋ยพร้อมท็อปปิ้งล้นถาดแสนอร่อย</p>
                     </div>
                 </div>
 
             </div>
         </section>
 
-        <!-- รายการเมนูเพิ่มเติมอื่นๆ ในฐานข้อมูลวิชา เพื่อความถูกต้องทางระบบข้อมูล 100% -->
+        <!-- รายการเมนูเพิ่มเติมอื่นๆ ในฐานข้อมูลวิชา -->
         <section class="other-menus-section">
             <h3 class="other-menus-title">เมนูเพิ่มเติมในระบบของร้าน (Database Records)</h3>
             <div class="other-menus-grid">
                 <div class="other-menu-item">
-                    <span class="other-menu-name">ข้าวซอยเนื้อ (Khao Soi Beef) [9]</span>
+                    <span class="other-menu-name">ข้าวซอยเนื้อ (Khao Soi Beef)</span>
                     <span class="other-menu-price">79 ฿</span>
                 </div>
                 <div class="other-menu-item">
-                    <span class="other-menu-name">ข้าวซอยเจ (Khao Soi Vegan) [9]</span>
+                    <span class="other-menu-name">ข้าวซอยเจ (Khao Soi Vegan)</span>
                     <span class="other-menu-price">69 ฿</span>
                 </div>
                 <div class="other-menu-item">
-                    <span class="other-menu-name">ชาเย็นชงสดรสหวานมัน (Thai Iced Tea) [9]</span>
+                    <span class="other-menu-name">ชาเย็นชงสดรสหวานมัน (Thai Iced Tea)</span>
                     <span class="other-menu-price">29 ฿</span>
                 </div>
                 <div class="other-menu-item">
-                    <span class="other-menu-name">น้ำส้มคั้นสด 100% (Orange Juice) [9]</span>
+                    <span class="other-menu-name">น้ำส้มคั้นสด 100% (Orange Juice)</span>
                     <span class="other-menu-price">35 ฿</span>
                 </div>
                 <div class="other-menu-item">
-                    <span class="other-menu-name">ข้าวเหนียวเขี้ยวงูนึ่งร้อน (Sticky Rice) [9]</span>
+                    <span class="other-menu-name">ข้าวเหนียวเขี้ยวงูนึ่งร้อน (Sticky Rice)</span>
                     <span class="other-menu-price">15 ฿</span>
                 </div>
             </div>
@@ -870,12 +962,12 @@
                 <img src="images/Service.png" alt="บริการส่งตรงถึงบ้าน" class="service-img" loading="lazy" decoding="async" width="400" height="267">
             </div>
             <div class="service-content">
-                <h3>จัดส่งรวดเร็ว รักษาคุณภาพความร้อน 100% [8]</h3>
-                <p>นอกจากบริการที่ประณีตหน้าร้านแล้ว ร้าน iLove.cnx ยังมีระบบห่ออาหารด้วยบรรจุภัณฑ์รักษ์โลกที่ล็อคอุณหภูมิความร้อนได้อย่างดีเยี่ยม เพื่อให้มั่นใจว่าลูกค้าได้รับประทานอาหารที่สดใหม่ ปลอดภัย และอร่อยเหมือนเสิร์ฟจากเตาครับ: [8]</p>
+                <h3>จัดส่งรวดเร็ว รักษาคุณภาพความร้อน 100%</h3>
+                <p>นอกจากบริการที่ประณีตหน้าร้านแล้ว ร้าน iLove.cnx ยังมีระบบห่ออาหารด้วยบรรจุภัณฑ์รักษ์โลกที่ล็อคอุณหภูมิความร้อนได้อย่างดีเยี่ยม เพื่อให้มั่นใจว่าลูกค้าได้รับประทานอาหารที่สดใหม่ ปลอดภัย และอร่อยเหมือนเสิร์ฟจากเตาครับ:</p>
                 <ul class="service-list">
-                    <li>บรรจุภัณฑ์พิเศษแยกน้ำแกงและเส้นข้าวซอยอย่างปลอดภัย ไม่หกเลอะเทอะ [10]</li>
-                    <li>ส่งฟรีในระยะ 5 กิโลเมตรจากสาขาใกล้บ้านคุณ [10]</li>
-                    <li>สะอาด ถูกสุขอนามัย มั่นใจได้ในมาตรฐานความสะอาดของเชฟ [10]</li>
+                    <li>บรรจุภัณฑ์พิเศษแยกน้ำแกงและเส้นข้าวซอยอย่างปลอดภัย ไม่หกเลอะเทอะ</li>
+                    <li>ส่งฟรีในระยะ 5 กิโลเมตรจากสาขาใกล้บ้านคุณ</li>
+                    <li>สะอาด ถูกสุขอนามัย มั่นใจได้ในมาตรฐานความสะอาดของเชฟ</li>
                 </ul>
             </div>
         </section>
@@ -887,39 +979,39 @@
                 
                 <!-- S1: Chang Klan Night Market -->
                 <div class="stall-card">
-                    <div class="stall-name">สาขา Chang Klan Night Market [11]</div>
-                    <p class="stall-detail">📍 <strong>พิกัด:</strong> ย่านถนนช้างคลาน แหล่งกินเที่ยวยอดนิยมในยามค่ำคืน [10]</p>
-                    <p class="stall-detail">🕒 <strong>เวลาบริการ:</strong> 17:00 - 23:00 น. [10]</p>
-                    <p class="stall-date">📅 ร่วมส่งมอบความอบอุ่นและรสชาติตั้งแต่: 1 มิถุนายน 2023 [10]</p>
+                    <div class="stall-name">สาขา Chang Klan Night Market</div>
+                    <p class="stall-detail">📍 <strong>พิกัด:</strong> ย่านถนนช้างคลาน แหล่งกินเที่ยวยอดนิยมในยามค่ำคืน</p>
+                    <p class="stall-detail">🕒 <strong>เวลาบริการ:</strong> 17:00 - 23:00 น.</p>
+                    <p class="stall-date">📅 ร่วมส่งมอบความอบอุ่นและรสชาติตั้งแต่: 1 มิถุนายน 2023</p>
                 </div>
 
                 <!-- S2: Nimman -->
                 <div class="stall-card">
-                    <div class="stall-name">สาขา Nimman [11]</div>
-                    <p class="stall-detail">📍 <strong>พิกัด:</strong> ถนนนิมมานเหมินท์ ใจกลางแหล่งกินเที่ยวนักท่องเที่ยวต่างชาติ [10]</p>
-                    <p class="stall-detail">🕒 <strong>เวลาบริการ:</strong> 10:00 - 21:00 น. [10]</p>
-                    <p class="stall-date">📅 ร่วมส่งมอบความอบอุ่นและรสชาติตั้งแต่: 15 กุมภาพันธ์ 2024 [10]</p>
+                    <div class="stall-name">สาขา Nimman</div>
+                    <p class="stall-detail">📍 <strong>พิกัด:</strong> ถนนนิมมานเหมินท์ ใจกลางแหล่งกินเที่ยวนักท่องเที่ยวต่างชาติ</p>
+                    <p class="stall-detail">🕒 <strong>เวลาบริการ:</strong> 10:00 - 21:00 น.</p>
+                    <p class="stall-date">📅 ร่วมส่งมอบความอบอุ่นและรสชาติตั้งแต่: 15 กุมภาพันธ์ 2024</p>
                 </div>
 
                 <!-- S3: Old City -->
                 <div class="stall-card">
-                    <div class="stall-name">สาขา Old City [11]</div>
-                    <p class="stall-detail">📍 <strong>พิกัด:</strong> ประตูท่าแพ แหล่งประวัติศาสตร์เมืองเก่าและจุดแลนด์มาร์กสำคัญ [12]</p>
-                    <p class="stall-detail">🕒 <strong>เวลาบริการ:</strong> 09:00 - 20:00 น. [12]</p>
-                    <p class="stall-date">📅 ร่วมส่งมอบความอบอุ่นและรสชาติตั้งแต่: 10 มกราคม 2025 [12]</p>
+                    <div class="stall-name">สาขา Old City</div>
+                    <p class="stall-detail">📍 <strong>พิกัด:</strong> ประตูท่าแพ แหล่งประวัติศาสตร์เมืองเก่าและจุดแลนด์มาร์กสำคัญ</p>
+                    <p class="stall-detail">🕒 <strong>เวลาบริการ:</strong> 09:00 - 20:00 น.</p>
+                    <p class="stall-date">📅 ร่วมส่งมอบความอบอุ่นและรสชาติตั้งแต่: 10 มกราคม 2025</p>
                 </div>
 
             </div>
         </section>
 
-        <!-- ส่วนร่วมกิจกรรมลูกค้า (Customer Interaction) พร้อมระบบคูณราคาเรียลไทม์ -->
+        <!-- ส่วนร่วมกิจกรรมลูกค้า (Customer Interaction) พร้อมระบบเลือกสั่งได้หลายเมนู -->
         <section id="order">
             <h2 class="section-title">สั่งอาหารด่วนออนไลน์ / แอดไลน์</h2>
             <div class="interaction-container">
                 
-                <!-- แบบฟอร์มสั่งจองอาหารพร้อมสคริปต์คำนวณเงินสดเรียลไทม์ (Interactive Order Form) -->
+                <!-- แบบฟอร์มสั่งจองอาหารพร้อมสคริปต์คำนวณเงินสดหลายเมนูเรียลไทม์ (Interactive Multi-Order Form) -->
                 <div class="order-form-wrapper">
-                    <h3>🛒 สั่งอาหารจานด่วน</h3>
+                    <h3>🛒 สั่งอาหารจานด่วน (สั่งได้หลายเมนูพร้อมกัน)</h3>
                     <form id="deliveryForm" onsubmit="submitForm(event)">
                         <div class="form-group">
                             <label for="fullName">ชื่อ-นามสกุลผู้จอง / สั่งซื้อ *</label>
@@ -929,31 +1021,213 @@
                             <label for="phoneNumber">เบอร์โทรศัพท์ติดต่อกลับ *</label>
                             <input type="tel" id="phoneNumber" class="form-control" placeholder="เช่น 089-XXXXXXX" required>
                         </div>
+
+                        <!-- ⚡ NEW MULTI-ITEM ORDER SHEET: รายการใบเลือกสั่งอาหาร (UX ปรับปรุงระดับพรีเมียม) -->
                         <div class="form-group">
-                            <label for="menuSelect">เลือกเมนูอาหารจานโปรดของคุณ *</label>
-                            <!-- ยึดราคาอ้างอิงตรงตามฐานข้อมูล menu_items.csv และราคาจากไฟล์ Handout เป๊ะๆ -->
-                            <select id="menuSelect" class="form-control" onchange="calculatePrice()" required>
-                                <option value="" disabled selected>-- เลือกรายการอาหาร --</option>
-                                <option value="69" data-name="ข้าวซอยไก่">ข้าวซอยไก่ (69 ฿)</option>
-                                <option value="99" data-name="ข้าวซอยทะเล">ข้าวซอยทะเล (99 ฿)</option>
-                                <option value="59" data-name="ขนมจีนน้ำเงี้ยว">ขนมจีนน้ำเงี้ยว (59 ฿)</option>
-                                <option value="49" data-name="ไส้อั่วสมุนไพร">ไส้อั่วสมุนไพร (49 ฿)</option>
-                                <option value="39" data-name="แคบหมูทอดกรอบ">แคบหมูทอดกรอบ (39 ฿)</option>
-                                <option value="399" data-name="ขาหมูเยอรมัน">ขาหมูเยอรมัน (399 ฿)</option>
-                                <option value="320" data-name="สเต็กปลาแซลมอน">สเต็กปลาแซลมอน (320 ฿)</option>
-                                <option value="399" data-name="กุ้งสาดดด ทะเลถัง">กุ้งสาดดด ทะเลถัง (399 ฿)</option>
-                                <option value="180" data-name="ข้าวไข่ข้นซอสต้มยำกุ้ง">ข้าวไข่ข้นซอสต้มยำกุ้ง (180 ฿)</option>
-                                <option value="189" data-name="บิงซูสายไหมหมีขี้เซา">บิงซูสายไหมหมีขี้เซา (189 ฿)</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="itemQty">จำนวนที่ต้องการสั่งซื้อ *</label>
-                            <input type="number" id="itemQty" class="form-control" min="1" value="1" oninput="calculatePrice()" required>
+                            <label>เลือกรายการอาหารและจำนวนที่ต้องการสั่งซื้อ *</label>
+                            <div class="order-items-list">
+                                
+                                <!-- 1. ข้าวซอยไก่ -->
+                                <div class="order-item-row">
+                                    <div class="order-item-details">
+                                        <span class="order-item-title">ข้าวซอยไก่</span>
+                                        <span class="order-item-price-tag">69 ฿</span>
+                                    </div>
+                                    <div class="order-qty-controls">
+                                        <button type="button" class="qty-btn" onclick="adjustQty(this, -1)">-</button>
+                                        <input type="number" class="qty-input" data-price="69" data-name="ข้าวซอยไก่" min="0" value="0" oninput="calculatePrice()">
+                                        <button type="button" class="qty-btn" onclick="adjustQty(this, 1)">+</button>
+                                    </div>
+                                </div>
+
+                                <!-- 2. ข้าวซอยทะเล -->
+                                <div class="order-item-row">
+                                    <div class="order-item-details">
+                                        <span class="order-item-title">ข้าวซอยทะเล</span>
+                                        <span class="order-item-price-tag">99 ฿</span>
+                                    </div>
+                                    <div class="order-qty-controls">
+                                        <button type="button" class="qty-btn" onclick="adjustQty(this, -1)">-</button>
+                                        <input type="number" class="qty-input" data-price="99" data-name="ข้าวซอยทะเล" min="0" value="0" oninput="calculatePrice()">
+                                        <button type="button" class="qty-btn" onclick="adjustQty(this, 1)">+</button>
+                                    </div>
+                                </div>
+
+                                <!-- 3. ขนมจีนน้ำเงี้ยว -->
+                                <div class="order-item-row">
+                                    <div class="order-item-details">
+                                        <span class="order-item-title">ขนมจีนน้ำเงี้ยว</span>
+                                        <span class="order-item-price-tag">59 ฿</span>
+                                    </div>
+                                    <div class="order-qty-controls">
+                                        <button type="button" class="qty-btn" onclick="adjustQty(this, -1)">-</button>
+                                        <input type="number" class="qty-input" data-price="59" data-name="ขนมจีนน้ำเงี้ยว" min="0" value="0" oninput="calculatePrice()">
+                                        <button type="button" class="qty-btn" onclick="adjustQty(this, 1)">+</button>
+                                    </div>
+                                </div>
+
+                                <!-- 4. ไส้อั่วสมุนไพร -->
+                                <div class="order-item-row">
+                                    <div class="order-item-details">
+                                        <span class="order-item-title">ไส้อั่วสมุนไพร</span>
+                                        <span class="order-item-price-tag">49 ฿</span>
+                                    </div>
+                                    <div class="order-qty-controls">
+                                        <button type="button" class="qty-btn" onclick="adjustQty(this, -1)">-</button>
+                                        <input type="number" class="qty-input" data-price="49" data-name="ไส้อั่วสมุนไพร" min="0" value="0" oninput="calculatePrice()">
+                                        <button type="button" class="qty-btn" onclick="adjustQty(this, 1)">+</button>
+                                    </div>
+                                </div>
+
+                                <!-- 5. แคบหมูทอดกรอบ -->
+                                <div class="order-item-row">
+                                    <div class="order-item-details">
+                                        <span class="order-item-title">แคบหมูทอดกรอบ</span>
+                                        <span class="order-item-price-tag">39 ฿</span>
+                                    </div>
+                                    <div class="order-qty-controls">
+                                        <button type="button" class="qty-btn" onclick="adjustQty(this, -1)">-</button>
+                                        <input type="number" class="qty-input" data-price="39" data-name="แคบหมูทอดกรอบ" min="0" value="0" oninput="calculatePrice()">
+                                        <button type="button" class="qty-btn" onclick="adjustQty(this, 1)">+</button>
+                                    </div>
+                                </div>
+
+                                <!-- 6. ขาหมูเยอรมัน -->
+                                <div class="order-item-row">
+                                    <div class="order-item-details">
+                                        <span class="order-item-title">ขาหมูเยอรมัน</span>
+                                        <span class="order-item-price-tag">399 ฿</span>
+                                    </div>
+                                    <div class="order-qty-controls">
+                                        <button type="button" class="qty-btn" onclick="adjustQty(this, -1)">-</button>
+                                        <input type="number" class="qty-input" data-price="399" data-name="ขาหมูเยอรมัน" min="0" value="0" oninput="calculatePrice()">
+                                        <button type="button" class="qty-btn" onclick="adjustQty(this, 1)">+</button>
+                                    </div>
+                                </div>
+
+                                <!-- 7. สเต็กปลาแซลมอน -->
+                                <div class="order-item-row">
+                                    <div class="order-item-details">
+                                        <span class="order-item-title">สเต็กปลาแซลมอน</span>
+                                        <span class="order-item-price-tag">320 ฿</span>
+                                    </div>
+                                    <div class="order-qty-controls">
+                                        <button type="button" class="qty-btn" onclick="adjustQty(this, -1)">-</button>
+                                        <input type="number" class="qty-input" data-price="320" data-name="สเต็กปลาแซลมอน" min="0" value="0" oninput="calculatePrice()">
+                                        <button type="button" class="qty-btn" onclick="adjustQty(this, 1)">+</button>
+                                    </div>
+                                </div>
+
+                                <!-- 8. กุ้งสาดดด ทะเลถัง -->
+                                <div class="order-item-row">
+                                    <div class="order-item-details">
+                                        <span class="order-item-title">กุ้งสาดดด ทะเลถัง</span>
+                                        <span class="order-item-price-tag">399 ฿</span>
+                                    </div>
+                                    <div class="order-qty-controls">
+                                        <button type="button" class="qty-btn" onclick="adjustQty(this, -1)">-</button>
+                                        <input type="number" class="qty-input" data-price="399" data-name="กุ้งสาดดด ทะเลถัง" min="0" value="0" oninput="calculatePrice()">
+                                        <button type="button" class="qty-btn" onclick="adjustQty(this, 1)">+</button>
+                                    </div>
+                                </div>
+
+                                <!-- 9. ข้าวไข่ข้นซอสต้มยำกุ้ง -->
+                                <div class="order-item-row">
+                                    <div class="order-item-details">
+                                        <span class="order-item-title">ข้าวไข่ข้นซอสต้มยำกุ้ง</span>
+                                        <span class="order-item-price-tag">180 ฿</span>
+                                    </div>
+                                    <div class="order-qty-controls">
+                                        <button type="button" class="qty-btn" onclick="adjustQty(this, -1)">-</button>
+                                        <input type="number" class="qty-input" data-price="180" data-name="ข้าวไข่ข้นซอสต้มยำกุ้ง" min="0" value="0" oninput="calculatePrice()">
+                                        <button type="button" class="qty-btn" onclick="adjustQty(this, 1)">+</button>
+                                    </div>
+                                </div>
+
+                                <!-- 10. บิงซูสายไหมหมีขี้เซา -->
+                                <div class="order-item-row">
+                                    <div class="order-item-details">
+                                        <span class="order-item-title">บิงซูสายไหมหมีขี้เซา</span>
+                                        <span class="order-item-price-tag">189 ฿</span>
+                                    </div>
+                                    <div class="order-qty-controls">
+                                        <button type="button" class="qty-btn" onclick="adjustQty(this, -1)">-</button>
+                                        <input type="number" class="qty-input" data-price="189" data-name="บิงซูสายไหมหมีขี้เซา" min="0" value="0" oninput="calculatePrice()">
+                                        <button type="button" class="qty-btn" onclick="adjustQty(this, 1)">+</button>
+                                    </div>
+                                </div>
+
+                                <!-- 11. ข้าวซอยเนื้อ (เพิ่มเติม) -->
+                                <div class="order-item-row">
+                                    <div class="order-item-details">
+                                        <span class="order-item-title">ข้าวซอยเนื้อ (Khao Soi Beef)</span>
+                                        <span class="order-item-price-tag">79 ฿</span>
+                                    </div>
+                                    <div class="order-qty-controls">
+                                        <button type="button" class="qty-btn" onclick="adjustQty(this, -1)">-</button>
+                                        <input type="number" class="qty-input" data-price="79" data-name="ข้าวซอยเนื้อ" min="0" value="0" oninput="calculatePrice()">
+                                        <button type="button" class="qty-btn" onclick="adjustQty(this, 1)">+</button>
+                                    </div>
+                                </div>
+
+                                <!-- 12. ข้าวซอยเจ (เพิ่มเติม) -->
+                                <div class="order-item-row">
+                                    <div class="order-item-details">
+                                        <span class="order-item-title">ข้าวซอยเจ (Khao Soi Vegan)</span>
+                                        <span class="order-item-price-tag">69 ฿</span>
+                                    </div>
+                                    <div class="order-qty-controls">
+                                        <button type="button" class="qty-btn" onclick="adjustQty(this, -1)">-</button>
+                                        <input type="number" class="qty-input" data-price="69" data-name="ข้าวซอยเจ" min="0" value="0" oninput="calculatePrice()">
+                                        <button type="button" class="qty-btn" onclick="adjustQty(this, 1)">+</button>
+                                    </div>
+                                </div>
+
+                                <!-- 13. ชาเย็น (เพิ่มเติม) -->
+                                <div class="order-item-row">
+                                    <div class="order-item-details">
+                                        <span class="order-item-title">ชาเย็นชงสดรสหวานมัน</span>
+                                        <span class="order-item-price-tag">29 ฿</span>
+                                    </div>
+                                    <div class="order-qty-controls">
+                                        <button type="button" class="qty-btn" onclick="adjustQty(this, -1)">-</button>
+                                        <input type="number" class="qty-input" data-price="29" data-name="ชาเย็นชงสด" min="0" value="0" oninput="calculatePrice()">
+                                        <button type="button" class="qty-btn" onclick="adjustQty(this, 1)">+</button>
+                                    </div>
+                                </div>
+
+                                <!-- 14. น้ำส้ม (เพิ่มเติม) -->
+                                <div class="order-item-row">
+                                    <div class="order-item-details">
+                                        <span class="order-item-title">น้ำส้มคั้นสด 100%</span>
+                                        <span class="order-item-price-tag">35 ฿</span>
+                                    </div>
+                                    <div class="order-qty-controls">
+                                        <button type="button" class="qty-btn" onclick="adjustQty(this, -1)">-</button>
+                                        <input type="number" class="qty-input" data-price="35" data-name="น้ำส้มคั้นสด" min="0" value="0" oninput="calculatePrice()">
+                                        <button type="button" class="qty-btn" onclick="adjustQty(this, 1)">+</button>
+                                    </div>
+                                </div>
+
+                                <!-- 15. ข้าวเหนียว (เพิ่มเติม) -->
+                                <div class="order-item-row">
+                                    <div class="order-item-details">
+                                        <span class="order-item-title">ข้าวเหนียวเขี้ยวงูนึ่งร้อน</span>
+                                        <span class="order-item-price-tag">15 ฿</span>
+                                    </div>
+                                    <div class="order-qty-controls">
+                                        <button type="button" class="qty-btn" onclick="adjustQty(this, -1)">-</button>
+                                        <input type="number" class="qty-input" data-price="15" data-name="ข้าวเหนียวเขี้ยวงู" min="0" value="0" oninput="calculatePrice()">
+                                        <button type="button" class="qty-btn" onclick="adjustQty(this, 1)">+</button>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                         
-                        <!-- ⚡ Interactive Live Calculator: แสดงผลราคารวมเรียลไทม์ (ตรงใจเกณฑ์ความใส่ใจพิเศษ) -->
+                        <!-- ⚡ Interactive Live Calculator: แสดงผลยอดราคารวมของทุกรายการที่เลือกแบบเรียลไทม์ -->
                         <div class="price-calculator-preview">
-                            <span class="calc-title">💰 ยอดรวมประมาณการ:</span>
+                            <span class="calc-title">💰 ยอดรวมยอดสั่งซื้อสุทธิ:</span>
                             <span class="calc-total" id="liveTotalDisplay">0 ฿</span>
                         </div>
 
@@ -968,20 +1242,20 @@
                 <!-- ช่องทางไลน์ OA แชทพูดคุย -->
                 <div class="contact-wrapper">
                     <h3>💬 ช่องทางออนไลน์หลัก</h3>
-                    <p style="margin-bottom: 20px;">สแกนแอดไลน์ร้านหรือคลิกปุ่มสีเขียวด้านล่าง เพื่อสอบถามเมนูพิเศษจานวันหยุด สั่งจองจัดเลี้ยงสัมมนา หรือรับคูปองโปรโมชันส่วนลดสุดคุ้มผ่าน LINE Official Account สะดวกรวดเร็วคุยตรงกับพนักงานได้ทันที: [12]</p>
+                    <p style="margin-bottom: 20px;">สแกนแอดไลน์ร้านหรือคลิกปุ่มสีเขียวด้านล่าง เพื่อสอบถามเมนูพิเศษจานวันหยุด สั่งจองจัดเลี้ยงสัมมนา หรือรับคูปองโปรโมชันส่วนลดสุดคุ้มผ่าน LINE Official Account สะดวกรวดเร็วคุยตรงกับพนักงานได้ทันที:</p>
                     
                     <a href="https://line.me/R/ti/p/@lannaeats" target="_blank" class="line-button">
                         <span style="font-size: 1.3rem; margin-right: 10px;">🟢</span> แชทสั่งซื้อทาง LINE: @ilovecnx
                     </a>
 
                     <div class="contact-details">
-                        <p><strong>📞 เบอร์โทรศัพท์สายตรง:</strong> 053-123-456 [12]</p>
-                        <p><strong>✉️ อีเมลติดต่อสำนักงานใหญ่:</strong> contact@ilovecnx.com [13]</p>
-                        <p><strong>⏰ เวลาให้บริการของเจ้าหน้าที่แชท:</strong> ทุกวัน 09:00 - 22:00 น. [13]</p>
+                        <p><strong>📞 เบอร์โทรศัพท์สายตรง:</strong> 053-123-456</p>
+                        <p><strong>✉️ อีเมลติดต่อสำนักงานใหญ่:</strong> contact@ilovecnx.com</p>
+                        <p><strong>⏰ เวลาให้บริการของเจ้าหน้าที่แชท:</strong> ทุกวัน 09:00 - 22:00 น.</p>
                     </div>
                     
                     <div style="background-color: #FAF4F0; padding: 15px; border-radius: 10px; margin-top: 25px; border: 1px dashed var(--primary-color);">
-                        <p style="font-size: 0.85rem; color: var(--primary-color); font-weight: 500; text-align: center; margin-bottom: 0;">🔥 สิทธิพิเศษวันนี้! สมัครสมาชิก LINE OA ครบ 500 บาท แถมฟรีแคบหมูทอดกรอบ 1 ชุดเจ้า! [13]</p>
+                        <p style="font-size: 0.85rem; color: var(--primary-color); font-weight: 500; text-align: center; margin-bottom: 0;">🔥 สิทธิพิเศษวันนี้! สมัครสมาชิก LINE OA ครบ 500 บาท แถมฟรีแคบหมูทอดกรอบ 1 ชุดเจ้า!</p>
                     </div>
                 </div>
 
@@ -993,34 +1267,82 @@
     <!-- ลิขสิทธิ์วิชาท้ายหน้าเว็บ -->
     <footer>
         <p>&copy; 2026 iLove.cnx. สงวนลิขสิทธิ์ทั้งหมด</p>
-        <p style="font-size: 0.8rem; opacity: 0.7;">โครงงานสร้างสรรค์เว็บไซต์ธุรกิจระบบสารสนเทศ 703311 | จัดทำด้วยเทคโนโลยี Cloud & CI/CD Automated Deployment [1]</p>
+        <p style="font-size: 0.8rem; opacity: 0.7;">โครงงานสร้างสรรค์เว็บไซต์ธุรกิจระบบสารสนเทศ 703311 | จัดทำด้วยเทคโนโลยี Cloud & CI/CD Automated Deployment</p>
     </footer>
 
     <script>
-        // ⚡ ฟังก์ชันคำนวณราคาสั่งซื้อแบบเรียลไทม์ (Live Auto Price Calculator)
-        function calculatePrice() {
-            const menuSelect = document.getElementById('menuSelect');
-            const qtyInput = document.getElementById('itemQty');
-            const totalDisplay = document.getElementById('liveTotalDisplay');
-            
-            const pricePerUnit = parseInt(menuSelect.value) || 0;
-            const quantity = parseInt(qtyInput.value) || 1;
-            
-            const grandTotal = pricePerUnit * quantity;
-            totalDisplay.innerText = grandTotal.toLocaleString('th-TH') + ' ฿';
+        // ⚡ ฟังก์ชันปุ่มเพิ่ม-ลดจำนวนสินค้าในแถวใบสั่งซื้อ
+        function adjustQty(btn, delta) {
+            const row = btn.closest('.order-item-row');
+            const input = row.querySelector('.qty-input');
+            let currentVal = parseInt(input.value) || 0;
+            let newVal = currentVal + delta;
+            if (newVal < 0) newVal = 0;
+            input.value = newVal;
+            calculatePrice(); // อัปเดตราคารวมเรียลไทม์
         }
 
-        // ฟังก์ชันประมวลผลเมื่อกดส่งข้อมูลจองอาหาร
+        // ⚡ ฟังก์ชันคำนวณราคาสั่งซื้อแบบเรียลไทม์จากเมนูทั้งหมดที่ถูกกรอกจำนวน
+        function calculatePrice() {
+            const qtyInputs = document.querySelectorAll('.qty-input');
+            let grandTotal = 0;
+            
+            qtyInputs.forEach(input => {
+                const qty = parseInt(input.value) || 0;
+                const price = parseInt(input.getAttribute('data-price')) || 0;
+                grandTotal += qty * price;
+            });
+            
+            document.getElementById('liveTotalDisplay').innerText = grandTotal.toLocaleString('th-TH') + ' ฿';
+        }
+
+        // ฟังก์ชันประมวลผลเมื่อกดส่งข้อมูลและสรุปรายการอาหารสั่งรวมแบบมีปฏิสัมพันธ์
         function submitForm(event) {
             event.preventDefault();
             const clientName = document.getElementById('fullName').value;
-            const menuSelect = document.getElementById('menuSelect');
-            const chosenMenuName = menuSelect.options[menuSelect.selectedIndex].getAttribute('data-name');
-            const orderAmount = document.getElementById('itemQty').value;
-            const finalPrice = document.getElementById('liveTotalDisplay').innerText;
+            const phone = document.getElementById('phoneNumber').value;
+            const address = document.getElementById('deliveryAddress').value;
+            const qtyInputs = document.querySelectorAll('.qty-input');
             
-            alert(`ยินดีต้อนรับเจ้าคุณ ${clientName}! \n\nร้าน iLove.cnx ได้รับรายการสั่งอาหาร "${chosenMenuName}" จำนวน ${orderAmount} ชุด ยอดรวมทั้งสิ้น ${finalPrice} เรียบร้อยแล้ว \n\nทีมงานกำลังจัดเตรียมและจัดส่งให้อย่างเร่งด่วนเจ้า!`);
+            let orderedItemsList = [];
+            let grandTotal = 0;
+            
+            // วนลูปหาเฉพาะเมนูที่ลูกค้าเลือกสั่ง (จำนวนมากกว่า 0)
+            qtyInputs.forEach(input => {
+                const qty = parseInt(input.value) || 0;
+                if (qty > 0) {
+                    const itemName = input.getAttribute('data-name');
+                    const itemPrice = parseInt(input.getAttribute('data-price')) || 0;
+                    const subTotal = qty * itemPrice;
+                    orderedItemsList.push(`• ${itemName} x ${qty} ชุด (${subTotal.toLocaleString('th-TH')} ฿)`);
+                    grandTotal += subTotal;
+                }
+            });
+            
+            // กรณีลูกค้าไม่ได้เลือกสั่งเมนูใดๆ เลย
+            if (orderedItemsList.length === 0) {
+                alert('กรุณาเลือกกดสั่งเมนูแสนอร่อยอย่างน้อย 1 รายการเจ้า!');
+                return;
+            }
+            
+            // ประกอบข้อความสรุปใบสั่งอาหารอย่างหรูหราน่าเชื่อถือ
+            let alertMsg = `ยินดีต้อนรับเจ้าคุณ ${clientName}!\n\n`;
+            alertMsg += `ร้าน iLove.cnx ได้รับรายการสั่งอาหารสำเร็จรูปเรียบร้อยแล้วเจ้า:\n`;
+            alertMsg += `------------------------------------------\n`;
+            alertMsg += orderedItemsList.join('\n') + `\n`;
+            alertMsg += `------------------------------------------\n`;
+            alertMsg += `💰 ยอดรวมสั่งซื้อสุทธิ: ${grandTotal.toLocaleString('th-TH')} ฿\n`;
+            alertMsg += `📞 เบอร์โทรศัพท์ติดต่อกลับ: ${phone}\n`;
+            if (address) {
+                alertMsg += `📍 สถานที่จัดส่ง: ${address}\n`;
+            }
+            alertMsg += `\nทีมงานสาขาที่ใกล้คุณที่สุดกำลังจัดเตรียมอย่างเร่งด่วนเจ้า!`;
+            
+            alert(alertMsg);
+            
+            // ทำการเคลียร์ค่าฟอร์มกลับไปเริ่มต้นใหม่
             document.getElementById('deliveryForm').reset();
+            qtyInputs.forEach(input => input.value = 0);
             document.getElementById('liveTotalDisplay').innerText = '0 ฿';
         }
     </script>
