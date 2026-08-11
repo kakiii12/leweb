@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iLove.cnx - ล้านนาอีทส์ แอนด์ ฟิวชันคิทเช่น</title>
 
-    <!-- ⚡ 1. Resource Hints: เชื่อมต่อเซิร์ฟเวอร์ฟอนต์ล่วงหน้าเพื่อลดบล็อคการเรนเดอร์ -->
+    <!-- ⚡ Resource Hints: เชื่อมต่อเซิร์ฟเวอร์ฟอนต์ล่วงหน้าเพื่อลดบล็อคการเรนเดอร์และทำให้แสดงผลเร็วขึ้น -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Pacifico&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Pacifico&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- ⚡ 2. Preload Critical Images: บังคับโหลดรูปภาพส่วนหัวทันที (ลด LCP Delay) -->
+    <!-- ⚡ Preload Critical Images: บังคับโหลดรูปภาพส่วนหัวและโลโก้ทันที เพื่อป้องกันปัญหาภาพไม่ขึ้นตอนเปิดเว็บ -->
     <link rel="preload" as="image" href="images/ilovecnx_logo.jpg">
     <link rel="preload" as="image" href="images/Banner.png">
 
@@ -76,7 +76,7 @@
             padding: 10px 20px;
         }
 
-        /* ดีไซน์ชื่อร้านร่วมกับรูปโลโก้ iLove.cnx */
+        /* ดีไซน์ชื่อร้านร่วมกับรูปโลโก้ iLove.cnx ด้านบน */
         .nav-logo {
             display: flex;
             align-items: center;
@@ -112,7 +112,7 @@
             transform: rotate(10deg) scale(1.05);
         }
 
-        /* ตัวเขียน .cnx ต่อท้าย */
+        /* ตัวเขียน .cnx ตรง Navbar */
         .nav-logo span {
             font-family: 'Pacifico', cursive;
             background: none;
@@ -140,53 +140,93 @@
             color: var(--primary-color);
         }
 
-        /* แบนเนอร์หลักชวนหิว (Hero Banner) */
+        /* 🌅 ตกแต่งแบนเนอร์หลักพร้อมชื่อร้านสไตล์โมเดิร์นและสะดุดตา (Hero Banner Style) */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), 
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
                         url('images/Banner.png') no-repeat center center/cover;
             color: var(--light-color);
             text-align: center;
-            padding: 120px 20px;
-            min-height: 450px;
+            padding: 140px 20px;
+            min-height: 520px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
         }
 
+        /* ตราสัญลักษณ์ประดับบอกระดับความหรูหราเหนือหัวแบนเนอร์ */
+        .banner-badge {
+            background: rgba(211, 84, 0, 0.15);
+            border: 1px solid rgba(243, 156, 18, 0.4);
+            color: var(--secondary-color);
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* ชื่อร้าน iLove.cnx สุดอลังการบนหน้าแบนเนอร์ */
         .hero h1 {
             font-family: 'Montserrat', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            color: var(--light-color);
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-            letter-spacing: -1px;
+            font-size: 4.8rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            /* ไล่ระดับเฉดสีทอง ขาว และส้มอิฐสไตล์พรีเมียม */
+            background: linear-gradient(135deg, #FFFFFF 20%, #F39C12 70%, #D35400 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0px 4px 15px rgba(0, 0, 0, 0.75));
+        }
+
+        /* จุดทศนิยมและนามสกุล .cnx ท้ายแบนเนอร์ */
+        .hero h1 span.banner-dot {
+            font-family: sans-serif;
+            color: #D35400;
+            -webkit-text-fill-color: #D35400; /* เขียนทับ Gradient ป้องกันการแสดงผลผิดพลาด */
+        }
+
+        .hero h1 span.banner-cnx {
+            font-family: 'Pacifico', cursive;
+            text-transform: lowercase;
+            background: linear-gradient(135deg, #F39C12, #FF7F50);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-left: 2px;
         }
 
         .hero p {
             font-size: 1.35rem;
             font-weight: 300;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             max-width: 800px;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+            text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+            line-height: 1.8;
+            color: #F2F4F4;
         }
 
         .hero-btn {
             display: inline-block;
             background-color: var(--primary-color);
             color: var(--light-color);
-            padding: 12px 35px;
+            padding: 14px 40px;
             text-decoration: none;
             border-radius: 30px;
             font-weight: 600;
-            box-shadow: 0 4px 15px rgba(211, 84, 0, 0.4);
+            box-shadow: 0 4px 15px rgba(211, 84, 0, 0.45);
             transition: all 0.3s ease;
+            letter-spacing: 0.5px;
         }
 
         .hero-btn:hover {
             background-color: var(--secondary-color);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(243, 156, 18, 0.6);
         }
 
@@ -559,11 +599,11 @@
 
         @media (max-width: 768px) {
             .hero {
-                padding: 80px 15px;
-                min-height: 380px;
+                padding: 100px 15px;
+                min-height: 420px;
             }
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 3.2rem;
             }
             .hero p {
                 font-size: 1.1rem;
@@ -598,7 +638,7 @@
     <!-- แถบเมนูนำทางด้านบน -->
     <nav>
         <div class="nav-container">
-            <!-- ⚡ 3. High Fetch Priority on Logo: บังคับเบราว์เซอร์ให้ประมวลผลรูปโลโก้ก่อนสิ่งอื่น -->
+            <!-- ⚡ High Fetch Priority on Logo: บังคับเบราว์เซอร์ให้ประมวลผลรูปโลโก้ก่อนสิ่งอื่นเพื่อเร่งความเร็ว -->
             <a href="#" class="nav-logo">
                 <img src="images/ilovecnx_logo.jpg" alt="iLove.cnx Logo" class="nav-logo-img" fetchpriority="high" decoding="async" width="48" height="48">
                 iLove<span>.cnx</span>
@@ -611,10 +651,11 @@
         </div>
     </nav>
 
-    <!-- แบนเนอร์หน้าแรก (Hero Section) -->
+    <!-- 🌅 แบนเนอร์หน้าแรก (Hero Section) ตกแต่งใหม่แบบหรูหราสะกดสายตา -->
     <header class="hero">
-        <h1>iLove.cnx</h1>
-        <p>"สัมผัสความอร่อยเหนือระดับกับอาหารเหนือต้นตำรับเจียงใหม่ และเมนูฟิวชันนานาชาติยอดนิยม ปรุงสดใหม่ด้วยวัตถุดิบคุณภาพเยี่ยม พร้อมเสิร์ฟร้อนส่งตรงถึงบ้านคุณ" [2]</p>
+        <div class="banner-badge">✦ ORIGINAL NORTHERN & FUSION KITCHEN ✦</div>
+        <h1>iLove<span class="banner-dot">.</span><span class="banner-cnx">cnx</span></h1>
+        <p>"สัมผัสความอร่อยเหนือระดับกับอาหารเหนือต้นตำรับเจียงใหม่ และเมนูฟิวชันนานาชาติยอดนิยม ปรุงสดใหม่ด้วยวัตถุดิบคุณภาพเยี่ยม พร้อมเสิร์ฟร้อนส่งตรงถึงบ้านคุณ"</p>
         <a href="#order" class="hero-btn">สั่งซื้ออาหาร/ติดต่อเราเจ้า</a>
     </header>
 
@@ -629,15 +670,15 @@
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag">อาหารเหนือ</span>
-                        <!-- ⚡ 4. Lazy Loading & Async Decoding: ใส่กับทุกรูปของแคตตาล็อกสินค้า -->
+                        <!-- ⚡ Lazy Loading & Async Decoding: ใส่กับรูปเพื่อประหยัดการโหลดข้อมูลของมือถือ -->
                         <img src="images/khao-soikai.png" alt="ข้าวซอยไก่" class="menu-img" loading="lazy" decoding="async" width="300" height="200">
                     </div>
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
                             <span class="menu-name">ข้าวซอยไก่<br><small style="color:var(--text-muted);">Khao Soi Chicken</small></span>
-                            <span class="menu-price">69 ฿ [3]</span>
+                            <span class="menu-price">69 ฿</span>
                         </div>
-                        <p class="menu-desc">น่องไก่นุ่มชิ้นโตเคี่ยวจนเข้าเนื้อ ในน้ำแกงข้าวซอยสูตรลับเข้มข้นถึงเครื่องแกง โรยหน้าด้วยหมี่กรอบเหลืองทอง [2]</p>
+                        <p class="menu-desc">น่องไก่นุ่มชิ้นโตเคี่ยวจนเข้าเนื้อ ในน้ำแกงข้าวซอยสูตรลับเข้มข้นถึงเครื่องแกง โรยหน้าด้วยหมี่กรอบเหลืองทอง</p>
                     </div>
                 </div>
 
@@ -650,9 +691,9 @@
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
                             <span class="menu-name">ข้าวซอยทะเล<br><small style="color:var(--text-muted);">Khao Soi Seafood</small></span>
-                            <span class="menu-price">99 ฿ [3]</span>
+                            <span class="menu-price">99 ฿</span>
                         </div>
-                        <p class="menu-desc">ฟิวชันรสทะเลเดือด กุ้งแม่น้ำสดและปลาหมึกวงเนื้อหนึบ ในน้ำแกงข้าวซอยสูตรเข้มข้นหอมกลมกล่อม [2]</p>
+                        <p class="menu-desc">ฟิวชันรสทะเลเดือด กุ้งแม่น้ำสดและปลาหมึกวงเนื้อหนึบ ในน้ำแกงข้าวซอยสูตรเข้มข้นหอมกลมกล่อม</p>
                     </div>
                 </div>
 
@@ -665,9 +706,9 @@
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
                             <span class="menu-name">ขนมจีนน้ำเงี้ยว<br><small style="color:var(--text-muted);">Khanom Jeen Nam Ngiao</small></span>
-                            <span class="menu-price">59 ฿ [3]</span>
+                            <span class="menu-price">59 ฿</span>
                         </div>
-                        <p class="menu-desc">ขนมจีนน้ำเงี้ยวสูตรเชียงรายแท้ รสเข้มหอมดอกงิ้ว กระดูกหมูอ่อนเคี่ยวจนเปื่อยนุ่มและเลือดก้อนเต็มคำ [4]</p>
+                        <p class="menu-desc">ขนมจีนน้ำเงี้ยวสูตรเชียงรายแท้ รสเข้มหอมดอกงิ้ว กระดูกหมูอ่อนเคี่ยวจนเปื่อยู่นุ่มและเลือดก้อนเต็มคำ</p>
                     </div>
                 </div>
 
@@ -680,9 +721,9 @@
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
                             <span class="menu-name">ไส้อั่วสมุนไพร<br><small style="color:var(--text-muted);">Sai Ua Sausage</small></span>
-                            <span class="menu-price">49 ฿ [3]</span>
+                            <span class="menu-price">49 ฿</span>
                         </div>
-                        <p class="menu-desc">ไส้อั่วโฮมเมดย่างเตาถ่านจนหอมกรุ่น สมุนไพรอัดแน่น รสชาติเผ็ดร้อนกลมกล่อมกำลังดี [4]</p>
+                        <p class="menu-desc">ไส้อั่วโฮมเมดย่างเตาถ่านจนหอมกรุ่น สมุนไพรอัดแน่น รสชาติเผ็ดร้อนกลมกล่อมกำลังดี</p>
                     </div>
                 </div>
 
@@ -695,9 +736,9 @@
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
                             <span class="menu-name">แคบหมูทอดกรอบ<br><small style="color:var(--text-muted);">Pork Crackling</small></span>
-                            <span class="menu-price">39 ฿ [3]</span>
+                            <span class="menu-price">39 ฿</span>
                         </div>
-                        <p class="menu-desc">แคบหมูทอดใหม่สด กรอบฟู ไร้กลิ่นหืน อร่อยเข้ากันที่สุดเมื่อกินแกล้มคู่กับข้าวซอยหรือน้ำเงี้ยว [4]</p>
+                        <p class="menu-desc">แคบหมูทอดใหม่สด กรอบฟู ไร้กลิ่นหืน อร่อยเข้ากันที่สุดเมื่อกินแกล้มคู่กับข้าวซอยหรือน้ำเงี้ยว</p>
                     </div>
                 </div>
 
@@ -710,9 +751,9 @@
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
                             <span class="menu-name">ขาหมูเยอรมัน<br><small style="color:var(--text-muted);">German Pork Knuckle</small></span>
-                            <span class="menu-price">399 ฿ [4]</span>
+                            <span class="menu-price">399 ฿</span>
                         </div>
-                        <p class="menu-desc">ขาหมูเยอรมันคัดพิเศษ ทอดจนหนังกรอบพองฟูสะท้านใจ แต่เนื้อข้างในยังนุ่มฉ่ำ เสิร์ฟพร้อมมันบดและน้ำจิ้มซีฟู้ดรสแซ่บ [4]</p>
+                        <p class="menu-desc">ขาหมูเยอรมันคัดพิเศษ ทอดจนหนังกรอบพองฟูสะท้านใจ แต่เนื้อข้างในยังนุ่มฉ่ำ เสิร์ฟพร้อมมันบดและน้ำจิ้มซีฟู้ดรสแซ่บ</p>
                     </div>
                 </div>
 
@@ -725,9 +766,9 @@
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
                             <span class="menu-name">สเต็กปลาแซลมอน<br><small style="color:var(--text-muted);">Salmon Steak</small></span>
-                            <span class="menu-price">320 ฿ [5]</span>
+                            <span class="menu-price">320 ฿</span>
                         </div>
-                        <p class="menu-desc">ปลาแซลมอนกริลล์สุกกำลังดีหนังกรอบเนื้อฉ่ำหวาน เสิร์ฟเคียงสลัดผักออร์แกนิกและซอสครีมเข้มข้น [5]</p>
+                        <p class="menu-desc">ปลาแซลมอนกริลล์สุกกำลังดีหนังกรอบเนื้อฉ่ำหวาน เสิร์ฟเคียงสลัดผักออร์แกนิกและซอสครีมเข้มข้น</p>
                     </div>
                 </div>
 
@@ -740,9 +781,9 @@
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
                             <span class="menu-name">กุ้งสาดดด ทะเลถัง<br><small style="color:var(--text-muted);">Spicy Seafood Bucket</small></span>
-                            <span class="menu-price">399 ฿ [5]</span>
+                            <span class="menu-price">399 ฿</span>
                         </div>
-                        <p class="menu-desc">รวมมิตรซีฟู้ดสดใหม่คลุกเคล้าซอสเผ็ดคาจุนเข้มข้นจัดจ้าน รสร้อนแรงหอมเนย เสิร์ฟร้อนเดือดๆ ทานสนุก [5]</p>
+                        <p class="menu-desc">รวมมิตรซีฟู้ดสดใหม่คลุกเคล้าซอสเผ็ดคาจุนเข้มข้นจัดจ้าน รสร้อนแรงหอมเนย เสิร์ฟร้อนเดือดๆ ทานสนุก</p>
                     </div>
                 </div>
 
@@ -755,9 +796,9 @@
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
                             <span class="menu-name">ข้าวไข่ข้นซอสต้มยำกุ้ง<br><small style="color:var(--text-muted);">Creamy Omelet Tom Yum</small></span>
-                            <span class="menu-price">180 ฿ [5]</span>
+                            <span class="menu-price">180 ฿</span>
                         </div>
-                        <p class="menu-desc">ไข่ข้นสีเหลืองทองละมุน ราดซอสต้มยำรสเข้มข้นถึงเครื่องแกง ตกแต่งด้วยกุ้งแม่น้ำตัวใหญ่และไข่กุ้งเคี้ยวกรุบ [5]</p>
+                        <p class="menu-desc">ไข่ข้นสีเหลืองทองละมุน ราดซอสต้มยำรสเข้มข้นถึงเครื่องแกง ตกแต่งด้วยกุ้งแม่น้ำตัวใหญ่และไข่กุ้งเคี้ยวกรุบ</p>
                     </div>
                 </div>
 
@@ -770,9 +811,9 @@
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
                             <span class="menu-name">บิงซูสายไหมหมีขี้เซา<br><small style="color:var(--text-muted);">Bear Bingsu Thread</small></span>
-                            <span class="menu-price">189 ฿ [5]</span>
+                            <span class="menu-price">189 ฿</span>
                         </div>
-                        <p class="menu-desc">บิงซูเกล็ดสายไหมรสหวานละมุน นุ่มฟูดุจปุยเมฆ ตกแต่งด้วยไอศกรีมน้องหมีนอนหลับปุ๋ยพร้อมท็อปปิ้งล้นถาดแสนอร่อย [6]</p>
+                        <p class="menu-desc">บิงซูเกล็ดสายไหมรสหวานละมุน นุ่มฟูดุจปุยเมฆ ตกแต่งด้วยไอศกรีมน้องหมีนอนหลับปุ๋ยพร้อมท็อปปิ้งล้นถาดแสนอร่อย</p>
                     </div>
                 </div>
 
@@ -785,23 +826,23 @@
             <div class="other-menus-grid">
                 <div class="other-menu-item">
                     <span class="other-menu-name">ข้าวซอยเนื้อ (Khao Soi Beef)</span>
-                    <span class="other-menu-price">79 ฿ [3]</span>
+                    <span class="other-menu-price">79 ฿</span>
                 </div>
                 <div class="other-menu-item">
                     <span class="other-menu-name">ข้าวซอยเจ (Khao Soi Vegan)</span>
-                    <span class="other-menu-price">69 ฿ [3]</span>
+                    <span class="other-menu-price">69 ฿</span>
                 </div>
                 <div class="other-menu-item">
                     <span class="other-menu-name">ชาเย็นชงสดรสหวานมัน (Thai Iced Tea)</span>
-                    <span class="other-menu-price">29 ฿ [3]</span>
+                    <span class="other-menu-price">29 ฿</span>
                 </div>
                 <div class="other-menu-item">
                     <span class="other-menu-name">น้ำส้มคั้นสด 100% (Orange Juice)</span>
-                    <span class="other-menu-price">35 ฿ [3]</span>
+                    <span class="other-menu-price">35 ฿</span>
                 </div>
                 <div class="other-menu-item">
                     <span class="other-menu-name">ข้าวเหนียวเขี้ยวงูนึ่งร้อน (Sticky Rice)</span>
-                    <span class="other-menu-price">15 ฿ [3]</span>
+                    <span class="other-menu-price">15 ฿</span>
                 </div>
             </div>
         </section>
@@ -812,12 +853,12 @@
                 <img src="images/Service.png" alt="บริการส่งตรงถึงบ้าน" class="service-img" loading="lazy" decoding="async" width="400" height="267">
             </div>
             <div class="service-content">
-                <h3>จัดส่งรวดเร็ว รักษาคุณภาพความร้อน 100% [6]</h3>
-                <p>นอกจากบริการที่ประณีตหน้าร้านแล้ว ร้าน iLove.cnx ยังมีระบบห่ออาหารด้วยบรรจุภัณฑ์รักษ์โลกที่ล็อคอุณหภูมิความร้อนได้อย่างดีเยี่ยม เพื่อให้มั่นใจว่าลูกค้าได้รับประทานอาหารที่สดใหม่ ปลอดภัย และอร่อยเหมือนเสิร์ฟจากเตาครับ: [6]</p>
+                <h3>จัดส่งรวดเร็ว รักษาคุณภาพความร้อน 100%</h3>
+                <p>นอกจากบริการที่ประณีตหน้าร้านแล้ว ร้าน iLove.cnx ยังมีระบบห่ออาหารด้วยบรรจุภัณฑ์รักษ์โลกที่ล็อคอุณหภูมิความร้อนได้อย่างดีเยี่ยม เพื่อให้มั่นใจว่าลูกค้าได้รับประทานอาหารที่สดใหม่ ปลอดภัย และอร่อยเหมือนเสิร์ฟจากเตาครับ:</p>
                 <ul class="service-list">
-                    <li>บรรจุภัณฑ์พิเศษแยกน้ำแกงและเส้นข้าวซอยอย่างปลอดภัย ไม่หกเลอะเทอะ [7]</li>
-                    <li>ส่งฟรีในระยะ 5 กิโลเมตรจากสาขาใกล้บ้านคุณ [7]</li>
-                    <li>สะอาด ถูกสุขอนามัย มั่นใจได้ในมาตรฐานความสะอาดของเชฟ [7]</li>
+                    <li>บรรจุภัณฑ์พิเศษแยกน้ำแกงและเส้นข้าวซอยอย่างปลอดภัย ไม่หกเลอะเทอะ</li>
+                    <li>ส่งฟรีในระยะ 5 กิโลเมตรจากสาขาใกล้บ้านคุณ</li>
+                    <li>สะอาด ถูกสุขอนามัย มั่นใจได้ในมาตรฐานความสะอาดของเชฟ</li>
                 </ul>
             </div>
         </section>
@@ -829,26 +870,26 @@
                 
                 <!-- S1: Chang Klan Night Market -->
                 <div class="stall-card">
-                    <div class="stall-name">สาขา Chang Klan Night Market [8]</div>
-                    <p class="stall-detail">📍 <strong>พิกัด:</strong> ย่านถนนช้างคลาน แหล่งกินเที่ยวยอดนิยมในยามค่ำคืน [7, 8]</p>
-                    <p class="stall-detail">🕒 <strong>เวลาบริการ:</strong> 17:00 - 23:00 น. [7]</p>
-                    <p class="stall-date">📅 ร่วมส่งมอบความอบอุ่นและรสชาติตั้งแต่: 1 มิถุนายน 2023 [7, 8]</p>
+                    <div class="stall-name">สาขา Chang Klan Night Market</div>
+                    <p class="stall-detail">📍 <strong>พิกัด:</strong> ย่านถนนช้างคลาน แหล่งกินเที่ยวยอดนิยมในยามค่ำคืน</p>
+                    <p class="stall-detail">🕒 <strong>เวลาบริการ:</strong> 17:00 - 23:00 น.</p>
+                    <p class="stall-date">📅 ร่วมส่งมอบความอบอุ่นและรสชาติตั้งแต่: 1 มิถุนายน 2023</p>
                 </div>
 
                 <!-- S2: Nimman -->
                 <div class="stall-card">
-                    <div class="stall-name">สาขา Nimman [8]</div>
-                    <p class="stall-detail">📍 <strong>พิกัด:</strong> ถนนนิมมานเหมินท์ ใจกลางแหล่งกินเที่ยวนักท่องเที่ยวต่างชาติ [7, 8]</p>
-                    <p class="stall-detail">🕒 <strong>เวลาบริการ:</strong> 10:00 - 21:00 น. [7]</p>
-                    <p class="stall-date">📅 ร่วมส่งมอบความอบอุ่นและรสชาติตั้งแต่: 15 กุมภาพันธ์ 2024 [7, 8]</p>
+                    <div class="stall-name">สาขา Nimman</div>
+                    <p class="stall-detail">📍 <strong>พิกัด:</strong> ถนนนิมมานเหมินท์ ใจกลางแหล่งกินเที่ยวนักท่องเที่ยวต่างชาติ</p>
+                    <p class="stall-detail">🕒 <strong>เวลาบริการ:</strong> 10:00 - 21:00 น.</p>
+                    <p class="stall-date">📅 ร่วมส่งมอบความอบอุ่นและรสชาติตั้งแต่: 15 กุมภาพันธ์ 2024</p>
                 </div>
 
                 <!-- S3: Old City -->
                 <div class="stall-card">
-                    <div class="stall-name">สาขา Old City [8]</div>
-                    <p class="stall-detail">📍 <strong>พิกัด:</strong> ประตูท่าแพ แหล่งประวัติศาสตร์เมืองเก่าและจุดแลนด์มาร์กสำคัญ [8, 9]</p>
-                    <p class="stall-detail">🕒 <strong>เวลาบริการ:</strong> 09:00 - 20:00 น. [9]</p>
-                    <p class="stall-date">📅 ร่วมส่งมอบความอบอุ่นและรสชาติตั้งแต่: 10 มกราคม 2025 [8, 9]</p>
+                    <div class="stall-name">สาขา Old City</div>
+                    <p class="stall-detail">📍 <strong>พิกัด:</strong> ประตูท่าแพ แหล่งประวัติศาสตร์เมืองเก่าและจุดแลนด์มาร์กสำคัญ</p>
+                    <p class="stall-detail">🕒 <strong>เวลาบริการ:</strong> 09:00 - 20:00 น.</p>
+                    <p class="stall-date">📅 ร่วมส่งมอบความอบอุ่นและรสชาติตั้งแต่: 10 มกราคม 2025</p>
                 </div>
 
             </div>
@@ -861,7 +902,7 @@
                 
                 <!-- แบบฟอร์มสั่งซื้อจำลอง -->
                 <div class="order-form-wrapper">
-                    <h3>🛒 สั่งอาหารจานด่วน [9]</h3>
+                    <h3>🛒 สั่งอาหารจานด่วน</h3>
                     <form id="deliveryForm" onsubmit="submitForm(event)">
                         <div class="form-group">
                             <label for="fullName">ชื่อ-นามสกุลผู้จอง / สั่งซื้อ *</label>
@@ -901,21 +942,21 @@
 
                 <!-- ช่องทางบริการหลักและปุ่ม LINE OA -->
                 <div class="contact-wrapper">
-                    <h3>💬 ช่องทางออนไลน์หลัก [9]</h3>
-                    <p style="margin-bottom: 20px;">สแกนแอดไลน์ร้านหรือคลิกปุ่มสีเขียวด้านล่าง เพื่อสอบถามเมนูพิเศษจานวันหยุด สั่งจองจัดเลี้ยงสัมมนา หรือรับคูปองโปรโมชันส่วนลดสุดคุ้มผ่าน LINE Official Account สะดวกรวดเร็วคุยตรงกับพนักงานได้ทันที: [9]</p>
+                    <h3>💬 ช่องทางออนไลน์หลัก</h3>
+                    <p style="margin-bottom: 20px;">สแกนแอดไลน์ร้านหรือคลิกปุ่มสีเขียวด้านล่าง เพื่อสอบถามเมนูพิเศษจานวันหยุด สั่งจองจัดเลี้ยงสัมมนา หรือรับคูปองโปรโมชันส่วนลดสุดคุ้มผ่าน LINE Official Account สะดวกรวดเร็วคุยตรงกับพนักงานได้ทันที:</p>
                     
                     <a href="https://line.me/R/ti/p/@lannaeats" target="_blank" class="line-button">
-                        <span style="font-size: 1.3rem; margin-right: 10px;">🟢</span> แชทสั่งซื้อทาง LINE: @ilovecnx [9]
+                        <span style="font-size: 1.3rem; margin-right: 10px;">🟢</span> แชทสั่งซื้อทาง LINE: @ilovecnx
                     </a>
 
                     <div class="contact-details">
-                        <p><strong>📞 เบอร์โทรศัพท์สายตรง:</strong> 053-123-456 [9]</p>
-                        <p><strong>✉️ อีเมลติดต่อสำนักงานใหญ่:</strong> contact@ilovecnx.com [10]</p>
-                        <p><strong>⏰ เวลาให้บริการของเจ้าหน้าที่แชท:</strong> ทุกวัน 09:00 - 22:00 น. [10]</p>
+                        <p><strong>📞 เบอร์โทรศัพท์สายตรง:</strong> 053-123-456</p>
+                        <p><strong>✉️ อีเมลติดต่อสำนักงานใหญ่:</strong> contact@ilovecnx.com</p>
+                        <p><strong>⏰ เวลาให้บริการของเจ้าหน้าที่แชท:</strong> ทุกวัน 09:00 - 22:00 น.</p>
                     </div>
                     
                     <div style="background-color: #FAF4F0; padding: 15px; border-radius: 10px; margin-top: 25px; border: 1px dashed var(--primary-color);">
-                        <p style="font-size: 0.85rem; color: var(--primary-color); font-weight: 500; text-align: center; margin-bottom: 0;">🔥 สิทธิพิเศษวันนี้! สมัครสมาชิก LINE OA ครบ 500 บาท แถมฟรีแคบหมูทอดกรอบ 1 ชุดเจ้า! [10]</p>
+                        <p style="font-size: 0.85rem; color: var(--primary-color); font-weight: 500; text-align: center; margin-bottom: 0;">🔥 สิทธิพิเศษวันนี้! สมัครสมาชิก LINE OA ครบ 500 บาท แถมฟรีแคบหมูทอดกรอบ 1 ชุดเจ้า!</p>
                     </div>
                 </div>
 
@@ -927,7 +968,7 @@
     <!-- ลิขสิทธิ์วิชาท้ายหน้าเว็บ -->
     <footer>
         <p>&copy; 2026 iLove.cnx. สงวนลิขสิทธิ์ทั้งหมด</p>
-        <p style="font-size: 0.8rem; opacity: 0.7;">โครงงานสร้างสรรค์เว็บไซต์ธุรกิจระบบสารสนเทศ 703311 | จัดทำด้วยเทคโนโลยี Cloud & CI/CD Automated Deployment [11]</p>
+        <p style="font-size: 0.8rem; opacity: 0.7;">โครงงานสร้างสรรค์เว็บไซต์ธุรกิจระบบสารสนเทศ 703311 | จัดทำด้วยเทคโนโลยี Cloud & CI/CD Automated Deployment</p>
     </footer>
 
     <script>
