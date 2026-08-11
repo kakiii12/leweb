@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lanna Eats & Fusion Kitchen - ล้านนาอีทส์ แอนด์ ฟิวชันคิทเช่น</title>
+    <title>iLOVEcnx - ล้านนาอีทส์ แอนด์ ฟิวชันคิทเช่น</title>
     <!-- Google Fonts: Prompt สำหรับความสวยงาม ทันสมัย และอ่านง่ายบนมือถือ -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,6 +34,22 @@
             background-color: var(--bg-color);
             color: var(--dark-color);
             line-height: 1.6;
+            position: relative;
+        }
+
+        /* 🧱 เอฟเฟกต์ลายน้ำพื้นหลังประตูท่าแพแบบจางๆ ทั่วทั้งเว็บไซต์ (Fixed Watermark Background) */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/Banner.png') no-repeat center center;
+            background-size: cover;
+            opacity: 0.05; /* ปรับให้จางมากๆ 5% เพื่อให้เห็นลายน้ำกำแพงและประตูท่าแพ โดยไม่รบกวนการอ่านตัวหนังสือ */
+            z-index: -1; /* ส่งไปอยู่ชั้นหลังสุดใต้การ์ดเมนู */
+            pointer-events: none; /* ป้องกันไม่ให้รบกวนการคลิกปุ่มบนหน้าเว็บ */
         }
 
         /* เมนูนำทางแบบปักหมุดด้านบน (Sticky Navbar) */
@@ -539,7 +555,7 @@
     <!-- แถบเมนูนำทางด้านบน -->
     <nav>
         <div class="nav-container">
-            <a href="#" class="nav-logo">LANNA EATS <span>& FUSION</span></a>
+            <a href="#" class="nav-logo">iLOVEcnx <span>& Fusion</span></a>
             <ul class="nav-links">
                 <li><a href="#menu">เมนูแนะนำ</a></li>
                 <li><a href="#stalls">สาขาของเรา</a></li>
@@ -550,7 +566,7 @@
 
     <!-- หน้าแรกและแบนเนอร์แสดงคุณค่าของธุรกิจ (Hero Section) -->
     <header class="hero">
-        <h1>Lanna Eats & Fusion Kitchen</h1>
+        <h1>iLOVEcnx</h1>
         <p>"สัมผัสความอร่อยเหนือระดับกับอาหารเหนือต้นตำรับเจียงใหม่ และเมนูฟิวชันนานาชาติยอดนิยม ปรุงสดใหม่ด้วยวัตถุดิบคุณภาพเยี่ยม พร้อมเสิร์ฟร้อนส่งตรงถึงบ้านคุณ"</p>
         <a href="#order" class="hero-btn">สั่งซื้ออาหาร/ติดต่อเราเจ้า</a>
     </header>
@@ -749,7 +765,7 @@
             </div>
             <div class="service-content">
                 <h3>จัดส่งรวดเร็ว รักษาคุณภาพความร้อน 100%</h3>
-                <p>นอกจากบริการที่ประณีตหน้าร้านแล้ว ร้าน Lanna Eats & Fusion Kitchen ยังมีระบบห่ออาหารด้วยบรรจุภัณฑ์รักษ์โลกที่ล็อคอุณหภูมิความร้อนได้อย่างดีเยี่ยม เพื่อให้มั่นใจว่าลูกค้าได้รับประทานอาหารที่สดใหม่ ปลอดภัย และอร่อยเหมือนเสิร์ฟจากเตาครับ:</p>
+                <p>นอกจากบริการที่ประณีตหน้าร้านแล้ว ร้าน iLOVEcnx ยังมีระบบห่ออาหารด้วยบรรจุภัณฑ์รักษ์โลกที่ล็อคอุณหภูมิความร้อนได้อย่างดีเยี่ยม เพื่อให้มั่นใจว่าลูกค้าได้รับประทานอาหารที่สดใหม่ ปลอดภัย และอร่อยเหมือนเสิร์ฟจากเตาครับ:</p>
                 <ul class="service-list">
                     <li>บรรจุภัณฑ์พิเศษแยกน้ำแกงและเส้นข้าวซอยอย่างปลอดภัย ไม่หกเลอะเทอะ</li>
                     <li>ส่งฟรีในระยะ 5 กิโลเมตรจากสาขาใกล้บ้านคุณ</li>
@@ -841,12 +857,12 @@
                     <p style="margin-bottom: 20px;">สแกนแอดไลน์ร้านหรือคลิกปุ่มสีเขียวด้านล่าง เพื่อสอบถามเมนูพิเศษจานวันหยุด สั่งจองจัดเลี้ยงสัมมนา หรือรับคูปองโปรโมชันส่วนลดสุดคุ้มผ่าน LINE Official Account สะดวกรวดเร็วคุยตรงกับพนักงานได้ทันที:</p>
                     
                     <a href="https://line.me/R/ti/p/@lannaeats" target="_blank" class="line-button">
-                        <span style="font-size: 1.3rem; margin-right: 10px;">🟢</span> แชทสั่งซื้อทาง LINE: @lannaeats
+                        <span style="font-size: 1.3rem; margin-right: 10px;">🟢</span> แชทสั่งซื้อทาง LINE: @ilovecnx
                     </a>
 
                     <div class="contact-details">
                         <p><strong>📞 เบอร์โทรศัพท์สายตรง:</strong> 053-123-456</p>
-                        <p><strong>✉️ อีเมลติดต่อสำนักงานใหญ่:</strong> contact@lannaeats.com</p>
+                        <p><strong>✉️ อีเมลติดต่อสำนักงานใหญ่:</strong> contact@ilovecnx.com</p>
                         <p><strong>⏰ เวลาให้บริการของเจ้าหน้าที่แชท:</strong> ทุกวัน 09:00 - 22:00 น.</p>
                     </div>
                     
@@ -862,7 +878,7 @@
 
     <!-- ส่วนท้ายสุดแสดงข้อมูลลิขสิทธิ์และประวัติวิชาตามเงื่อนไข -->
     <footer>
-        <p>&copy; 2026 Lanna Eats & Fusion Kitchen. สงวนลิขสิทธิ์ทั้งหมด</p>
+        <p>&copy; 2026 iLOVEcnx. สงวนลิขสิทธิ์ทั้งหมด</p>
         <p style="font-size: 0.8rem; opacity: 0.7;">โครงงานสร้างสรรค์เว็บไซต์ธุรกิจระบบสารสนเทศ 703311 | จัดทำด้วยเทคโนโลยี Cloud & CI/CD Automated Deployment</p>
     </footer>
 
@@ -874,7 +890,7 @@
             const chosenMenu = document.getElementById('menuSelect').value;
             const orderAmount = document.getElementById('itemQty').value;
             
-            alert(`ยินดีต้อนรับเจ้าคุณ ${clientName}! \n\nร้าน Lanna Eats & Fusion Kitchen ได้รับรายการสั่งอาหารสำเร็จรูป "${chosenMenu}" จำนวน ${orderAmount} ชุด เรียบร้อยแล้ว \n\nทีมงานกำลังจัดเตรียมและจัดส่งให้อย่างเร่งด่วนเจ้า!`);
+            alert(`ยินดีต้อนรับเจ้าคุณ ${clientName}! \n\nร้าน iLOVEcnx ได้รับรายการสั่งอาหารสำเร็จรูป "${chosenMenu}" จำนวน ${orderAmount} ชุด เรียบร้อยแล้ว \n\nทีมงานกำลังจัดเตรียมและจัดส่งให้อย่างเร่งด่วนเจ้า!`);
             document.getElementById('deliveryForm').reset();
         }
     </script>
