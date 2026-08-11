@@ -10,9 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Pacifico&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- ⚡ Preload Critical Images: บังคับโหลดรูปภาพส่วนหัวและโลโก้ทันที เพื่อประสิทธิภาพความเร็วสูงสุดตอนเปิดเว็บหน้าแรก -->
-    <link rel="preload" as="image" href="images/ilovecnx_logo.jpg">
-    <link rel="preload" as="image" href="images/Banner.png">
+    <!-- ⚡ Preload Critical Images: สั่งโหลดรูปภาพส่วนหัวและโลโก้เป็นอันดับแรกสุดเพื่อความรวดเร็ว -->
+    <link rel="preload" as="image" href="images/ilovecnx_logo.jpg" onerror="this.href='ilovecnx_logo.jpg'">
+    <link rel="preload" as="image" href="images/Banner.png" onerror="this.href='Banner.png'">
 
     <style>
         /* CSS Variables ควบคุมโทนสีอบอุ่นสไตล์ร้านอาหารเหนือและฟิวชัน */
@@ -166,31 +166,31 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        /* 🟢 แก้ไขจุดบกพร่องถาวร: แสดงผล iLove.cnx เต็มเปี่ยม คมชัด ไม่มีกระตุกแหว่งบน iPhone/Android แน่นอน 100% */
+        /* แสดงผลชื่อร้าน iLove.cnx สวยงามคมชัดไม่ตกหล่น */
         .hero h1 {
             font-family: 'Montserrat', sans-serif;
             font-size: 4.8rem;
             font-weight: 900;
             margin-bottom: 20px;
             letter-spacing: -2px;
-            line-height: 1.3; /* เพิ่ม line-height ป้องกันอักษรคัดด้านบน-ล่างโดนกล่องตัดแหว่ง */
-            color: #FFFFFF; /* สีขาวพรีเมียมชัดเจน */
-            text-shadow: 3px 5px 15px rgba(0, 0, 0, 0.75); /* มิติเงาสีดำหนา คมชัดสะดุดตา */
+            line-height: 1.3;
+            color: #FFFFFF;
+            text-shadow: 3px 5px 15px rgba(0, 0, 0, 0.75);
         }
 
         .hero h1 span.banner-dot {
             font-family: sans-serif;
-            color: var(--primary-color); /* จุดสีส้ม */
+            color: var(--primary-color);
             text-shadow: 3px 5px 15px rgba(0, 0, 0, 0.75);
         }
 
         .hero h1 span.banner-cnx {
             font-family: 'Pacifico', cursive;
             text-transform: lowercase;
-            color: var(--secondary-color); /* ใช้สีเหลืองทองแกงข้าวซอยแบบ Solid เพื่อความคมชัดเสถียรที่สุด */
+            color: var(--secondary-color);
             margin-left: 2px;
-            display: inline-block; /* บังคับแยกกล่องอิสระ */
-            padding: 2px 15px; /* เพิ่มพื้นที่ความกว้างรอบตัวเขียน ป้องกันขอบตัว c และ x โดนเบราว์เซอร์มือถือตัดแหว่ง */
+            display: inline-block;
+            padding: 2px 15px;
             text-shadow: 3px 5px 15px rgba(0, 0, 0, 0.75);
         }
 
@@ -271,6 +271,7 @@
             box-shadow: 0 10px 25px rgba(211, 84, 0, 0.15);
         }
 
+        /* ⚡ Shimmer/Skeleton placeholder ระหว่างที่รอภาพโหลดจริง ป้องกันเลย์เอาต์เว็บเด้งโดด */
         .menu-img-wrapper {
             position: relative;
             width: 100%;
@@ -283,7 +284,8 @@
             width: 100%;
             height: 100%;
             object-fit: cover; 
-            transition: transform 0.5s;
+            transition: transform 0.5s ease, opacity 0.4s ease;
+            opacity: 0; /* ซ่อนภาพเริ่มต้น แล้วค่อยสว่างขึ้นเมื่อโหลดสำเร็จ 100% */
         }
 
         .menu-card:hover .menu-img {
@@ -449,6 +451,8 @@
             width: 100%;
             height: auto;
             display: block;
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
 
         .service-content {
@@ -530,7 +534,7 @@
         }
 
         /* ========================================================
-           ⚡ MULTI-ITEM ORDER SHEET STYLING
+           🛒 MULTI-ITEM ORDER SHEET STYLING
            ======================================================== */
         .order-items-list {
             max-height: 350px;
@@ -542,7 +546,6 @@
             margin-bottom: 20px;
         }
 
-        /* สไตล์ Scrollbar ของใบสั่งซื้อ */
         .order-items-list::-webkit-scrollbar {
             width: 6px;
         }
@@ -747,9 +750,9 @@
     <!-- แถบเมนูนำทางด้านบน -->
     <nav>
         <div class="nav-container">
-            <!-- ⚡ High Fetch Priority: เร่งความเร็วแสดงผลโลโก้แบรนด์เป็นสิ่งแรกสุด -->
+            <!-- ⚡ High Fetch Priority & Smooth Fade-In: โลโก้แบรนด์จะต้องโหลดก่อนสิ่งใดเพื่อสร้าง First Impression ที่ประณีต -->
             <a href="#" class="nav-logo">
-                <img src="images/ilovecnx_logo.jpg" alt="iLove.cnx Logo" class="nav-logo-img" fetchpriority="high" decoding="async" width="48" height="48">
+                <img src="images/ilovecnx_logo.jpg" alt="iLove.cnx Logo" class="nav-logo-img" fetchpriority="high" decoding="async" width="48" height="48" onload="this.style.opacity='1';" style="opacity: 0; transition: opacity 0.3s ease;">
                 iLove<span>.cnx</span>
             </a>
             <ul class="nav-links">
@@ -760,7 +763,7 @@
         </div>
     </nav>
 
-    <!-- แบนเนอร์หน้าแรก (Hero Section) แก้ไขบั๊กขอบและข้อความแหว่งถาวร 100% -->
+    <!-- แบนเนอร์หน้าแรก (Hero Section) สไตล์แข็งแกร่งคมชัดทุกสภาพแวดล้อม -->
     <header class="hero">
         <div class="banner-badge">✦ ORIGINAL NORTHERN & FUSION KITCHEN ✦</div>
         <h1>iLove<span class="banner-dot">.</span><span class="banner-cnx">cnx</span></h1>
@@ -779,8 +782,8 @@
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag">อาหารเหนือ</span>
-                        <!-- ⚡ Lazy Loading & Async Decoding: ดาวน์โหลดเฉพาะตอนเลื่อนหน้าจอมาถึง ป้องกันเน็ตช้า -->
-                        <img src="images/khao-soikai.png" alt="ข้าวซอยไก่" class="menu-img" loading="lazy" decoding="async" width="300" height="200">
+                        <!-- ⚡ High Fetch Priority: เมนูแนะนำใบเบิกทางของร้าน จะถูกดาวน์โหลดทันทีที่ผู้ใช้เปิดเว็บ -->
+                        <img src="images/khao-soikai.png" alt="ข้าวซอยไก่" class="menu-img" fetchpriority="high" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
                     </div>
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
@@ -795,7 +798,7 @@
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag">อาหารเหนือ</span>
-                        <img src="images/khao-soiseafood.png" alt="ข้าวซอยทะเล" class="menu-img" loading="lazy" decoding="async" width="300" height="200">
+                        <img src="images/khao-soiseafood.png" alt="ข้าวซอยทะเล" class="menu-img" fetchpriority="high" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
                     </div>
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
@@ -810,7 +813,8 @@
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag">อาหารเหนือ</span>
-                        <img src="images/Nam-ngiao.png" alt="ขนมจีนน้ำเงี้ยว" class="menu-img" loading="lazy" decoding="async" width="300" height="200">
+                        <!-- ⚡ Lazy Loading: เมนูถัดไปจะใช้โหมดเลื่อนจอมาถึงแล้วค่อยโหลดเพื่อความเร็ว -->
+                        <img src="images/Nam-ngiao.png" alt="ขนมจีนน้ำเงี้ยว" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
                     </div>
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
@@ -825,7 +829,7 @@
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag">อาหารเหนือ</span>
-                        <img src="images/Sai-ua.png" alt="ไส้อั่วสมุนไพร" class="menu-img" loading="lazy" decoding="async" width="300" height="200">
+                        <img src="images/Sai-ua.png" alt="ไส้อั่วสมุนไพร" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
                     </div>
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
@@ -840,7 +844,7 @@
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag">เครื่องเคียง</span>
-                        <img src="images/Pork-crackling.png" alt="แคบหมูทอดกรอบ" class="menu-img" loading="lazy" decoding="async" width="300" height="200">
+                        <img src="images/Pork-crackling.png" alt="แคบหมูทอดกรอบ" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
                     </div>
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
@@ -855,7 +859,7 @@
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag fusion">ฟิวชัน / อินเตอร์</span>
-                        <img src="images/German-Pork.png" alt="ขาหมูเยอรมัน" class="menu-img" loading="lazy" decoding="async" width="300" height="200">
+                        <img src="images/German-Pork.png" alt="ขาหมูเยอรมัน" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
                     </div>
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
@@ -870,7 +874,7 @@
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag fusion">ฟิวชัน / อินเตอร์</span>
-                        <img src="images/Salmon-Steak.png" alt="สเต็กปลาแซลมอน" class="menu-img" loading="lazy" decoding="async" width="300" height="200">
+                        <img src="images/Salmon-Steak.png" alt="สเต็กปลาแซลมอน" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
                     </div>
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
@@ -885,7 +889,7 @@
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag fusion">ฟิวชัน / อินเตอร์</span>
-                        <img src="images/Seafood-Bucket.png" alt="กุ้งสาดดด ทะเลถัง" class="menu-img" loading="lazy" decoding="async" width="300" height="200">
+                        <img src="images/Seafood-Bucket.png" alt="กุ้งสาดดด ทะเลถัง" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
                     </div>
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
@@ -900,7 +904,7 @@
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag fusion">ฟิวชัน / อินเตอร์</span>
-                        <img src="images/Creamy-Omelet.png" alt="ข้าวไข่ข้นซอสต้มยำกุ้ง" class="menu-img" loading="lazy" decoding="async" width="300" height="200">
+                        <img src="images/Creamy-Omelet.png" alt="ข้าวไข่ข้นซอสต้มยำกุ้ง" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
                     </div>
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
@@ -915,7 +919,7 @@
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag fusion">ของหวาน</span>
-                        <img src="images/Bingso.png" alt="บิงซูสายไหมหมีขี้เซา" class="menu-img" loading="lazy" decoding="async" width="300" height="200">
+                        <img src="images/Bingso.png" alt="บิงซูสายไหมหมีขี้เซา" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
                     </div>
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
@@ -959,7 +963,7 @@
         <!-- บริการจัดส่งพิเศษพร้อมภาพ Service.png -->
         <section class="service-banner">
             <div class="service-img-wrapper">
-                <img src="images/Service.png" alt="บริการส่งตรงถึงบ้าน" class="service-img" loading="lazy" decoding="async" width="400" height="267">
+                <img src="images/Service.png" alt="บริการส่งตรงถึงบ้าน" class="service-img" loading="lazy" decoding="async" width="400" height="267" onload="this.style.opacity='1';">
             </div>
             <div class="service-content">
                 <h3>จัดส่งรวดเร็ว รักษาคุณภาพความร้อน 100%</h3>
@@ -1242,7 +1246,7 @@
                 <!-- ช่องทางไลน์ OA แชทพูดคุย -->
                 <div class="contact-wrapper">
                     <h3>💬 ช่องทางออนไลน์หลัก</h3>
-                    <p style="margin-bottom: 20px;">แอดไลน์ร้าน คลิกปุ่มสีเขียวด้านล่าง เพื่อสอบถามเมนูพิเศษจานวันหยุด สั่งจองจัดเลี้ยงสัมมนา หรือรับคูปองโปรโมชันส่วนลดสุดคุ้มผ่าน LINE Official Account สะดวกรวดเร็วคุยตรงกับพนักงานได้ทันที:</p>
+                    <p style="margin-bottom: 20px;">สแกนแอดไลน์ร้านหรือคลิกปุ่มสีเขียวด้านล่าง เพื่อสอบถามเมนูพิเศษจานวันหยุด สั่งจองจัดเลี้ยงสัมมนา หรือรับคูปองโปรโมชันส่วนลดสุดคุ้มผ่าน LINE Official Account สะดวกรวดเร็วคุยตรงกับพนักงานได้ทันที:</p>
                     
                     <a href="https://line.me/R/ti/p/@lannaeats" target="_blank" class="line-button">
                         <span style="font-size: 1.3rem; margin-right: 10px;">🟢</span> แชทสั่งซื้อทาง LINE: @ilovecnx
@@ -1270,7 +1274,60 @@
         <p style="font-size: 0.8rem; opacity: 0.7;">โครงงานสร้างสรรค์เว็บไซต์ธุรกิจระบบสารสนเทศ 703311 | จัดทำด้วยเทคโนโลยี Cloud & CI/CD Automated Deployment</p>
     </footer>
 
+    <!-- ========================================================
+         ⚡ SMART PERFORMANCE & ROBUST FALLBACK SCRIPT (EXCEEDS UX)
+         ======================================================== -->
     <script>
+        // ระบบแก้วิเคราะห์พาธภาพอัตโนมัติ (Dynamic Path Resolver)
+        // เพื่อป้องกันปัญหาภาพไม่ขึ้น 100% ไม่ว่าจะย้ายโฟลเดอร์หรือสลับ Root บน Azure Server
+        document.addEventListener("DOMContentLoaded", function() {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                // หากเบราว์เซอร์ไม่สามารถหาภาพตามที่ระบุใน src เจอ
+                img.addEventListener('error', function() {
+                    const currentSrc = img.getAttribute('src');
+                    if (!currentSrc) return;
+
+                    console.warn("Failed to load image:", currentSrc);
+
+                    // 1. กรณีเป็นรูปกุ้งสาดดดทะเลถัง ลองใช้ไฟล์ภาพใหม่ที่ผ่านการบีบอัดแล้วก่อน
+                    if (currentSrc.includes('Seafood-Bucket.png')) {
+                        img.src = 'seafood_bucket_new.jpg';
+                        return;
+                    }
+
+                    // 2. หากพาธมี images/ นำหน้าอยู่ แต่โหลดไม่ขึ้น -> ลองสลับสลับมาดึงจาก Root ด้านนอกสุด
+                    if (currentSrc.startsWith('images/')) {
+                        const fallbackRoot = currentSrc.replace('images/', '');
+                        img.src = fallbackRoot;
+                    } 
+                    // 3. หากดึงจาก Root แต่หาไม่เจอ -> ลองใส่ images/ นำหน้าเพื่อตรวจสอบในโฟลเดอร์ย่อย
+                    else if (!currentSrc.startsWith('http') && !currentSrc.startsWith('images/')) {
+                        const fallbackSub = 'images/' + currentSrc;
+                        img.src = fallbackSub;
+                    }
+                });
+            });
+
+            // ตรวจสอบและสลับพาธแบนเนอร์ Hero ด้านบนหาก images/Banner.png พัง
+            const heroSection = document.querySelector('.hero');
+            if (heroSection) {
+                const testImg = new Image();
+                testImg.src = 'images/Banner.png';
+                testImg.onerror = function() {
+                    // เปลี่ยนมาใช้ Banner.png ด้านนอก
+                    heroSection.style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('Banner.png')";
+                    
+                    const testImgRoot = new Image();
+                    testImgRoot.src = 'Banner.png';
+                    testImgRoot.onerror = function() {
+                        // ปลอดภัยที่สุด: ใช้สีแกรเดียนต์หากไม่มีภาพแบนเนอร์ใดอยู่เลย
+                        heroSection.style.background = "linear-gradient(135deg, #2C3E50, #1A252F)";
+                    };
+                };
+            }
+        });
+
         // ⚡ ฟังก์ชันปุ่มเพิ่ม-ลดจำนวนสินค้าในแถวใบสั่งซื้อ
         function adjustQty(btn, delta) {
             const row = btn.closest('.order-item-row');
@@ -1307,7 +1364,6 @@
             let orderedItemsList = [];
             let grandTotal = 0;
             
-            // วนลูปหาเฉพาะเมนูที่ลูกค้าเลือกสั่ง (จำนวนมากกว่า 0)
             qtyInputs.forEach(input => {
                 const qty = parseInt(input.value) || 0;
                 if (qty > 0) {
@@ -1319,13 +1375,11 @@
                 }
             });
             
-            // กรณีลูกค้าไม่ได้เลือกสั่งเมนูใดๆ เลย
             if (orderedItemsList.length === 0) {
                 alert('กรุณาเลือกกดสั่งเมนูแสนอร่อยอย่างน้อย 1 รายการเจ้า!');
                 return;
             }
             
-            // ประกอบข้อความสรุปใบสั่งอาหารอย่างหรูหราน่าเชื่อถือ
             let alertMsg = `ยินดีต้อนรับเจ้าคุณ ${clientName}!\n\n`;
             alertMsg += `ร้าน iLove.cnx ได้รับรายการสั่งอาหารสำเร็จรูปเรียบร้อยแล้วเจ้า:\n`;
             alertMsg += `------------------------------------------\n`;
@@ -1340,7 +1394,6 @@
             
             alert(alertMsg);
             
-            // ทำการเคลียร์ค่าฟอร์มกลับไปเริ่มต้นใหม่
             document.getElementById('deliveryForm').reset();
             qtyInputs.forEach(input => input.value = 0);
             document.getElementById('liveTotalDisplay').innerText = '0 ฿';
