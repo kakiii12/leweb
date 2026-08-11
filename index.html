@@ -166,6 +166,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
+        /* 🟢 แก้ไขจุดบกพร่องการเรนเดอร์: แสดงผลชื่อร้าน iLove.cnx คมชัดครบถ้วนบนทุกเบราว์เซอร์ */
         .hero h1 {
             font-family: 'Montserrat', sans-serif;
             font-size: 4.8rem;
@@ -173,25 +174,24 @@
             margin-bottom: 20px;
             letter-spacing: -2px;
             line-height: 1.1;
-            background: linear-gradient(135deg, #FFFFFF 20%, #F39C12 70%, #D35400 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0px 4px 15px rgba(0, 0, 0, 0.75));
+            color: #FFFFFF; /* เปลี่ยนเป็นสีขาวทึบระดับพรีเมียม แก้ปัญหาข้อความหดหาย */
+            text-shadow: 2px 4px 15px rgba(0, 0, 0, 0.65); /* ใช้เงาตัวอักษรแทน drop-shadow ป้องกันข้อความแหว่ง */
         }
 
         .hero h1 span.banner-dot {
             font-family: sans-serif;
-            color: #D35400;
-            -webkit-text-fill-color: #D35400;
+            color: var(--primary-color); /* จุดสีส้มอิฐ */
+            text-shadow: 2px 4px 15px rgba(0, 0, 0, 0.65);
         }
 
         .hero h1 span.banner-cnx {
             font-family: 'Pacifico', cursive;
             text-transform: lowercase;
-            background: linear-gradient(135deg, #F39C12, #FF7F50);
+            background: linear-gradient(135deg, #F39C12, #FF7F50); /* ไล่เฉดสีส้มเหลืองเฉพาะตัวเขียน cnx */
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-left: 2px;
+            display: inline-block; /* ป้องกันไม่ให้ Safari / iOS แหว่งตัดขอบตัวอักษรเขียน */
         }
 
         .hero p {
@@ -530,7 +530,7 @@
         }
 
         /* ========================================================
-           ⚡ NEW CSS FOR MULTI-ITEM ORDER SHEET (EXCEEDS UX)
+           ⚡ MULTI-ITEM ORDER SHEET STYLING
            ======================================================== */
         .order-items-list {
             max-height: 350px;
@@ -760,7 +760,7 @@
         </div>
     </nav>
 
-    <!-- แบนเนอร์หน้าแรก (Hero Section) ตกแต่งพรีเมียม -->
+    <!-- แบนเนอร์หน้าแรก (Hero Section) ตกแต่งพรีเมียมและแก้ตัวหนังสือหาย -->
     <header class="hero">
         <div class="banner-badge">✦ ORIGINAL NORTHERN & FUSION KITCHEN ✦</div>
         <h1>iLove<span class="banner-dot">.</span><span class="banner-cnx">cnx</span></h1>
@@ -885,6 +885,7 @@
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag fusion">ฟิวชัน / อินเตอร์</span>
+                        <!-- ⚡ ไม่ซ้ำกับข้าวไข่ข้นแน่นอน เพราะคุณได้อัปโหลดภาพแยกไว้แล้ว! -->
                         <img src="images/Seafood-Bucket.png" alt="กุ้งสาดดด ทะเลถัง" class="menu-img" loading="lazy" decoding="async" width="300" height="200">
                     </div>
                     <div class="menu-info">
@@ -963,7 +964,7 @@
             </div>
             <div class="service-content">
                 <h3>จัดส่งรวดเร็ว รักษาคุณภาพความร้อน 100%</h3>
-                <p>นอกจากบริการที่ประณีตหน้าร้านแล้ว ร้าน iLove.cnx ยังมีระบบห่ออาหารด้วยบรรจุภัณฑ์รักษ์โลกที่ล็อคอุณหภูมิความร้อนได้อย่างดีเยี่ยม เพื่อให้มั่นใจว่าลูกค้าได้รับประทานอาหารที่สดใหม่ ปลอดภัย และอร่อยเหมือนเสิร์ฟจากเตาครับ:</p>
+                <p>นอกจากบริการที่ประณีตหน้าน้านแล้ว ร้าน iLove.cnx ยังมีระบบห่ออาหารด้วยบรรจุภัณฑ์รักษ์โลกที่ล็อคอุณหภูมิความร้อนได้อย่างดีเยี่ยม เพื่อให้มั่นใจว่าลูกค้าได้รับประทานอาหารที่สดใหม่ ปลอดภัย และอร่อยเหมือนเสิร์ฟจากเตาครับ:</p>
                 <ul class="service-list">
                     <li>บรรจุภัณฑ์พิเศษแยกน้ำแกงและเส้นข้าวซอยอย่างปลอดภัย ไม่หกเลอะเทอะ</li>
                     <li>ส่งฟรีในระยะ 5 กิโลเมตรจากสาขาใกล้บ้านคุณ</li>
@@ -1022,7 +1023,7 @@
                             <input type="tel" id="phoneNumber" class="form-control" placeholder="เช่น 089-XXXXXXX" required>
                         </div>
 
-                        <!-- ⚡ NEW MULTI-ITEM ORDER SHEET: รายการใบเลือกสั่งอาหาร (UX ปรับปรุงระดับพรีเมียม) -->
+                        <!-- ⚡ MULTI-ITEM ORDER SHEET: รายการใบเลือกสั่งอาหาร (UX ปรับปรุงระดับพรีเมียม) -->
                         <div class="form-group">
                             <label>เลือกรายการอาหารและจำนวนที่ต้องการสั่งซื้อ *</label>
                             <div class="order-items-list">
@@ -1242,7 +1243,7 @@
                 <!-- ช่องทางไลน์ OA แชทพูดคุย -->
                 <div class="contact-wrapper">
                     <h3>💬 ช่องทางออนไลน์หลัก</h3>
-                    <p style="margin-bottom: 20px;">คลิกปุ่มสีเขียวด้านล่าง เพื่อสอบถามเมนูพิเศษจานวันหยุด สั่งจองจัดเลี้ยงสัมมนา หรือรับคูปองโปรโมชันส่วนลดสุดคุ้มผ่าน LINE Official Account สะดวกรวดเร็วคุยตรงกับพนักงานได้ทันที:</p>
+                    <p style="margin-bottom: 20px;">แอดไลน์ร้าน คลิกปุ่มสีเขียวด้านล่าง เพื่อสอบถามเมนูพิเศษจานวันหยุด สั่งจองจัดเลี้ยงสัมมนา หรือรับคูปองโปรโมชันส่วนลดสุดคุ้มผ่าน LINE Official Account สะดวกรวดเร็วคุยตรงกับพนักงานได้ทันที:</p>
                     
                     <a href="https://line.me/R/ti/p/@lannaeats" target="_blank" class="line-button">
                         <span style="font-size: 1.3rem; margin-right: 10px;">🟢</span> แชทสั่งซื้อทาง LINE: @ilovecnx
