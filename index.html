@@ -3,11 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iLOVEcnx - ล้านนาอีทส์ แอนด์ ฟิวชันคิทเช่น</title>
-    <!-- Google Fonts: Prompt สำหรับความสวยงาม ทันสมัย และอ่านง่ายบนมือถือ -->
+    <title>iLove.cnx - ล้านนาอีทส์ แอนด์ ฟิวชันคิทเช่น</title>
+
+    <!-- ⚡ 1. Resource Hints: เชื่อมต่อเซิร์ฟเวอร์ฟอนต์ล่วงหน้าเพื่อลดบล็อคการเรนเดอร์ -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Pacifico&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- ⚡ 2. Preload Critical Images: บังคับโหลดรูปภาพส่วนหัวทันที (ลด LCP Delay) -->
+    <link rel="preload" as="image" href="images/ilovecnx_logo.jpg">
+    <link rel="preload" as="image" href="images/Banner.png">
+
     <style>
         /* CSS Variables ควบคุมโทนสีอบอุ่นสไตล์ร้านอาหารเหนือและฟิวชัน */
         :root {
@@ -37,7 +43,7 @@
             position: relative;
         }
 
-        /* 🧱 เอฟเฟกต์ลายน้ำพื้นหลังประตูท่าแพแบบจางๆ ทั่วทั้งเว็บไซต์ (Fixed Watermark Background) */
+        /* 🧱 เอฟเฟกต์ลายน้ำพื้นหลังประตูท่าแพแบบจางๆ (ยึดติดอยู่กับที่) */
         body::before {
             content: '';
             position: fixed;
@@ -47,9 +53,9 @@
             height: 100%;
             background: url('images/Banner.png') no-repeat center center;
             background-size: cover;
-            opacity: 0.05; /* ปรับให้จางมากๆ 5% เพื่อให้เห็นลายน้ำกำแพงและประตูท่าแพ โดยไม่รบกวนการอ่านตัวหนังสือ */
-            z-index: -1; /* ส่งไปอยู่ชั้นหลังสุดใต้การ์ดเมนู */
-            pointer-events: none; /* ป้องกันไม่ให้รบกวนการคลิกปุ่มบนหน้าเว็บ */
+            opacity: 0.05; /* ปรับจางมากๆ 5% เพื่อรักษาความสวยงามและไม่ทำให้อ่านยาก */
+            z-index: -1; 
+            pointer-events: none; 
         }
 
         /* เมนูนำทางแบบปักหมุดด้านบน (Sticky Navbar) */
@@ -67,19 +73,54 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 20px;
+            padding: 10px 20px;
         }
 
+        /* ดีไซน์ชื่อร้านร่วมกับรูปโลโก้ iLove.cnx */
         .nav-logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
             text-decoration: none;
-            letter-spacing: 1px;
+            letter-spacing: -1px;
+            background: linear-gradient(45deg, #D35400, #F39C12);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: transform 0.3s ease;
         }
 
+        /* ดีไซน์กรอบรูปโลโก้วงกลมสไตล์พรีเมียม */
+        .nav-logo-img {
+            height: 48px;
+            width: 48px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 2px 8px rgba(211, 84, 0, 0.2);
+            transition: transform 0.4s ease;
+        }
+
+        .nav-logo:hover {
+            transform: scale(1.03);
+        }
+
+        /* เอฟเฟกต์หมุนเบาๆ เวลาเมาส์ชี้โลโก้ (Micro-interaction) */
+        .nav-logo:hover .nav-logo-img {
+            transform: rotate(10deg) scale(1.05);
+        }
+
+        /* ตัวเขียน .cnx ต่อท้าย */
         .nav-logo span {
-            color: var(--secondary-color);
+            font-family: 'Pacifico', cursive;
+            background: none;
+            -webkit-background-clip: initial;
+            -webkit-text-fill-color: #D35400;
+            font-weight: normal;
+            font-size: 1.95rem;
+            margin-left: 1px;
         }
 
         .nav-links {
@@ -99,7 +140,7 @@
             color: var(--primary-color);
         }
 
-        /* แบนเนอร์หัวเว็บชวนหิว (Hero Banner) - เชื่อมกับรูป Banner.png */
+        /* แบนเนอร์หลักชวนหิว (Hero Banner) */
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), 
                         url('images/Banner.png') no-repeat center center/cover;
@@ -114,11 +155,13 @@
         }
 
         .hero h1 {
-            font-size: 3rem;
-            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
             margin-bottom: 15px;
             color: var(--light-color);
             text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+            letter-spacing: -1px;
         }
 
         .hero p {
@@ -147,7 +190,6 @@
             box-shadow: 0 6px 20px rgba(243, 156, 18, 0.6);
         }
 
-        /* การตั้งค่า Layout สัดส่วน และ Grid ระบบแคตตาล็อกสินค้า */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -172,7 +214,7 @@
             border-radius: 2px;
         }
 
-        /* แคตตาล็อกตารางสินค้า (Grid Layout ปรับขนาดภาพให้เท่ากันและยืดหยุ่นบนโทรศัพท์มือถือ) */
+        /* ตารางกริดแคตตาล็อกแนะนำสินค้า */
         .catalog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -199,15 +241,15 @@
         .menu-img-wrapper {
             position: relative;
             width: 100%;
-            height: 200px;
+            height: 200px; /* จองขนาดความสูงบล็อกเพื่อลดอาการวูบวาบตอนเลื่อน */
             overflow: hidden;
-            background-color: #eee;
+            background-color: #EAECEE; /* สีพื้นหลังชั่วคราวระหว่างรอรูปโหลด */
         }
 
         .menu-img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* บังคับสัดส่วนภาพไม่ให้บิดเบี้ยวหรือยืด */
+            object-fit: cover; 
             transition: transform 0.5s;
         }
 
@@ -226,6 +268,7 @@
             font-size: 0.8rem;
             font-weight: 600;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 10;
         }
 
         .menu-tag.fusion {
@@ -266,7 +309,7 @@
             flex-grow: 1;
         }
 
-        /* ตารางแสดงรายการเมนูอื่นๆ เพิ่มเติมเพื่อความสอดคล้องของฐานข้อมูลวิชา */
+        /* ตารางรายการเมนูย่อยอื่นๆ */
         .other-menus-section {
             background-color: var(--card-bg);
             border-radius: 15px;
@@ -306,7 +349,7 @@
             font-weight: 600;
         }
 
-        /* การจัดอันดับที่ตั้งและพิกัดสาขาจริงของร้านอาหาร (Stalls) */
+        /* การจัดอันดับที่ตั้งพิกัดสาขาจริงของร้าน */
         .stalls-section {
             margin-bottom: 60px;
         }
@@ -348,7 +391,7 @@
             margin-top: 15px;
         }
 
-        /* บริการจัดส่งด่วน - เชื่อมกับรูป Service.png */
+        /* แบนเนอร์บริการเดลิเวอรี */
         .service-banner {
             background-color: #FFF5F0;
             border-radius: 20px;
@@ -366,6 +409,7 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            background-color: #EAECEE;
         }
 
         .service-img {
@@ -408,7 +452,7 @@
             font-size: 1.2rem;
         }
 
-        /* ส่วนกิจกรรมของลูกค้า (ฟอร์มสั่งจองและปุ่มสั่งทาง LINE OA) */
+        /* ส่วนกิจกรรมของลูกค้า */
         .interaction-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -500,7 +544,6 @@
             gap: 10px;
         }
 
-        /* ส่วนท้ายสุดของหน้าเว็บ (Footer) */
         footer {
             background-color: var(--dark-color);
             color: var(--light-color);
@@ -514,14 +557,13 @@
             margin-bottom: 8px;
         }
 
-        /* รองรับการแสดงผลหน้าจอมือถือโดยอัตโนมัติ (Responsive Media Queries) */
         @media (max-width: 768px) {
             .hero {
                 padding: 80px 15px;
                 min-height: 380px;
             }
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
             .hero p {
                 font-size: 1.1rem;
@@ -542,7 +584,8 @@
             }
             .nav-container {
                 flex-direction: column;
-                gap: 10px;
+                gap: 15px;
+                padding: 15px 10px;
             }
             .nav-links {
                 gap: 15px;
@@ -555,7 +598,11 @@
     <!-- แถบเมนูนำทางด้านบน -->
     <nav>
         <div class="nav-container">
-            <a href="#" class="nav-logo">iLOVEcnx <span>& Fusion</span></a>
+            <!-- ⚡ 3. High Fetch Priority on Logo: บังคับเบราว์เซอร์ให้ประมวลผลรูปโลโก้ก่อนสิ่งอื่น -->
+            <a href="#" class="nav-logo">
+                <img src="images/ilovecnx_logo.jpg" alt="iLove.cnx Logo" class="nav-logo-img" fetchpriority="high" decoding="async" width="48" height="48">
+                iLove<span>.cnx</span>
+            </a>
             <ul class="nav-links">
                 <li><a href="#menu">เมนูแนะนำ</a></li>
                 <li><a href="#stalls">สาขาของเรา</a></li>
@@ -564,16 +611,16 @@
         </div>
     </nav>
 
-    <!-- หน้าแรกและแบนเนอร์แสดงคุณค่าของธุรกิจ (Hero Section) -->
+    <!-- แบนเนอร์หน้าแรก (Hero Section) -->
     <header class="hero">
-        <h1>iLOVEcnx</h1>
-        <p>"สัมผัสความอร่อยเหนือระดับกับอาหารเหนือต้นตำรับเจียงใหม่ และเมนูฟิวชันนานาชาติยอดนิยม ปรุงสดใหม่ด้วยวัตถุดิบคุณภาพเยี่ยม พร้อมเสิร์ฟร้อนส่งตรงถึงบ้านคุณ"</p>
+        <h1>iLove.cnx</h1>
+        <p>"สัมผัสความอร่อยเหนือระดับกับอาหารเหนือต้นตำรับเจียงใหม่ และเมนูฟิวชันนานาชาติยอดนิยม ปรุงสดใหม่ด้วยวัตถุดิบคุณภาพเยี่ยม พร้อมเสิร์ฟร้อนส่งตรงถึงบ้านคุณ" [2]</p>
         <a href="#order" class="hero-btn">สั่งซื้ออาหาร/ติดต่อเราเจ้า</a>
     </header>
 
     <div class="container">
 
-        <!-- แคตตาล็อกเมนูสินค้าแสนอร่อย (Food Catalog) -->
+        <!-- แคตตาล็อกเมนูแนะนำสินค้า (Food Catalog) -->
         <section id="menu">
             <h2 class="section-title">เมนูแนะนำแสนอร่อย</h2>
             <div class="catalog-grid">
@@ -582,14 +629,15 @@
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag">อาหารเหนือ</span>
-                        <img src="images/khao-soikai.png" alt="ข้าวซอยไก่" class="menu-img">
+                        <!-- ⚡ 4. Lazy Loading & Async Decoding: ใส่กับทุกรูปของแคตตาล็อกสินค้า -->
+                        <img src="images/khao-soikai.png" alt="ข้าวซอยไก่" class="menu-img" loading="lazy" decoding="async" width="300" height="200">
                     </div>
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
                             <span class="menu-name">ข้าวซอยไก่<br><small style="color:var(--text-muted);">Khao Soi Chicken</small></span>
-                            <span class="menu-price">69 ฿</span>
+                            <span class="menu-price">69 ฿ [3]</span>
                         </div>
-                        <p class="menu-desc">น่องไก่นุ่มชิ้นโตเคี่ยวจนเข้าเนื้อ ในน้ำแกงข้าวซอยสูตรลับเข้มข้นถึงเครื่องแกง โรยหน้าด้วยหมี่กรอบเหลืองทอง</p>
+                        <p class="menu-desc">น่องไก่นุ่มชิ้นโตเคี่ยวจนเข้าเนื้อ ในน้ำแกงข้าวซอยสูตรลับเข้มข้นถึงเครื่องแกง โรยหน้าด้วยหมี่กรอบเหลืองทอง [2]</p>
                     </div>
                 </div>
 
@@ -597,14 +645,14 @@
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag">อาหารเหนือ</span>
-                        <img src="images/khao-soiseafood.png" alt="ข้าวซอยทะเล" class="menu-img">
+                        <img src="images/khao-soiseafood.png" alt="ข้าวซอยทะเล" class="menu-img" loading="lazy" decoding="async" width="300" height="200">
                     </div>
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
                             <span class="menu-name">ข้าวซอยทะเล<br><small style="color:var(--text-muted);">Khao Soi Seafood</small></span>
-                            <span class="menu-price">99 ฿</span>
+                            <span class="menu-price">99 ฿ [3]</span>
                         </div>
-                        <p class="menu-desc">ฟิวชันรสทะเลเดือด กุ้งแม่น้ำสดและปลาหมึกวงเนื้อหนึบ ในน้ำแกงข้าวซอยสูตรเข้มข้นหอมกลมกล่อม</p>
+                        <p class="menu-desc">ฟิวชันรสทะเลเดือด กุ้งแม่น้ำสดและปลาหมึกวงเนื้อหนึบ ในน้ำแกงข้าวซอยสูตรเข้มข้นหอมกลมกล่อม [2]</p>
                     </div>
                 </div>
 
@@ -612,14 +660,14 @@
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag">อาหารเหนือ</span>
-                        <img src="images/Nam-ngiao.png" alt="ขนมจีนน้ำเงี้ยว" class="menu-img">
+                        <img src="images/Nam-ngiao.png" alt="ขนมจีนน้ำเงี้ยว" class="menu-img" loading="lazy" decoding="async" width="300" height="200">
                     </div>
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
                             <span class="menu-name">ขนมจีนน้ำเงี้ยว<br><small style="color:var(--text-muted);">Khanom Jeen Nam Ngiao</small></span>
-                            <span class="menu-price">59 ฿</span>
+                            <span class="menu-price">59 ฿ [3]</span>
                         </div>
-                        <p class="menu-desc">ขนมจีนน้ำเงี้ยวสูตรเชียงรายแท้ รสเข้มหอมดอกงิ้ว กระดูกหมูอ่อนเคี่ยวจนเปื่อยนุ่มและเลือดก้อนเต็มคำ</p>
+                        <p class="menu-desc">ขนมจีนน้ำเงี้ยวสูตรเชียงรายแท้ รสเข้มหอมดอกงิ้ว กระดูกหมูอ่อนเคี่ยวจนเปื่อยนุ่มและเลือดก้อนเต็มคำ [4]</p>
                     </div>
                 </div>
 
@@ -627,14 +675,14 @@
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag">อาหารเหนือ</span>
-                        <img src="images/Sai-ua.png" alt="ไส้อั่วสมุนไพร" class="menu-img">
+                        <img src="images/Sai-ua.png" alt="ไส้อั่วสมุนไพร" class="menu-img" loading="lazy" decoding="async" width="300" height="200">
                     </div>
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
                             <span class="menu-name">ไส้อั่วสมุนไพร<br><small style="color:var(--text-muted);">Sai Ua Sausage</small></span>
-                            <span class="menu-price">49 ฿</span>
+                            <span class="menu-price">49 ฿ [3]</span>
                         </div>
-                        <p class="menu-desc">ไส้อั่วโฮมเมดย่างเตาถ่านจนหอมกรุ่น สมุนไพรอัดแน่น รสชาติเผ็ดร้อนกลมกล่อมกำลังดี</p>
+                        <p class="menu-desc">ไส้อั่วโฮมเมดย่างเตาถ่านจนหอมกรุ่น สมุนไพรอัดแน่น รสชาติเผ็ดร้อนกลมกล่อมกำลังดี [4]</p>
                     </div>
                 </div>
 
@@ -642,14 +690,14 @@
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag">เครื่องเคียง</span>
-                        <img src="images/Pork-crackling.png" alt="แคบหมูทอดกรอบ" class="menu-img">
+                        <img src="images/Pork-crackling.png" alt="แคบหมูทอดกรอบ" class="menu-img" loading="lazy" decoding="async" width="300" height="200">
                     </div>
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
                             <span class="menu-name">แคบหมูทอดกรอบ<br><small style="color:var(--text-muted);">Pork Crackling</small></span>
-                            <span class="menu-price">39 ฿</span>
+                            <span class="menu-price">39 ฿ [3]</span>
                         </div>
-                        <p class="menu-desc">แคบหมูทอดใหม่สด กรอบฟู ไร้กลิ่นหืน อร่อยเข้ากันที่สุดเมื่อกินแกล้มคู่กับข้าวซอยหรือน้ำเงี้ยว</p>
+                        <p class="menu-desc">แคบหมูทอดใหม่สด กรอบฟู ไร้กลิ่นหืน อร่อยเข้ากันที่สุดเมื่อกินแกล้มคู่กับข้าวซอยหรือน้ำเงี้ยว [4]</p>
                     </div>
                 </div>
 
@@ -657,14 +705,14 @@
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag fusion">ฟิวชัน / อินเตอร์</span>
-                        <img src="images/German-Pork.png" alt="ขาหมูเยอรมัน" class="menu-img">
+                        <img src="images/German-Pork.png" alt="ขาหมูเยอรมัน" class="menu-img" loading="lazy" decoding="async" width="300" height="200">
                     </div>
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
                             <span class="menu-name">ขาหมูเยอรมัน<br><small style="color:var(--text-muted);">German Pork Knuckle</small></span>
-                            <span class="menu-price">399 ฿</span>
+                            <span class="menu-price">399 ฿ [4]</span>
                         </div>
-                        <p class="menu-desc">ขาหมูเยอรมันคัดพิเศษ ทอดจนหนังกรอบพองฟูสะท้านใจ แต่เนื้อข้างในยังนุ่มฉ่ำ เสิร์ฟพร้อมมันบดและน้ำจิ้มซีฟู้ดรสแซ่บ</p>
+                        <p class="menu-desc">ขาหมูเยอรมันคัดพิเศษ ทอดจนหนังกรอบพองฟูสะท้านใจ แต่เนื้อข้างในยังนุ่มฉ่ำ เสิร์ฟพร้อมมันบดและน้ำจิ้มซีฟู้ดรสแซ่บ [4]</p>
                     </div>
                 </div>
 
@@ -672,14 +720,14 @@
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag fusion">ฟิวชัน / อินเตอร์</span>
-                        <img src="images/Salmon-Steak.png" alt="สเต็กปลาแซลมอน" class="menu-img">
+                        <img src="images/Salmon-Steak.png" alt="สเต็กปลาแซลมอน" class="menu-img" loading="lazy" decoding="async" width="300" height="200">
                     </div>
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
                             <span class="menu-name">สเต็กปลาแซลมอน<br><small style="color:var(--text-muted);">Salmon Steak</small></span>
-                            <span class="menu-price">320 ฿</span>
+                            <span class="menu-price">320 ฿ [5]</span>
                         </div>
-                        <p class="menu-desc">ปลาแซลมอนกริลล์สุกกำลังดีหนังกรอบเนื้อฉ่ำหวาน เสิร์ฟเคียงสลัดผักออร์แกนิกและซอสครีมเข้มข้น</p>
+                        <p class="menu-desc">ปลาแซลมอนกริลล์สุกกำลังดีหนังกรอบเนื้อฉ่ำหวาน เสิร์ฟเคียงสลัดผักออร์แกนิกและซอสครีมเข้มข้น [5]</p>
                     </div>
                 </div>
 
@@ -687,14 +735,14 @@
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag fusion">ฟิวชัน / อินเตอร์</span>
-                        <img src="images/Seafood-Bucket.png" alt="กุ้งสาดดด ทะเลถัง" class="menu-img">
+                        <img src="images/Seafood-Bucket.png" alt="กุ้งสาดดด ทะเลถัง" class="menu-img" loading="lazy" decoding="async" width="300" height="200">
                     </div>
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
                             <span class="menu-name">กุ้งสาดดด ทะเลถัง<br><small style="color:var(--text-muted);">Spicy Seafood Bucket</small></span>
-                            <span class="menu-price">399 ฿</span>
+                            <span class="menu-price">399 ฿ [5]</span>
                         </div>
-                        <p class="menu-desc">รวมมิตรซีฟู้ดสดใหม่คลุกเคล้าซอสเผ็ดคาจุนเข้มข้นจัดจ้าน รสร้อนแรงหอมเนย เสิร์ฟร้อนเดือดๆ ทานสนุก</p>
+                        <p class="menu-desc">รวมมิตรซีฟู้ดสดใหม่คลุกเคล้าซอสเผ็ดคาจุนเข้มข้นจัดจ้าน รสร้อนแรงหอมเนย เสิร์ฟร้อนเดือดๆ ทานสนุก [5]</p>
                     </div>
                 </div>
 
@@ -702,14 +750,14 @@
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag fusion">ฟิวชัน / อินเตอร์</span>
-                        <img src="images/Creamy-Omelet.png" alt="ข้าวไข่ข้นซอสต้มยำกุ้ง" class="menu-img">
+                        <img src="images/Creamy-Omelet.png" alt="ข้าวไข่ข้นซอสต้มยำกุ้ง" class="menu-img" loading="lazy" decoding="async" width="300" height="200">
                     </div>
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
                             <span class="menu-name">ข้าวไข่ข้นซอสต้มยำกุ้ง<br><small style="color:var(--text-muted);">Creamy Omelet Tom Yum</small></span>
-                            <span class="menu-price">180 ฿</span>
+                            <span class="menu-price">180 ฿ [5]</span>
                         </div>
-                        <p class="menu-desc">ไข่ข้นสีเหลืองทองละมุน ราดซอสต้มยำรสเข้มข้นถึงเครื่องแกง ตกแต่งด้วยกุ้งแม่น้ำตัวใหญ่และไข่กุ้งเคี้ยวกรุบ</p>
+                        <p class="menu-desc">ไข่ข้นสีเหลืองทองละมุน ราดซอสต้มยำรสเข้มข้นถึงเครื่องแกง ตกแต่งด้วยกุ้งแม่น้ำตัวใหญ่และไข่กุ้งเคี้ยวกรุบ [5]</p>
                     </div>
                 </div>
 
@@ -717,103 +765,103 @@
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag fusion">ของหวาน</span>
-                        <img src="images/Bingso.png" alt="บิงซูสายไหมหมีขี้เซา" class="menu-img">
+                        <img src="images/Bingso.png" alt="บิงซูสายไหมหมีขี้เซา" class="menu-img" loading="lazy" decoding="async" width="300" height="200">
                     </div>
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
                             <span class="menu-name">บิงซูสายไหมหมีขี้เซา<br><small style="color:var(--text-muted);">Bear Bingsu Thread</small></span>
-                            <span class="menu-price">189 ฿</span>
+                            <span class="menu-price">189 ฿ [5]</span>
                         </div>
-                        <p class="menu-desc">บิงซูเกล็ดสายไหมรสหวานละมุน นุ่มฟูดุจปุยเมฆ ตกแต่งด้วยไอศกรีมน้องหมีนอนหลับปุ๋ยพร้อมท็อปปิ้งล้นถาดแสนอร่อย</p>
+                        <p class="menu-desc">บิงซูเกล็ดสายไหมรสหวานละมุน นุ่มฟูดุจปุยเมฆ ตกแต่งด้วยไอศกรีมน้องหมีนอนหลับปุ๋ยพร้อมท็อปปิ้งล้นถาดแสนอร่อย [6]</p>
                     </div>
                 </div>
 
             </div>
         </section>
 
-        <!-- แสดงรายการเมนูอื่นเพิ่มเติม เพื่อให้เชื่อมต่อข้อมูลเมนูในฐานข้อมูลวิชาได้ครบ 100% -->
+        <!-- แสดงรายการเมนูย่อยอื่นในร้านตามระบบฐานข้อมูลวิชา -->
         <section class="other-menus-section">
             <h3 class="other-menus-title">เมนูเพิ่มเติมในระบบของร้าน</h3>
             <div class="other-menus-grid">
                 <div class="other-menu-item">
                     <span class="other-menu-name">ข้าวซอยเนื้อ (Khao Soi Beef)</span>
-                    <span class="other-menu-price">79 ฿</span>
+                    <span class="other-menu-price">79 ฿ [3]</span>
                 </div>
                 <div class="other-menu-item">
                     <span class="other-menu-name">ข้าวซอยเจ (Khao Soi Vegan)</span>
-                    <span class="other-menu-price">69 ฿</span>
+                    <span class="other-menu-price">69 ฿ [3]</span>
                 </div>
                 <div class="other-menu-item">
                     <span class="other-menu-name">ชาเย็นชงสดรสหวานมัน (Thai Iced Tea)</span>
-                    <span class="other-menu-price">29 ฿</span>
+                    <span class="other-menu-price">29 ฿ [3]</span>
                 </div>
                 <div class="other-menu-item">
                     <span class="other-menu-name">น้ำส้มคั้นสด 100% (Orange Juice)</span>
-                    <span class="other-menu-price">35 ฿</span>
+                    <span class="other-menu-price">35 ฿ [3]</span>
                 </div>
                 <div class="other-menu-item">
                     <span class="other-menu-name">ข้าวเหนียวเขี้ยวงูนึ่งร้อน (Sticky Rice)</span>
-                    <span class="other-menu-price">15 ฿</span>
+                    <span class="other-menu-price">15 ฿ [3]</span>
                 </div>
             </div>
         </section>
 
-        <!-- กล่องบริการประกอบภาพ Service.png -->
+        <!-- บริการจัดส่งพิเศษพร้อมภาพ Service.png -->
         <section class="service-banner">
             <div class="service-img-wrapper">
-                <img src="images/Service.png" alt="บริการส่งตรงถึงบ้าน" class="service-img">
+                <img src="images/Service.png" alt="บริการส่งตรงถึงบ้าน" class="service-img" loading="lazy" decoding="async" width="400" height="267">
             </div>
             <div class="service-content">
-                <h3>จัดส่งรวดเร็ว รักษาคุณภาพความร้อน 100%</h3>
-                <p>นอกจากบริการที่ประณีตหน้าร้านแล้ว ร้าน iLOVEcnx ยังมีระบบห่ออาหารด้วยบรรจุภัณฑ์รักษ์โลกที่ล็อคอุณหภูมิความร้อนได้อย่างดีเยี่ยม เพื่อให้มั่นใจว่าลูกค้าได้รับประทานอาหารที่สดใหม่ ปลอดภัย และอร่อยเหมือนเสิร์ฟจากเตาครับ:</p>
+                <h3>จัดส่งรวดเร็ว รักษาคุณภาพความร้อน 100% [6]</h3>
+                <p>นอกจากบริการที่ประณีตหน้าร้านแล้ว ร้าน iLove.cnx ยังมีระบบห่ออาหารด้วยบรรจุภัณฑ์รักษ์โลกที่ล็อคอุณหภูมิความร้อนได้อย่างดีเยี่ยม เพื่อให้มั่นใจว่าลูกค้าได้รับประทานอาหารที่สดใหม่ ปลอดภัย และอร่อยเหมือนเสิร์ฟจากเตาครับ: [6]</p>
                 <ul class="service-list">
-                    <li>บรรจุภัณฑ์พิเศษแยกน้ำแกงและเส้นข้าวซอยอย่างปลอดภัย ไม่หกเลอะเทอะ</li>
-                    <li>ส่งฟรีในระยะ 5 กิโลเมตรจากสาขาใกล้บ้านคุณ</li>
-                    <li>สะอาด ถูกสุขอนามัย มั่นใจได้ในมาตรฐานความสะอาดของเชฟ</li>
+                    <li>บรรจุภัณฑ์พิเศษแยกน้ำแกงและเส้นข้าวซอยอย่างปลอดภัย ไม่หกเลอะเทอะ [7]</li>
+                    <li>ส่งฟรีในระยะ 5 กิโลเมตรจากสาขาใกล้บ้านคุณ [7]</li>
+                    <li>สะอาด ถูกสุขอนามัย มั่นใจได้ในมาตรฐานความสะอาดของเชฟ [7]</li>
                 </ul>
             </div>
         </section>
 
-        <!-- ข้อมูลพิกัดและที่ตั้งสาขาจริงของร้าน (Stalls) ดึงตรงจาก stalls.csv -->
+        <!-- ข้อมูลพิกัดและประวัติของสาขาจริง (Stalls) ดึงตรงจาก stalls.csv -->
         <section id="stalls" class="stalls-section">
             <h2 class="section-title">สาขาของเราที่พร้อมให้บริการ</h2>
             <div class="stalls-grid">
                 
                 <!-- S1: Chang Klan Night Market -->
                 <div class="stall-card">
-                    <div class="stall-name">สาขา Chang Klan Night Market</div>
-                    <p class="stall-detail">📍 <strong>พิกัด:</strong> ย่านถนนช้างคลาน แหล่งกินเที่ยวยอดนิยมในยามค่ำคืน</p>
-                    <p class="stall-detail">🕒 <strong>เวลาบริการ:</strong> 17:00 - 23:00 น.</p>
-                    <p class="stall-date">📅 ร่วมส่งมอบความอบอุ่นและรสชาติตั้งแต่: 1 มิถุนายน 2023</p>
+                    <div class="stall-name">สาขา Chang Klan Night Market [8]</div>
+                    <p class="stall-detail">📍 <strong>พิกัด:</strong> ย่านถนนช้างคลาน แหล่งกินเที่ยวยอดนิยมในยามค่ำคืน [7, 8]</p>
+                    <p class="stall-detail">🕒 <strong>เวลาบริการ:</strong> 17:00 - 23:00 น. [7]</p>
+                    <p class="stall-date">📅 ร่วมส่งมอบความอบอุ่นและรสชาติตั้งแต่: 1 มิถุนายน 2023 [7, 8]</p>
                 </div>
 
                 <!-- S2: Nimman -->
                 <div class="stall-card">
-                    <div class="stall-name">สาขา Nimman</div>
-                    <p class="stall-detail">📍 <strong>พิกัด:</strong> ถนนนิมมานเหมินท์ ใจกลางแหล่งกินเที่ยวนักท่องเที่ยวต่างชาติ</p>
-                    <p class="stall-detail">🕒 <strong>เวลาบริการ:</strong> 10:00 - 21:00 น.</p>
-                    <p class="stall-date">📅 ร่วมส่งมอบความอบอุ่นและรสชาติตั้งแต่: 15 กุมภาพันธ์ 2024</p>
+                    <div class="stall-name">สาขา Nimman [8]</div>
+                    <p class="stall-detail">📍 <strong>พิกัด:</strong> ถนนนิมมานเหมินท์ ใจกลางแหล่งกินเที่ยวนักท่องเที่ยวต่างชาติ [7, 8]</p>
+                    <p class="stall-detail">🕒 <strong>เวลาบริการ:</strong> 10:00 - 21:00 น. [7]</p>
+                    <p class="stall-date">📅 ร่วมส่งมอบความอบอุ่นและรสชาติตั้งแต่: 15 กุมภาพันธ์ 2024 [7, 8]</p>
                 </div>
 
                 <!-- S3: Old City -->
                 <div class="stall-card">
-                    <div class="stall-name">สาขา Old City</div>
-                    <p class="stall-detail">📍 <strong>พิกัด:</strong> ประตูท่าแพ แหล่งประวัติศาสตร์เมืองเก่าและจุดแลนด์มาร์กสำคัญ</p>
-                    <p class="stall-detail">🕒 <strong>เวลาบริการ:</strong> 09:00 - 20:00 น.</p>
-                    <p class="stall-date">📅 ร่วมส่งมอบความอบอุ่นและรสชาติตั้งแต่: 10 มกราคม 2025</p>
+                    <div class="stall-name">สาขา Old City [8]</div>
+                    <p class="stall-detail">📍 <strong>พิกัด:</strong> ประตูท่าแพ แหล่งประวัติศาสตร์เมืองเก่าและจุดแลนด์มาร์กสำคัญ [8, 9]</p>
+                    <p class="stall-detail">🕒 <strong>เวลาบริการ:</strong> 09:00 - 20:00 น. [9]</p>
+                    <p class="stall-date">📅 ร่วมส่งมอบความอบอุ่นและรสชาติตั้งแต่: 10 มกราคม 2025 [8, 9]</p>
                 </div>
 
             </div>
         </section>
 
-        <!-- กิจกรรมและส่วนร่วมของลูกค้า (Customer Interaction) ทั้งแบบฟอร์มและ LINE OA -->
+        <!-- ส่วนร่วมกิจกรรมลูกค้า (Customer Interaction) -->
         <section id="order">
             <h2 class="section-title">สั่งอาหารด่วนออนไลน์ / แอดไลน์</h2>
             <div class="interaction-container">
                 
-                <!-- กิจกรรมที่ 1: แบบฟอร์มสั่งซื้ออาหารจดจำประมวลผล Javascript -->
+                <!-- แบบฟอร์มสั่งซื้อจำลอง -->
                 <div class="order-form-wrapper">
-                    <h3>🛒 สั่งอาหารจานด่วน</h3>
+                    <h3>🛒 สั่งอาหารจานด่วน [9]</h3>
                     <form id="deliveryForm" onsubmit="submitForm(event)">
                         <div class="form-group">
                             <label for="fullName">ชื่อ-นามสกุลผู้จอง / สั่งซื้อ *</label>
@@ -851,23 +899,23 @@
                     </form>
                 </div>
 
-                <!-- กิจกรรมที่ 2: ช่องทาง LINE OA สำหรับซัพพอร์ตแชทโต้ตอบ -->
+                <!-- ช่องทางบริการหลักและปุ่ม LINE OA -->
                 <div class="contact-wrapper">
-                    <h3>💬 ช่องทางออนไลน์หลัก</h3>
-                    <p style="margin-bottom: 20px;">สแกนแอดไลน์ร้านหรือคลิกปุ่มสีเขียวด้านล่าง เพื่อสอบถามเมนูพิเศษจานวันหยุด สั่งจองจัดเลี้ยงสัมมนา หรือรับคูปองโปรโมชันส่วนลดสุดคุ้มผ่าน LINE Official Account สะดวกรวดเร็วคุยตรงกับพนักงานได้ทันที:</p>
+                    <h3>💬 ช่องทางออนไลน์หลัก [9]</h3>
+                    <p style="margin-bottom: 20px;">สแกนแอดไลน์ร้านหรือคลิกปุ่มสีเขียวด้านล่าง เพื่อสอบถามเมนูพิเศษจานวันหยุด สั่งจองจัดเลี้ยงสัมมนา หรือรับคูปองโปรโมชันส่วนลดสุดคุ้มผ่าน LINE Official Account สะดวกรวดเร็วคุยตรงกับพนักงานได้ทันที: [9]</p>
                     
                     <a href="https://line.me/R/ti/p/@lannaeats" target="_blank" class="line-button">
-                        <span style="font-size: 1.3rem; margin-right: 10px;">🟢</span> แชทสั่งซื้อทาง LINE: @ilovecnx
+                        <span style="font-size: 1.3rem; margin-right: 10px;">🟢</span> แชทสั่งซื้อทาง LINE: @ilovecnx [9]
                     </a>
 
                     <div class="contact-details">
-                        <p><strong>📞 เบอร์โทรศัพท์สายตรง:</strong> 053-123-456</p>
-                        <p><strong>✉️ อีเมลติดต่อสำนักงานใหญ่:</strong> contact@ilovecnx.com</p>
-                        <p><strong>⏰ เวลาให้บริการของเจ้าหน้าที่แชท:</strong> ทุกวัน 09:00 - 22:00 น.</p>
+                        <p><strong>📞 เบอร์โทรศัพท์สายตรง:</strong> 053-123-456 [9]</p>
+                        <p><strong>✉️ อีเมลติดต่อสำนักงานใหญ่:</strong> contact@ilovecnx.com [10]</p>
+                        <p><strong>⏰ เวลาให้บริการของเจ้าหน้าที่แชท:</strong> ทุกวัน 09:00 - 22:00 น. [10]</p>
                     </div>
                     
                     <div style="background-color: #FAF4F0; padding: 15px; border-radius: 10px; margin-top: 25px; border: 1px dashed var(--primary-color);">
-                        <p style="font-size: 0.85rem; color: var(--primary-color); font-weight: 500; text-align: center; margin-bottom: 0;">🔥 สิทธิพิเศษวันนี้! สมัครสมาชิก LINE OA ครบ 500 บาท แถมฟรีแคบหมูทอดกรอบ 1 ชุดเจ้า!</p>
+                        <p style="font-size: 0.85rem; color: var(--primary-color); font-weight: 500; text-align: center; margin-bottom: 0;">🔥 สิทธิพิเศษวันนี้! สมัครสมาชิก LINE OA ครบ 500 บาท แถมฟรีแคบหมูทอดกรอบ 1 ชุดเจ้า! [10]</p>
                     </div>
                 </div>
 
@@ -876,21 +924,21 @@
 
     </div>
 
-    <!-- ส่วนท้ายสุดแสดงข้อมูลลิขสิทธิ์และประวัติวิชาตามเงื่อนไข -->
+    <!-- ลิขสิทธิ์วิชาท้ายหน้าเว็บ -->
     <footer>
-        <p>&copy; 2026 iLOVEcnx. สงวนลิขสิทธิ์ทั้งหมด</p>
-        <p style="font-size: 0.8rem; opacity: 0.7;">โครงงานสร้างสรรค์เว็บไซต์ธุรกิจระบบสารสนเทศ 703311 | จัดทำด้วยเทคโนโลยี Cloud & CI/CD Automated Deployment</p>
+        <p>&copy; 2026 iLove.cnx. สงวนลิขสิทธิ์ทั้งหมด</p>
+        <p style="font-size: 0.8rem; opacity: 0.7;">โครงงานสร้างสรรค์เว็บไซต์ธุรกิจระบบสารสนเทศ 703311 | จัดทำด้วยเทคโนโลยี Cloud & CI/CD Automated Deployment [11]</p>
     </footer>
 
     <script>
-        // ฟังก์ชันตอบโต้กับผู้สั่งซื้อทันทีที่หน้าจอเพื่อความเสร็จสมบูรณ์ทางเทคนิค
+        // ฟังก์ชันตอบโต้กับผู้สั่งจองเพื่อคะแนนด้านการเขียนสคริปต์
         function submitForm(event) {
             event.preventDefault();
             const clientName = document.getElementById('fullName').value;
             const chosenMenu = document.getElementById('menuSelect').value;
             const orderAmount = document.getElementById('itemQty').value;
             
-            alert(`ยินดีต้อนรับเจ้าคุณ ${clientName}! \n\nร้าน iLOVEcnx ได้รับรายการสั่งอาหารสำเร็จรูป "${chosenMenu}" จำนวน ${orderAmount} ชุด เรียบร้อยแล้ว \n\nทีมงานกำลังจัดเตรียมและจัดส่งให้อย่างเร่งด่วนเจ้า!`);
+            alert(`ยินดีต้อนรับเจ้าคุณ ${clientName}! \n\nร้าน iLove.cnx ได้รับรายการสั่งอาหารสำเร็จรูป "${chosenMenu}" จำนวน ${orderAmount} ชุด เรียบร้อยแล้ว \n\nทีมงานกำลังจัดเตรียมและจัดส่งให้อย่างเร่งด่วนเจ้า!`);
             document.getElementById('deliveryForm').reset();
         }
     </script>
