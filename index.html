@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iLove.cnx - ล้านนาอีทส์ แอนด์ ฟิวชันคิทเช่น</title>
+    <title>iLove.cnx - ล้านนาอีทส์ แอนด์ ฟิวชันคิทเช่น (Original Northern & Fusion)</title>
 
-    <!-- ⚡ Resource Hints & Web Fonts -->
+    <!-- ⚡ Resource Hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Pacifico&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- ⚡ Preload Critical Assets -->
+    <!-- ⚡ Preload Critical Images -->
     <link rel="preload" as="image" href="images/ilovecnx_logo.jpg" onerror="this.href='ilovecnx_logo.jpg'">
     <link rel="preload" as="image" href="images/Banner.png" onerror="this.href='Banner.png'">
 
@@ -25,8 +25,7 @@
             --text-muted: #7F8C8D;
             --success-color: #2ECC71;
             --line-color: #06C755;
-            --shadow-subtle: 0 4px 15px rgba(0,0,0,0.06);
-            --shadow-hover: 0 12px 28px rgba(211, 84, 0, 0.18);
+            --gold-color: #D4AF37;
         }
 
         * {
@@ -42,7 +41,6 @@
             color: var(--dark-color);
             line-height: 1.6;
             position: relative;
-            padding-bottom: 70px; /* เว้นพื้นที่สำหรับ Mobile Bottom Bar */
         }
 
         /* 🧱 ลายน้ำพื้นหลังประตูท่าแพแบบจางๆ */
@@ -62,9 +60,8 @@
 
         /* Sticky Navbar */
         nav {
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -145,242 +142,318 @@
             color: var(--primary-color);
         }
 
-        /* 🛒 ปุ่มตะกร้าบน Navbar (แสดงจำนวนเรียลไทม์ และไม่บัง Chatbase) */
+        /* 🛒 ปุ่มตะกร้าบน Navbar */
         .nav-cart-btn {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
             border: none;
-            padding: 9px 20px;
+            padding: 8px 18px;
             border-radius: 25px;
-            font-weight: 700;
             font-size: 0.95rem;
+            font-weight: 700;
             cursor: pointer;
             display: flex;
             align-items: center;
             gap: 8px;
             box-shadow: 0 4px 12px rgba(211, 84, 0, 0.3);
             transition: all 0.3s ease;
+            position: relative;
         }
 
         .nav-cart-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(211, 84, 0, 0.4);
+            box-shadow: 0 6px 16px rgba(211, 84, 0, 0.4);
         }
 
         .cart-badge {
-            background-color: #FFFFFF;
-            color: var(--primary-color);
-            font-size: 0.85rem;
-            font-weight: 800;
-            padding: 2px 8px;
-            border-radius: 12px;
-            min-width: 22px;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-        }
-
-        /* 🌟 Hero Banner สไตล์พรีเมียมพร้อม Glassmorphic Card */
-        header.hero {
-            background: linear-gradient(rgba(44, 62, 80, 0.75), rgba(211, 84, 0, 0.75)), url('images/Banner.png') center/cover no-repeat;
+            background-color: #E74C3C;
             color: white;
-            text-align: center;
-            padding: 80px 20px 90px;
-            position: relative;
-            overflow: hidden;
+            font-size: 0.8rem;
+            font-weight: 800;
+            min-width: 22px;
+            height: 22px;
+            padding: 0 6px;
+            border-radius: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
         }
 
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 30px;
-            background: linear-gradient(to top, var(--bg-color), transparent);
+        /* Hero Banner */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.72)), 
+                        url('images/Banner.png') no-repeat center center/cover;
+            color: var(--light-color);
+            text-align: center;
+            padding: 120px 20px 100px;
+            min-height: 560px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
         }
 
         .banner-badge {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 6px 18px;
-            border-radius: 20px;
+            background: rgba(211, 84, 0, 0.25);
+            border: 1px solid rgba(243, 156, 18, 0.6);
+            color: var(--secondary-color);
+            padding: 6px 20px;
+            border-radius: 50px;
             font-size: 0.85rem;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        header.hero h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 900;
-            margin-bottom: 10px;
-            text-shadow: 2px 4px 10px rgba(0,0,0,0.3);
-        }
-
-        header.hero h1 .banner-dot { color: #F39C12; }
-        header.hero h1 .banner-cnx { font-family: 'Pacifico', cursive; font-weight: normal; color: #F1C40F; }
-
-        header.hero p {
-            max-width: 750px;
-            margin: 0 auto 25px;
-            font-size: 1.15rem;
-            font-weight: 300;
-            text-shadow: 1px 2px 5px rgba(0,0,0,0.3);
-        }
-
-        .hero-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #F39C12, #D35400);
-            color: white;
-            text-decoration: none;
-            padding: 14px 35px;
-            border-radius: 30px;
             font-weight: 700;
-            font-size: 1.1rem;
-            box-shadow: 0 6px 20px rgba(243, 156, 18, 0.4);
-            transition: all 0.3s ease;
-            border: 2px solid rgba(255,255,255,0.3);
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
-        .hero-btn:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 10px 25px rgba(243, 156, 18, 0.6);
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4.8rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            letter-spacing: -2px;
+            line-height: 1.2;
+            color: #FFFFFF;
+            text-shadow: 3px 5px 15px rgba(0, 0, 0, 0.8);
         }
 
-        /* 💎 Glassmorphism Proof Card */
-        .glass-proof-card {
-            max-width: 800px;
-            margin: 30px auto 0;
-            background: rgba(255, 255, 255, 0.18);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(255, 255, 255, 0.35);
+        .hero h1 span.banner-dot {
+            font-family: sans-serif;
+            color: var(--primary-color);
+            text-shadow: 3px 5px 15px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero h1 span.banner-cnx {
+            font-family: 'Pacifico', cursive;
+            text-transform: lowercase;
+            color: var(--secondary-color);
+            margin-left: 2px;
+            display: inline-block;
+            padding: 2px 15px;
+            text-shadow: 3px 5px 15px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            max-width: 820px;
+            text-shadow: 1px 1px 6px rgba(0,0,0,0.8);
+            line-height: 1.8;
+            color: #F2F4F4;
+        }
+
+        /* Glassmorphism Social Proof Box */
+        .hero-glass-proof {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             border-radius: 20px;
-            padding: 18px 25px;
+            padding: 15px 30px;
             display: flex;
-            justify-content: space-around;
             align-items: center;
+            gap: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             flex-wrap: wrap;
-            gap: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            justify-content: center;
         }
 
         .proof-item {
             display: flex;
             align-items: center;
             gap: 10px;
-            font-weight: 600;
             font-size: 0.95rem;
+            font-weight: 600;
             color: #FFFFFF;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .proof-item span.icon {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
         }
 
-        /* Layout Container */
+        .hero-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--light-color);
+            padding: 15px 45px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 20px rgba(211, 84, 0, 0.5);
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(243, 156, 18, 0.7);
+        }
+
         .container {
             max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
+            margin: 0 auto;
+            padding: 60px 20px;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2rem;
-            color: var(--dark-color);
-            margin-bottom: 25px;
+            font-size: 2.2rem;
+            margin-bottom: 45px;
+            color: var(--primary-color);
             position: relative;
-            font-weight: 700;
         }
 
         .section-title::after {
             content: '';
             display: block;
-            width: 60px;
+            width: 70px;
             height: 4px;
-            background: var(--primary-color);
-            margin: 8px auto 0;
+            background-color: var(--secondary-color);
+            margin: 12px auto 0;
             border-radius: 2px;
         }
 
-        /* 🏷️ แถบกรองหมวดหมู่เมนู (Category Filter Tabs) */
-        .category-tabs {
+        /* 🏆 Restaurant History & Michelin Awards Section */
+        .history-awards-section {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+            margin-bottom: 60px;
+            border: 1px solid rgba(211, 84, 0, 0.12);
+        }
+
+        .history-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .history-text h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .history-text p {
+            font-size: 1rem;
+            color: var(--dark-color);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .awards-badge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .award-card {
+            background: linear-gradient(135deg, #FFFDF9, #FAF4F0);
+            border: 2px solid #F39C12;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(243, 156, 18, 0.15);
+            transition: transform 0.3s;
+        }
+
+        .award-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .award-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .award-title {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .award-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* 🏷️ Category Filter Tabs */
+        .category-filter-container {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin-bottom: 30px;
+            gap: 12px;
+            margin-bottom: 35px;
             flex-wrap: wrap;
         }
 
-        .cat-tab {
-            background-color: var(--card-bg);
-            color: var(--dark-color);
+        .filter-btn {
+            background-color: #FFF;
             border: 2px solid #E5E7EB;
+            color: var(--dark-color);
             padding: 10px 22px;
             border-radius: 30px;
             font-weight: 600;
             font-size: 0.95rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
         }
 
-        .cat-tab:hover {
-            border-color: var(--primary-color);
-            color: var(--primary-color);
-            transform: translateY(-2px);
-        }
-
-        .cat-tab.active {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary-color);
             color: white;
-            border-color: transparent;
+            border-color: var(--primary-color);
             box-shadow: 0 4px 12px rgba(211, 84, 0, 0.3);
         }
 
-        /* Menu Grid */
+        /* Catalog Grid */
         .catalog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
+            gap: 30px;
+            margin-bottom: 60px;
         }
 
         .menu-card {
             background-color: var(--card-bg);
-            border-radius: 16px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: var(--shadow-subtle);
-            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+            transition: transform 0.3s, box-shadow 0.3s;
             display: flex;
             flex-direction: column;
-            border: 1px solid rgba(0,0,0,0.04);
+            border: 1px solid rgba(211, 84, 0, 0.1);
             position: relative;
         }
 
         .menu-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-hover);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(211, 84, 0, 0.18);
         }
 
-        /* 🖼️ Image Wrapper & Skeleton Loading */
         .menu-img-wrapper {
             position: relative;
             width: 100%;
-            height: 200px;
+            height: 210px;
+            overflow: hidden;
             background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
             background-size: 200% 100%;
-            animation: skeleton 1.5s infinite;
-            overflow: hidden;
+            animation: skeleton-shimmer 1.5s infinite;
         }
 
-        @keyframes skeleton {
+        @keyframes skeleton-shimmer {
             0% { background-position: 200% 0; }
             100% { background-position: -200% 0; }
         }
@@ -388,80 +461,66 @@
         .menu-img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; 
+            transition: transform 0.5s ease, opacity 0.4s ease;
             opacity: 0;
-            transition: opacity 0.5s ease-in-out, transform 0.4s ease;
         }
 
         .menu-card:hover .menu-img {
-            transform: scale(1.06);
+            transform: scale(1.08);
         }
 
-        .menu-tag {
+        /* 🏷️ Badges on Cards */
+        .badge-group {
             position: absolute;
             top: 12px;
             left: 12px;
-            background-color: rgba(44, 62, 80, 0.85);
-            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            z-index: 10;
+        }
+
+        .menu-tag {
+            background-color: var(--primary-color);
+            color: var(--light-color);
             padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            backdrop-filter: blur(4px);
-            z-index: 2;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+            display: inline-block;
         }
 
-        /* 🔥 Interactive Badges (ป้ายการันตีเมนู) */
-        .badge-bestseller {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: linear-gradient(135deg, #E74C3C, #FF5722);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            box-shadow: 0 4px 10px rgba(231, 76, 60, 0.4);
-            z-index: 2;
-            animation: pulse-badge 2s infinite alternate;
+        .menu-tag.bestseller {
+            background: linear-gradient(135deg, #E74C3C, #C0392B);
+            animation: pulse-badge 2s infinite;
         }
 
-        .badge-spicy {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: linear-gradient(135deg, #C0392B, #D35400);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            box-shadow: 0 4px 10px rgba(192, 57, 43, 0.4);
-            z-index: 2;
+        .menu-tag.fusion {
+            background-color: #34495E;
         }
 
-        .badge-vegan {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: linear-gradient(135deg, #27AE60, #2ECC71);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            box-shadow: 0 4px 10px rgba(39, 174, 96, 0.4);
-            z-index: 2;
+        .menu-tag.drink {
+            background-color: #2980B9;
+        }
+
+        .menu-tag.spicy {
+            background-color: #D35400;
+        }
+
+        .menu-tag.vegan {
+            background-color: #27AE60;
         }
 
         @keyframes pulse-badge {
             0% { transform: scale(1); }
-            100% { transform: scale(1.06); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
 
         .menu-info {
-            padding: 18px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
@@ -475,10 +534,9 @@
         }
 
         .menu-name {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 700;
             color: var(--dark-color);
-            line-height: 1.3;
         }
 
         .menu-price {
@@ -489,35 +547,34 @@
         }
 
         .menu-desc {
-            font-size: 0.88rem;
-            color: #666;
+            font-size: 0.9rem;
+            color: var(--text-muted);
             margin-bottom: 12px;
             flex-grow: 1;
+            line-height: 1.5;
         }
 
-        /* 🌾 สัญลักษณ์โภชนาการและคำเตือนแพ้อาหาร (Allergen & Taste Indicators) */
-        .allergen-tags {
+        /* 🌾 Allergen & Nutrition Indicators */
+        .allergen-pills {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
-            margin-bottom: 14px;
+            margin-bottom: 15px;
         }
 
         .allergen-pill {
-            background-color: #F2F4F4;
+            background-color: #F4F6F6;
+            border: 1px solid #E5E7EB;
             color: #566573;
-            font-size: 0.72rem;
-            padding: 3px 8px;
-            border-radius: 6px;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 12px;
             font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            border: 1px solid #E5E8E8;
         }
 
+        /* 🛒 ปุ่มเพิ่มลงในตะกร้าบนการ์ดเมนู */
         .btn-add-cart {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background-color: var(--primary-color);
             color: white;
             border: none;
             padding: 10px 16px;
@@ -529,50 +586,76 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
             width: 100%;
-            box-shadow: 0 4px 10px rgba(211, 84, 0, 0.2);
+            margin-top: auto;
         }
 
         .btn-add-cart:hover {
-            background: linear-gradient(135deg, #B94600, #E67E22);
+            background-color: var(--secondary-color);
             transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(211, 84, 0, 0.35);
+            box-shadow: 0 4px 12px rgba(211, 84, 0, 0.35);
         }
 
-        /* เมนูเพิ่มเติมในระบบ */
+        /* ⚠️ Allergen & Safety Warning Banner */
+        .allergen-banner {
+            background-color: #FEF9E7;
+            border: 2px dashed #F39C12;
+            border-radius: 15px;
+            padding: 20px 25px;
+            margin-bottom: 60px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .allergen-banner-icon {
+            font-size: 2.5rem;
+        }
+
+        .allergen-banner-text h4 {
+            font-size: 1.1rem;
+            color: #D35400;
+            margin-bottom: 5px;
+        }
+
+        .allergen-banner-text p {
+            font-size: 0.9rem;
+            color: #7D6608;
+            margin: 0;
+        }
+
+        /* Other Menus Section */
         .other-menus-section {
             background-color: var(--card-bg);
-            border-radius: 16px;
-            padding: 25px;
-            margin-bottom: 40px;
-            box-shadow: var(--shadow-subtle);
-            border: 1px dashed var(--secondary-color);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            margin-bottom: 60px;
         }
 
         .other-menus-title {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             color: var(--primary-color);
-            margin-bottom: 15px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            margin-bottom: 20px;
+            border-bottom: 2px dashed rgba(211, 84, 0, 0.2);
+            padding-bottom: 10px;
         }
 
         .other-menus-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
         }
 
         .other-menu-item {
-            background-color: var(--bg-color);
-            padding: 12px 15px;
-            border-radius: 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 12px 15px;
+            background: #FAF9F6;
+            border-radius: 10px;
+            border-bottom: 1px solid #F0F0F0;
         }
 
         .other-menu-info {
@@ -582,56 +665,51 @@
 
         .other-menu-name {
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
         .other-menu-price {
-            font-size: 0.85rem;
             color: var(--primary-color);
             font-weight: 700;
+            font-size: 0.9rem;
         }
 
-        .btn-add-mini {
+        .btn-add-cart-sm {
             background-color: var(--primary-color);
             color: white;
             border: none;
-            padding: 5px 12px;
+            padding: 6px 14px;
             border-radius: 15px;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.2s ease;
         }
 
-        .btn-add-mini:hover {
-            background-color: #B94600;
+        .btn-add-cart-sm:hover {
+            background-color: var(--secondary-color);
         }
 
-        /* 💬 Section ประวัติรีวิวจากลูกค้า (Customer Reviews Section) */
+        /* 💬 Customer Reviews History Section */
         .reviews-section {
-            margin-bottom: 40px;
+            margin-bottom: 60px;
         }
 
         .reviews-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
 
         .review-card {
             background-color: var(--card-bg);
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: var(--shadow-subtle);
-            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+            border: 1px solid #F2F4F4;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: transform 0.3s;
-        }
-
-        .review-card:hover {
-            transform: translateY(-4px);
         }
 
         .review-header {
@@ -641,11 +719,11 @@
             margin-bottom: 12px;
         }
 
-        .avatar-circle {
-            width: 44px;
-            height: 44px;
+        .reviewer-avatar {
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            background-color: #F39C12;
             color: white;
             display: flex;
             align-items: center;
@@ -654,215 +732,171 @@
             font-size: 1.1rem;
         }
 
-        .reviewer-info {
-            display: flex;
-            flex-direction: column;
+        .reviewer-info h4 {
+            font-size: 1rem;
+            color: var(--dark-color);
+            margin: 0;
         }
 
-        .reviewer-name {
-            font-weight: 700;
-            font-size: 0.95rem;
-        }
-
-        .review-date {
-            font-size: 0.75rem;
+        .reviewer-info span {
+            font-size: 0.8rem;
             color: var(--text-muted);
         }
 
-        .stars {
+        .review-stars {
             color: #F1C40F;
-            font-size: 0.9rem;
-            margin-bottom: 8px;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
         }
 
-        .review-comment {
-            font-size: 0.88rem;
-            color: #444;
+        .review-text {
+            font-size: 0.92rem;
+            color: #566573;
+            line-height: 1.6;
+            margin-bottom: 15px;
             font-style: italic;
-            line-height: 1.5;
         }
 
-        .verified-badge {
-            font-size: 0.75rem;
+        .review-verified {
+            font-size: 0.78rem;
             color: var(--success-color);
             font-weight: 600;
-            margin-top: 10px;
             display: flex;
             align-items: center;
             gap: 4px;
         }
 
-        /* Banner บริการ */
-        .service-banner {
-            background: linear-gradient(135deg, #2C3E50, #1A252F);
-            color: white;
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 40px;
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-
-        .service-img-wrapper {
-            flex: 1;
-            min-width: 250px;
-            border-radius: 12px;
-            overflow: hidden;
-            background: #34495E;
-            height: 200px;
-        }
-
-        .service-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-        }
-
-        .service-text {
-            flex: 2;
-            min-width: 280px;
-        }
-
-        .service-text h3 {
-            font-size: 1.5rem;
-            color: #F39C12;
-            margin-bottom: 10px;
-        }
-
-        .service-features {
-            list-style: none;
-            margin-top: 15px;
-        }
-
-        .service-features li {
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.95rem;
-        }
-
-        /* สาขา */
+        /* Stalls Section */
         .stalls-section {
-            margin-bottom: 40px;
+            margin-bottom: 60px;
         }
 
         .stalls-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
         }
 
         .stall-card {
             background-color: var(--card-bg);
-            border-radius: 16px;
-            padding: 22px;
-            box-shadow: var(--shadow-subtle);
-            border-left: 5px solid var(--primary-color);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+            border-left: 5px solid var(--secondary-color);
+            transition: transform 0.3s;
+        }
+
+        .stall-card:hover {
+            transform: translateX(5px);
         }
 
         .stall-name {
-            font-size: 1.15rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            color: var(--dark-color);
-            margin-bottom: 8px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
         }
 
         .stall-detail {
-            font-size: 0.9rem;
-            color: #555;
-            margin-bottom: 6px;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
         }
 
-        /* 🛒 สรุปรายการสั่งซื้อในตะกร้า (Cart Summary) */
-        .order-form-wrapper {
+        .stall-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 15px;
+        }
+
+        /* Delivery Banner */
+        .service-banner {
+            background-color: #FFF5F0;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 60px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+
+        .service-img-wrapper {
+            flex: 1;
+            max-width: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            background-color: #EAECEE;
+        }
+
+        .service-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .service-content {
+            flex: 1.5;
+        }
+
+        .service-content h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .service-content p {
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+
+        .service-list {
+            list-style: none;
+        }
+
+        .service-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+
+        .service-list li::before {
+            content: '✓';
+            color: var(--success-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Interaction Section (Cart Summary + Contact) */
+        .interaction-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 40px;
             background-color: var(--card-bg);
             border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            border: 2px solid #F2E8E1;
+            padding: 40px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.05);
         }
 
-        .cart-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-
-        .cart-table th {
-            text-align: left;
-            padding: 12px;
-            background-color: var(--bg-color);
-            color: var(--dark-color);
-            font-weight: 700;
-            font-size: 0.9rem;
-            border-bottom: 2px solid #E5E7EB;
-        }
-
-        .cart-table td {
-            padding: 12px;
-            border-bottom: 1px solid #F3F4F6;
-            vertical-align: middle;
-            font-size: 0.95rem;
-        }
-
-        .qty-controls {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-qty {
-            background-color: #E5E7EB;
-            border: none;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .btn-qty:hover {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .btn-remove {
-            background: none;
-            border: none;
-            color: #E74C3C;
-            cursor: pointer;
-            font-size: 1rem;
-            padding: 4px;
-        }
-
-        .cart-summary-total {
-            background-color: #FAF4F0;
-            padding: 18px;
-            border-radius: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 1.2rem;
-            font-weight: 800;
+        .order-form-wrapper h3, .contact-wrapper h3 {
+            font-size: 1.5rem;
             color: var(--primary-color);
-            margin-bottom: 25px;
-            border: 1px solid #F3E2D5;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #F0F0F0;
+            padding-bottom: 10px;
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             font-weight: 600;
             font-size: 0.9rem;
         }
@@ -870,76 +904,218 @@
         .form-control {
             width: 100%;
             padding: 12px 15px;
-            border: 1px solid #D1D5DB;
-            border-radius: 10px;
-            font-size: 0.95rem;
+            border: 1px solid #DCDDE1;
+            border-radius: 8px;
+            font-size: 1rem;
             transition: border-color 0.3s;
         }
 
         .form-control:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(211, 84, 0, 0.15);
+        }
+
+        /* 📦 CART SUMMARY BOX */
+        .cart-summary-box {
+            border: 1px solid #E5E7EB;
+            border-radius: 12px;
+            background-color: #FAF9F6;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .cart-summary-header {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-summary-list {
+            max-height: 280px;
+            overflow-y: auto;
+            margin-bottom: 15px;
+        }
+
+        .cart-summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #EAECEE;
+        }
+
+        .cart-summary-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .cart-item-price {
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .qty-btn {
+            background-color: #E5E7EB;
+            border: none;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .qty-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .delete-btn {
+            background: none;
+            border: none;
+            color: #E74C3C;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin-left: 5px;
+        }
+
+        .cart-total-row {
+            background-color: #FFF5F0;
+            border: 1px solid rgba(211, 84, 0, 0.2);
+            padding: 12px 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .cart-total-label {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .cart-total-amount {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--primary-color);
+        }
+
+        .empty-cart-msg {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 25px 0;
+            font-size: 0.95rem;
         }
 
         .btn-submit {
-            background: linear-gradient(135deg, var(--success-color), #27AE60);
-            color: white;
+            background-color: var(--primary-color);
+            color: var(--light-color);
             border: none;
-            padding: 14px 25px;
-            border-radius: 30px;
-            font-size: 1.1rem;
+            padding: 14px 20px;
+            border-radius: 8px;
             font-weight: 700;
             cursor: pointer;
             width: 100%;
-            box-shadow: 0 6px 18px rgba(46, 204, 113, 0.3);
-            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            transition: background 0.3s;
         }
 
         .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 22px rgba(46, 204, 113, 0.45);
+            background-color: var(--secondary-color);
         }
 
-        /* 🔔 Toast Notification */
-        .toast-notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: var(--dark-color);
-            color: white;
-            padding: 12px 22px;
-            border-radius: 30px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-            z-index: 2000;
+        .line-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--line-color);
+            color: var(--light-color);
+            padding: 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: opacity 0.3s;
+            margin-top: 15px;
+            box-shadow: 0 4px 10px rgba(6, 199, 85, 0.3);
+        }
+
+        .line-button:hover {
+            opacity: 0.9;
+        }
+
+        .contact-details {
+            margin-top: 25px;
+        }
+
+        .contact-details p {
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 10px;
+        }
+
+        /* 🔔 Toast Notification Popup */
+        .toast-notification {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background-color: var(--dark-color);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-size: 0.95rem;
             font-weight: 600;
-            font-size: 0.9rem;
-            transform: translateY(-100px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 1002;
             opacity: 0;
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-left: 4px solid var(--secondary-color);
         }
 
-        .toast-notification.active {
-            transform: translateY(0);
+        .toast-notification.show {
             opacity: 1;
+            transform: translateY(0);
         }
 
-        /* 📱 Responsive Bottom Bar สำหรับสมาร์ตโฟน (Thumb Zone) */
+        /* 📱 Mobile Bottom Bar */
         .mobile-bottom-bar {
             display: none;
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(12px);
-            border-top: 1px solid rgba(0,0,0,0.08);
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.12);
-            padding: 10px 16px;
-            z-index: 998; /* อยู่ใต้ Chatbase Widget ไอคอนเล็กน้อย */
+            background: rgba(44, 62, 80, 0.95);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 12px 20px;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.2);
+            z-index: 999;
             justify-content: space-between;
             align-items: center;
         }
@@ -949,64 +1125,94 @@
             flex-direction: column;
         }
 
-        .mobile-cart-label {
-            font-size: 0.75rem;
-            color: var(--text-muted);
+        .mobile-cart-title {
+            font-size: 0.8rem;
+            opacity: 0.8;
         }
 
-        .mobile-cart-price {
+        .mobile-cart-total {
             font-size: 1.1rem;
             font-weight: 800;
-            color: var(--primary-color);
+            color: var(--secondary-color);
         }
 
         .mobile-actions {
             display: flex;
-            gap: 8px;
+            gap: 10px;
         }
 
-        .btn-mobile-order {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        .mobile-btn-cart {
+            background-color: var(--primary-color);
             color: white;
             border: none;
-            padding: 10px 16px;
+            padding: 8px 16px;
             border-radius: 20px;
             font-weight: 700;
-            font-size: 0.88rem;
+            font-size: 0.9rem;
             cursor: pointer;
-            box-shadow: 0 3px 10px rgba(211, 84, 0, 0.3);
-        }
-
-        .btn-mobile-line {
-            background-color: var(--line-color);
-            color: white;
-            border: none;
-            padding: 10px 14px;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 0.88rem;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 4px;
         }
 
         footer {
             background-color: var(--dark-color);
-            color: white;
+            color: var(--light-color);
             text-align: center;
-            padding: 25px 20px;
-            margin-top: 40px;
-            font-size: 0.9rem;
+            padding: 40px 20px;
+            margin-top: 80px;
+            font-size: 0.95rem;
+        }
+
+        footer p {
+            margin-bottom: 8px;
         }
 
         @media (max-width: 768px) {
-            header.hero h1 { font-size: 2.4rem; }
-            .nav-container { flex-direction: column; gap: 10px; }
-            .nav-links { font-size: 0.9rem; gap: 12px; }
-            .mobile-bottom-bar { display: flex; }
-            body { padding-bottom: 75px; }
-            .glass-proof-card { flex-direction: column; gap: 8px; text-align: center; }
+            .hero {
+                padding: 100px 15px 80px;
+                min-height: 480px;
+            }
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .hero-glass-proof {
+                gap: 12px;
+                padding: 12px 18px;
+            }
+            .history-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .service-banner {
+                flex-direction: column;
+                padding: 25px;
+            }
+            .service-img-wrapper {
+                max-width: 100%;
+            }
+            .interaction-container {
+                padding: 25px;
+                grid-template-columns: 1fr;
+            }
+            .nav-container {
+                flex-direction: column;
+                gap: 12px;
+                padding: 12px 10px;
+            }
+            .nav-right-group {
+                width: 100%;
+                justify-content: space-between;
+            }
+            .mobile-bottom-bar {
+                display: flex;
+            }
+            body {
+                padding-bottom: 60px;
+            }
         }
     </style>
 </head>
@@ -1026,13 +1232,14 @@
             </a>
             <div class="nav-right-group">
                 <ul class="nav-links">
+                    <li><a href="#about">ประวัติ & รางวัล</a></li>
                     <li><a href="#menu">เมนูแนะนำ</a></li>
                     <li><a href="#reviews">รีวิวลูกค้า</a></li>
                     <li><a href="#stalls">สาขาของเรา</a></li>
                     <li><a href="#order">สั่งซื้อออนไลน์</a></li>
                 </ul>
 
-                <!-- 🛒 ปุ่มตะกร้าบน Navbar (แสดงจำนวนเรียลไทม์) -->
+                <!-- 🛒 ปุ่มตะกร้าบน Navbar (แสดงจำนวนเรียลไทม์ และไม่บัง Chatbase มุมขวาล่าง) -->
                 <button class="nav-cart-btn" onclick="scrollToCartSummary()">
                     🛒 ตะกร้าสินค้า
                     <span class="cart-badge" id="navCartCount">0</span>
@@ -1041,51 +1248,79 @@
         </div>
     </nav>
 
-    <!-- แบนเนอร์หน้าแรก (Hero Section) สไตล์พรีเมียม -->
+    <!-- แบนเนอร์หน้าแรก (Hero Section) -->
     <header class="hero">
         <div class="banner-badge">✦ ORIGINAL NORTHERN & FUSION KITCHEN ✦</div>
         <h1>iLove<span class="banner-dot">.</span><span class="banner-cnx">cnx</span></h1>
         <p>"สัมผัสความอร่อยเหนือระดับกับอาหารเหนือต้นตำรับเจียงใหม่ และเมนูฟิวชันนานาชาติยอดนิยม ปรุงสดใหม่ด้วยวัตถุดิบคุณภาพเยี่ยม พร้อมเสิร์ฟร้อนส่งตรงถึงบ้านคุณ"</p>
-        <a href="#order" class="hero-btn">สั่งซื้ออาหาร / จัดส่งด่วนเจ้า</a>
-
-        <!-- 💎 Glassmorphism Proof Card (Social Proof & Ratings) -->
-        <div class="glass-proof-card">
-            <div class="proof-item">
-                <span class="icon">⭐</span>
-                <span>4.9/5 คะแนนรีวิวจากลูกค้ากว่า 1,200+ ราย</span>
-            </div>
-            <div class="proof-item">
-                <span class="icon">🏆</span>
-                <span>ร้านอาหารเหนือฟิวชันอันดับ 1 ในเชียงใหม่</span>
-            </div>
-            <div class="proof-item">
-                <span class="icon">🛵</span>
-                <span>ส่งด่วน ร้อนสดใหม่ใน 30 นาที</span>
-            </div>
+        
+        <!-- 💎 Glassmorphism Social Proof & Guarantee Badges -->
+        <div class="hero-glass-proof">
+            <div class="proof-item"><span class="icon">⭐</span> 4.9/5 คะแนนรีวิวจากลูกค้ากว่า 1,200+ ราย</div>
+            <div class="proof-item"><span class="icon">🏆</span> ร้านอาหารเหนือฟิวชันอันดับ 1 เชียงใหม่</div>
+            <div class="proof-item"><span class="icon">🛵</span> จัดส่งร้อนสดใหม่ใน 30 นาที</div>
         </div>
+
+        <a href="#order" class="hero-btn">สั่งซื้ออาหาร/ติดต่อเราเจ้า</a>
     </header>
 
     <div class="container">
 
-        <!-- 🍽️ แคตตาล็อกเมนูแนะนำสินค้า -->
+        <!-- 🏆 ประวัติร้านโดยย่อ และใบรางวัลการการันตีร้าน (Michelin & Awards) -->
+        <section id="about" class="history-awards-section">
+            <div class="history-grid">
+                <div class="history-text">
+                    <h3>🏛️ เรื่องราวของ iLove.cnx (Our Story)</h3>
+                    <p>ร้าน <strong>iLove.cnx</strong> ถือกำเนิดขึ้นจากความหลงใหลในเสน่ห์ของอาหารเหนือต้นตำรับเชียงใหม่ ผสมผสานกับความคิดสร้างสรรค์สไตล์ฟิวชันนานาชาติ เราคัดสรรวัตถุดิบระดับพรีเมียม พริกแกงเคี่ยวเองวันต่อวัน และเนื้อสัตว์สุกกำลังดี เพื่อให้ทุกคำที่รับประทานได้สัมผัสถึงความใส่ใจและความอร่อยที่เหนือระดับ</p>
+                    <p>ด้วยปณิธานในการส่งมอบบริการระดับห้าดาวและการใส่ใจเรื่องมาตรฐานความสะอาด ปัจจุบันเราขยายการให้บริการครอบคลุม 3 สาขาหลักในเมืองเชียงใหม่ ได้แก่ สาขาช้างคลาน สาขานิมมาน และสาขาประตูท่าแพ</p>
+                </div>
+
+                <div class="awards-badge-grid">
+                    <div class="award-card">
+                        <div class="award-icon">🏆</div>
+                        <div class="award-title">Michelin Guide Selection</div>
+                        <div class="award-desc">รับประกันความอร่อยระดับมิชลินไกด์ เชียงใหม่ 3 ปีซ้อน</div>
+                    </div>
+                    <div class="award-card">
+                        <div class="award-icon">🏅</div>
+                        <div class="award-title">Thai SELECT Premium</div>
+                        <div class="award-desc">ตราสัญลักษณ์การันตีรสชาติอาหารไทยเหนือแท้มาตรฐานสากล</div>
+                    </div>
+                    <div class="award-card">
+                        <div class="award-icon">⭐</div>
+                        <div class="award-title">Wongnai Users' Choice</div>
+                        <div class="award-desc">โหวตให้เป็นร้านยอดนิยมอันดับ 1 ขวัญใจสายกินทั่วประเทศ</div>
+                    </div>
+                    <div class="award-card">
+                        <div class="award-icon">🌿</div>
+                        <div class="award-title">Green Kitchen Standard</div>
+                        <div class="award-desc">มาตรฐานครัวสะอาด ใช้บรรจุภัณฑ์รักษ์โลก 100%</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 🏷️ แคตตาล็อกเมนูแนะนำพร้อมแถบกรองหมวดหมู่ -->
         <section id="menu">
             <h2 class="section-title">เมนูแนะนำแสนอร่อย</h2>
 
-            <!-- 🏷️ แถบกรองหมวดหมู่เมนู (Category Filter Tabs) -->
-            <div class="category-tabs">
-                <button class="cat-tab active" onclick="filterMenu('all', this)">✨ ทั้งหมด</button>
-                <button class="cat-tab" onclick="filterMenu('lanna', this)">🍜 อาหารเหนือต้นตำรับ</button>
-                <button class="cat-tab" onclick="filterMenu('fusion', this)">🥩 ฟิวชันนานาชาติ</button>
-                <button class="cat-tab" onclick="filterMenu('dessert-drink', this)">🍧 ของหวาน & เครื่องดื่ม</button>
+            <!-- 🏷️ Category Filter Tabs -->
+            <div class="category-filter-container">
+                <button class="filter-btn active" onclick="filterMenu('all', this)">✨ ทั้งหมด</button>
+                <button class="filter-btn" onclick="filterMenu('northern', this)">🍜 อาหารเหนือต้นตำรับ</button>
+                <button class="filter-btn" onclick="filterMenu('fusion', this)">🥩 ฟิวชันนานาชาติ</button>
+                <button class="filter-btn" onclick="filterMenu('drink', this)">🍹 เครื่องดื่ม & ของหวาน</button>
             </div>
 
             <div class="catalog-grid" id="catalogGrid">
 
                 <!-- 1. ข้าวซอยไก่ -->
-                <div class="menu-card" data-category="lanna">
+                <div class="menu-card" data-category="northern">
                     <div class="menu-img-wrapper">
-                        <span class="menu-tag">อาหารเหนือ</span>
-                        <span class="badge-bestseller">🔥 ขายดี (Bestseller)</span>
+                        <div class="badge-group">
+                            <span class="menu-tag bestseller">🔥 ขายดี (Bestseller)</span>
+                            <span class="menu-tag">อาหารเหนือ</span>
+                        </div>
                         <img src="images/khao-soikai.png" alt="ข้าวซอยไก่" class="menu-img" fetchpriority="high" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
                     </div>
                     <div class="menu-info">
@@ -1094,12 +1329,12 @@
                             <span class="menu-price">69 ฿</span>
                         </div>
                         <p class="menu-desc">น่องไก่นุ่มชิ้นโตเคี่ยวจนเข้าเนื้อ ในน้ำแกงข้าวซอยสูตรลับเข้มข้นถึงเครื่องแกง โรยหน้าด้วยหมี่กรอบเหลืองทอง</p>
-
-                        <!-- 🌾 Allergen & Taste Indicators -->
-                        <div class="allergen-tags">
+                        
+                        <!-- 🌾 Allergen Indicators -->
+                        <div class="allergen-pills">
                             <span class="allergen-pill">🌾 มีกลูเตน</span>
-                            <span class="allergen-pill">🥛 มีผลิตภัณฑ์นม</span>
-                            <span class="allergen-pill">🌶️ เผ็ดปานกลาง</span>
+                            <span class="allergen-pill">🥛 มีกะทิ</span>
+                            <span class="allergen-pill">🐔 มีไก่</span>
                         </div>
 
                         <button class="btn-add-cart" onclick="addToCart('ข้าวซอยไก่', 69)">
@@ -1109,22 +1344,24 @@
                 </div>
 
                 <!-- 2. ข้าวซอยทะเล -->
-                <div class="menu-card" data-category="lanna">
+                <div class="menu-card" data-category="northern">
                     <div class="menu-img-wrapper">
-                        <span class="menu-tag">อาหารเหนือ</span>
-                        <img src="images/khao-soi-seafood.png" alt="ข้าวซอยทะเล" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
+                        <div class="badge-group">
+                            <span class="menu-tag bestseller">🔥 ขายดี</span>
+                            <span class="menu-tag">อาหารเหนือ</span>
+                        </div>
+                        <img src="images/khao-soiseafood.png" alt="ข้าวซอยทะเล" class="menu-img" fetchpriority="high" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
                     </div>
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
                             <span class="menu-name">ข้าวซอยทะเล<br><small style="color:var(--text-muted);">Khao Soi Seafood</small></span>
                             <span class="menu-price">99 ฿</span>
                         </div>
-                        <p class="menu-desc">ยกทะเลมาไว้ในชาม ทั้งกุ้งสดตัวโตและปลาหมึกกรุบกรอบ ในน้ำแกงข้าวซอยรสเด็ดกลมกล่อม</p>
-
-                        <div class="allergen-tags">
-                            <span class="allergen-pill">🦐 มีอาหารทะเล</span>
+                        <p class="menu-desc">ฟิวชันรสทะเลเดือด กุ้งแม่น้ำสดและปลาหมึกวงเนื้อหนึบ ในน้ำแกงข้าวซอยสูตรเข้มข้นหอมกลมกล่อม</p>
+                        
+                        <div class="allergen-pills">
+                            <span class="allergen-pill">🦐 มีอาหารทะเล/กุ้ง</span>
                             <span class="allergen-pill">🌾 มีกลูเตน</span>
-                            <span class="allergen-pill">🌶️ เผ็ดปานกลาง</span>
                         </div>
 
                         <button class="btn-add-cart" onclick="addToCart('ข้าวซอยทะเล', 99)">
@@ -1134,23 +1371,24 @@
                 </div>
 
                 <!-- 3. ขนมจีนน้ำเงี้ยว -->
-                <div class="menu-card" data-category="lanna">
+                <div class="menu-card" data-category="northern">
                     <div class="menu-img-wrapper">
-                        <span class="menu-tag">อาหารเหนือ</span>
-                        <span class="badge-spicy">🌶️ เผ็ดจัดจ้าน</span>
-                        <img src="images/Kanom-Jeen-Nam-Ngiew.jpg" alt="ขนมจีนน้ำเงี้ยว" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
+                        <div class="badge-group">
+                            <span class="menu-tag spicy">🌶️ เผ็ดจัดจ้าน</span>
+                            <span class="menu-tag">อาหารเหนือ</span>
+                        </div>
+                        <img src="images/Nam-ngiao.png" alt="ขนมจีนน้ำเงี้ยว" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
                     </div>
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
-                            <span class="menu-name">ขนมจีนน้ำเงี้ยว<br><small style="color:var(--text-muted);">Nam Ngiew Noodle</small></span>
+                            <span class="menu-name">ขนมจีนน้ำเงี้ยว<br><small style="color:var(--text-muted);">Khanom Jeen Nam Ngiao</small></span>
                             <span class="menu-price">59 ฿</span>
                         </div>
-                        <p class="menu-desc">ขนมจีนน้ำเงี้ยวสูตรเมืองเหนือแท้ ใส่ดอกงิ้ว เลือดหมู และกระดูกหมูอ่อนเคี่ยวจนเปื่อย รสชาติเข้มข้น</p>
-
-                        <div class="allergen-tags">
-                            <span class="allergen-pill">🐖 มีเนื้อหมู</span>
-                            <span class="allergen-pill">🌾 มีกลูเตน</span>
-                            <span class="allergen-pill">🌶️🌶️ เผ็ดจัดจ้าน</span>
+                        <p class="menu-desc">ขนมจีนน้ำเงี้ยวสูตรเชียงรายแท้ รสเข้มหอมดอกงิ้ว กระดูกหมูอ่อนเคี่ยวจนเปื่อยนุ่มและเลือดก้อนเต็มคำ</p>
+                        
+                        <div class="allergen-pills">
+                            <span class="allergen-pill">🐷 มีหมู</span>
+                            <span class="allergen-pill">🥜 อาจมีถั่ว</span>
                         </div>
 
                         <button class="btn-add-cart" onclick="addToCart('ขนมจีนน้ำเงี้ยว', 59)">
@@ -1160,22 +1398,23 @@
                 </div>
 
                 <!-- 4. ไส้อั่วสมุนไพร -->
-                <div class="menu-card" data-category="lanna">
+                <div class="menu-card" data-category="northern">
                     <div class="menu-img-wrapper">
-                        <span class="menu-tag">อาหารเหนือ</span>
-                        <img src="images/sai-ua.png" alt="ไส้อั่วสมุนไพร" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
+                        <div class="badge-group">
+                            <span class="menu-tag">🌿 สมุนไพรแท้</span>
+                        </div>
+                        <img src="images/Sai-ua.png" alt="ไส้อั่วสมุนไพร" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
                     </div>
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
-                            <span class="menu-name">ไส้อั่วสมุนไพร<br><small style="color:var(--text-muted);">Herbal Northern Sausage</small></span>
+                            <span class="menu-name">ไส้อั่วสมุนไพร<br><small style="color:var(--text-muted);">Sai Ua Sausage</small></span>
                             <span class="menu-price">49 ฿</span>
                         </div>
-                        <p class="menu-desc">ไส้อั่วหมูบดผสมสมุนไพรล้านนาแน่นๆ ย่างเตาถ่านหอมกรุ่น รสชาติเผ็ดร้อนกำลังดี</p>
+                        <p class="menu-desc">ไส้อั่วโฮมเมดย่างเตาถ่านจนหอมกรุ่น สมุนไพรอัดแน่น รสชาติเผ็ดร้อนกลมกล่อมกำลังดี</p>
 
-                        <div class="allergen-tags">
-                            <span class="allergen-pill">🐖 มีเนื้อหมู</span>
-                            <span class="allergen-pill">🌿 สมุนไพรล้านนา</span>
-                            <span class="allergen-pill">🌶️ เผ็ดปานกลาง</span>
+                        <div class="allergen-pills">
+                            <span class="allergen-pill">🐷 มีหมู</span>
+                            <span class="allergen-pill">🌶️ สมุนไพรเผ็ดร้อน</span>
                         </div>
 
                         <button class="btn-add-cart" onclick="addToCart('ไส้อั่วสมุนไพร', 49)">
@@ -1185,20 +1424,22 @@
                 </div>
 
                 <!-- 5. แคบหมูทอดกรอบ -->
-                <div class="menu-card" data-category="lanna">
+                <div class="menu-card" data-category="northern">
                     <div class="menu-img-wrapper">
-                        <span class="menu-tag">อาหารเหนือ</span>
-                        <img src="images/pork-rinds.png" alt="แคบหมูทอดกรอบ" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
+                        <div class="badge-group">
+                            <span class="menu-tag">✨ กรอบฟู</span>
+                        </div>
+                        <img src="images/Pork-crackling.png" alt="แคบหมูทอดกรอบ" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
                     </div>
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
-                            <span class="menu-name">แคบหมูทอดกรอบ<br><small style="color:var(--text-muted);">Crispy Pork Rinds</small></span>
+                            <span class="menu-name">แคบหมูทอดกรอบ<br><small style="color:var(--text-muted);">Pork Crackling</small></span>
                             <span class="menu-price">39 ฿</span>
                         </div>
-                        <p class="menu-desc">แคบหมูไร้มัน ทอดใหม่สดวันต่อวัน กรอบพอง ทานคู่กับขนมจีนน้ำเงี้ยวหรือข้าวซอยเข้ากันสุดๆ</p>
+                        <p class="menu-desc">แคบหมูทอดใหม่สด กรอบฟู ไร้กลิ่นหืน อร่อยเข้ากันที่สุดเมื่อกินแกล้มคู่กับข้าวซอยหรือน้ำเงี้ยว</p>
 
-                        <div class="allergen-tags">
-                            <span class="allergen-pill">🐖 มีเนื้อหมู</span>
+                        <div class="allergen-pills">
+                            <span class="allergen-pill">🐷 มีหมู</span>
                             <span class="allergen-pill">🚫 ปราศจากกลูเตน</span>
                         </div>
 
@@ -1211,20 +1452,23 @@
                 <!-- 6. ขาหมูเยอรมัน -->
                 <div class="menu-card" data-category="fusion">
                     <div class="menu-img-wrapper">
-                        <span class="menu-tag">ฟิวชันนานาชาติ</span>
-                        <span class="badge-bestseller">🔥 ขายดี (Bestseller)</span>
-                        <img src="images/German-Pork-Hock.jpg" alt="ขาหมูเยอรมัน" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
+                        <div class="badge-group">
+                            <span class="menu-tag bestseller">🔥 Bestseller</span>
+                            <span class="menu-tag fusion">ฟิวชัน</span>
+                        </div>
+                        <img src="images/German-Pork.png" alt="ขาหมูเยอรมัน" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
                     </div>
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
                             <span class="menu-name">ขาหมูเยอรมัน<br><small style="color:var(--text-muted);">German Pork Knuckle</small></span>
                             <span class="menu-price">399 ฿</span>
                         </div>
-                        <p class="menu-desc">ขาหมูบิ๊กเบิ้ม หนังกรอบกร๊อบ เนื้อด้านในนุ่มชุ่มฉ่ำ เสิร์ฟพร้อมน้ำจิ้มซีฟู้ดรสแสบและมันบด</p>
+                        <p class="menu-desc">ขาหมูเยอรมันคัดพิเศษ ทอดจนหนังกรอบพองฟูสะท้านใจ แต่เนื้อข้างในยังนุ่มฉ่ำ เสิร์ฟพร้อมมันบดและน้ำจิ้มซีฟู้ดรสแซ่บ</p>
 
-                        <div class="allergen-tags">
-                            <span class="allergen-pill">🐖 มีเนื้อหมู</span>
-                            <span class="allergen-pill">🥛 มีเนย/นม</span>
+                        <div class="allergen-pills">
+                            <span class="allergen-pill">🐷 มีหมู</span>
+                            <span class="allergen-pill">🌾 มีกลูเตน</span>
+                            <span class="allergen-pill">🥛 มีมันบดเนยนม</span>
                         </div>
 
                         <button class="btn-add-cart" onclick="addToCart('ขาหมูเยอรมัน', 399)">
@@ -1236,19 +1480,21 @@
                 <!-- 7. สเต็กปลาแซลมอน -->
                 <div class="menu-card" data-category="fusion">
                     <div class="menu-img-wrapper">
-                        <span class="menu-tag">ฟิวชันนานาชาติ</span>
-                        <img src="images/salmon.png" alt="สเต็กปลาแซลมอน" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
+                        <div class="badge-group">
+                            <span class="menu-tag fusion">ฟิวชัน</span>
+                        </div>
+                        <img src="images/Salmon-Steak.png" alt="สเต็กปลาแซลมอน" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
                     </div>
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
                             <span class="menu-name">สเต็กปลาแซลมอน<br><small style="color:var(--text-muted);">Salmon Steak</small></span>
                             <span class="menu-price">320 ฿</span>
                         </div>
-                        <p class="menu-desc">แซลมอนนอร์เวย์ย่างสุกกำลังดี หนังกรอบเนื้อนุ่ม เสิร์ฟคู่กับซอสเลมอนบัตเตอร์และผักย่าง</p>
+                        <p class="menu-desc">ปลาแซลมอนกริลล์สุกกำลังดีหนังกรอบเนื้อฉ่ำหวาน เสิร์ฟเคียงสลัดผักออร์แกนิกและซอสครีมเข้มข้น</p>
 
-                        <div class="allergen-tags">
-                            <span class="allergen-pill">🐟 มีเนื้อปลา</span>
-                            <span class="allergen-pill">🥛 มีผลิตภัณฑ์นม</span>
+                        <div class="allergen-pills">
+                            <span class="allergen-pill">🐟 มีปลา</span>
+                            <span class="allergen-pill">🥛 มีครีม/ผลิตภัณฑ์นม</span>
                         </div>
 
                         <button class="btn-add-cart" onclick="addToCart('สเต็กปลาแซลมอน', 320)">
@@ -1260,20 +1506,22 @@
                 <!-- 8. กุ้งสาดดด ทะเลถัง -->
                 <div class="menu-card" data-category="fusion">
                     <div class="menu-img-wrapper">
-                        <span class="menu-tag">ฟิวชันนานาชาติ</span>
-                        <span class="badge-spicy">🌶️ เผ็ดจัดจ้าน</span>
-                        <img src="images/SeafoodBucket.png" alt="กุ้งสาดดด ทะเลถัง" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
+                        <div class="badge-group">
+                            <span class="menu-tag spicy">🌶️ เผ็ดจัดจ้าน</span>
+                            <span class="menu-tag fusion">ฟิวชัน</span>
+                        </div>
+                        <img src="images/Seafood-Bucket.png" alt="กุ้งสาดดด ทะเลถัง" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
                     </div>
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
                             <span class="menu-name">กุ้งสาดดด ทะเลถัง<br><small style="color:var(--text-muted);">Spicy Seafood Bucket</small></span>
                             <span class="menu-price">399 ฿</span>
                         </div>
-                        <p class="menu-desc">ซีฟู้ดรวมมิตรจัดเต็มทั้งกุ้ง หอย ปลาหมึก คลุกซอสซิกเนเจอร์รสเผ็ดร้อนเข้มข้นสะใจ</p>
+                        <p class="menu-desc">รวมมิตรซีฟู้ดสดใหม่คลุกเคล้าซอสเผ็ดคาจุนเข้มข้นจัดจ้าน รสร้อนแรงหอมเนย เสิร์ฟร้อนเดือดๆ ทานสนุก</p>
 
-                        <div class="allergen-tags">
-                            <span class="allergen-pill">🦐 มีอาหารทะเล</span>
-                            <span class="allergen-pill">🌶️🌶️ เผ็ดร้อน</span>
+                        <div class="allergen-pills">
+                            <span class="allergen-pill">🦐 มีกุ้ง/อาหารทะเล</span>
+                            <span class="allergen-pill">🥛 มีเนย</span>
                         </div>
 
                         <button class="btn-add-cart" onclick="addToCart('กุ้งสาดดด ทะเลถัง', 399)">
@@ -1285,17 +1533,19 @@
                 <!-- 9. ข้าวไข่ข้นซอสต้มยำกุ้ง -->
                 <div class="menu-card" data-category="fusion">
                     <div class="menu-img-wrapper">
-                        <span class="menu-tag">ฟิวชันนานาชาติ</span>
-                        <img src="images/CreamyEggRiceWithTomYumKung.png" alt="ข้าวไข่ข้นซอสต้มยำกุ้ง" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
+                        <div class="badge-group">
+                            <span class="menu-tag fusion">ฟิวชัน</span>
+                        </div>
+                        <img src="images/Creamy-Omelet.png" alt="ข้าวไข่ข้นซอสต้มยำกุ้ง" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
                     </div>
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
-                            <span class="menu-name">ข้าวไข่ข้นต้มยำกุ้ง<br><small style="color:var(--text-muted);">Tom Yum Egg Rice</small></span>
+                            <span class="menu-name">ข้าวไข่ข้นซอสต้มยำกุ้ง<br><small style="color:var(--text-muted);">Creamy Omelet Tom Yum</small></span>
                             <span class="menu-price">180 ฿</span>
                         </div>
-                        <p class="menu-desc">ไข่ข้นเนื้อเนียนนุ่มเยิ้ม ราดด้วยซอสต้มยำกุ้งน้ำข้นรสจี๊ดจ๊าด หอมกลิ่นข่าตะไคร้ใบมะกรูด</p>
+                        <p class="menu-desc">ไข่ข้นสีเหลืองทองละมุน ราดซอสต้มยำรสเข้มข้นถึงเครื่องแกง ตกแต่งด้วยกุ้งแม่น้ำตัวใหญ่และไข่กุ้งเคี้ยวกรุบ</p>
 
-                        <div class="allergen-tags">
+                        <div class="allergen-pills">
                             <span class="allergen-pill">🥚 มีไข่</span>
                             <span class="allergen-pill">🦐 มีกุ้ง</span>
                             <span class="allergen-pill">🥛 มีนมข้นหวาน</span>
@@ -1308,21 +1558,23 @@
                 </div>
 
                 <!-- 10. บิงซูสายไหมหมีขี้เซา -->
-                <div class="menu-card" data-category="dessert-drink">
+                <div class="menu-card" data-category="drink">
                     <div class="menu-img-wrapper">
-                        <span class="menu-tag">ของหวาน & เครื่องดื่ม</span>
-                        <img src="images/bingsu.png" alt="บิงซูสายไหมหมีขี้เซา" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
+                        <div class="badge-group">
+                            <span class="menu-tag drink">🍧 ของหวาน</span>
+                        </div>
+                        <img src="images/Bingso.png" alt="บิงซูสายไหมหมีขี้เซา" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
                     </div>
                     <div class="menu-info">
                         <div class="menu-name-wrapper">
-                            <span class="menu-name">บิงซูสายไหมหมีขี้เซา<br><small style="color:var(--text-muted);">Lazy Bear Bingsu</small></span>
+                            <span class="menu-name">บิงซูสายไหมหมีขี้เซา<br><small style="color:var(--text-muted);">Bear Bingsu Thread</small></span>
                             <span class="menu-price">189 ฿</span>
                         </div>
-                        <p class="menu-desc">บิงซูนมสดเกล็ดหิมะละมุนลิ้น ตกแต่งรูปหมีสุดน่ารัก เสิร์ฟพร้อมท็อปปิ้งผลไม้สดและนมข้นหวาน</p>
+                        <p class="menu-desc">บิงซูเกล็ดสายไหมรสหวานละมุน นุ่มฟูดุจปุยเมฆ ตกแต่งด้วยไอศกรีมน้องหมีนอนหลับปุ๋ยพร้อมท็อปปิ้งล้นถาดแสนอร่อย</p>
 
-                        <div class="allergen-tags">
+                        <div class="allergen-pills">
                             <span class="allergen-pill">🥛 มีผลิตภัณฑ์นม</span>
-                            <span class="allergen-pill">🍓 ผลไม้สด</span>
+                            <span class="allergen-pill">🌾 มีกลูเตน</span>
                         </div>
 
                         <button class="btn-add-cart" onclick="addToCart('บิงซูสายไหมหมีขี้เซา', 189)">
@@ -1331,214 +1583,484 @@
                     </div>
                 </div>
 
+                <!-- ==========================================
+                     🍹 10 เมนูเครื่องดื่มและน้ำแข็งเพิ่มเติม (NEW DRINK ITEMS)
+                     ========================================== -->
+
+                <!-- 11. ชาไทยเย็นชงสด -->
+                <div class="menu-card" data-category="drink">
+                    <div class="menu-img-wrapper">
+                        <div class="badge-group">
+                            <span class="menu-tag drink">🍹 ขายดี</span>
+                        </div>
+                        <img src="images/drink_thai_tea.png" alt="ชาไทยเย็นชงสด" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-name-wrapper">
+                            <span class="menu-name">ชาไทยเย็นชงสด<br><small style="color:var(--text-muted);">Thai Iced Tea</small></span>
+                            <span class="menu-price">29 ฿</span>
+                        </div>
+                        <p class="menu-desc">ชาไทยตรามือชงสดใหม่วันต่อวัน หอมกลิ่นใบชาแท้ รสชาติหวานมันเข้มข้นลงตัว เสิร์ฟพร้อมน้ำแข็งเกล็ดละเอียด</p>
+
+                        <div class="allergen-pills">
+                            <span class="allergen-pill">🥛 มีนมสด/นมข้น</span>
+                        </div>
+
+                        <button class="btn-add-cart" onclick="addToCart('ชาไทยเย็นชงสด', 29)">
+                            🛒 เพิ่มลงในตะกร้า
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 12. ชามะนาวสมุนไพร -->
+                <div class="menu-card" data-category="drink">
+                    <div class="menu-img-wrapper">
+                        <div class="badge-group">
+                            <span class="menu-tag drink">🍋 สดชื่น</span>
+                        </div>
+                        <img src="images/drink_lemon_tea.png" alt="ชามะนาวสมุนไพร" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-name-wrapper">
+                            <span class="menu-name">ชามะนาวสมุนไพร<br><small style="color:var(--text-muted);">Iced Lemon Herbal Tea</small></span>
+                            <span class="menu-price">35 ฿</span>
+                        </div>
+                        <p class="menu-desc">ชามะนาวคั้นสดผสมสมุนไพรใบเตย รสเปรี้ยวหวานลงตัว ดับกระหายคลายร้อนได้อย่างดีเยี่ยม</p>
+
+                        <div class="allergen-pills">
+                            <span class="allergen-pill">🌱 มังสวิรัติ</span>
+                        </div>
+
+                        <button class="btn-add-cart" onclick="addToCart('ชามะนาวสมุนไพร', 35)">
+                            🛒 เพิ่มลงในตะกร้า
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 13. กาแฟโบราณอ่างข่าง -->
+                <div class="menu-card" data-category="drink">
+                    <div class="menu-img-wrapper">
+                        <div class="badge-group">
+                            <span class="menu-tag drink">☕ เข้มข้น</span>
+                        </div>
+                        <img src="images/drink_traditional_coffee.png" alt="กาแฟโบราณอ่างข่าง" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-name-wrapper">
+                            <span class="menu-name">กาแฟโบราณอ่างข่าง<br><small style="color:var(--text-muted);">Angkhang Traditional Coffee</small></span>
+                            <span class="menu-price">35 ฿</span>
+                        </div>
+                        <p class="menu-desc">เมล็ดกาแฟสายพันธุ์อาราบิกาจากดอยอ่างข่าง คั่วบดสไตล์โบราณ หอมเข้มตื่นเต็มตา ราดนมข้นหวานละมุน</p>
+
+                        <div class="allergen-pills">
+                            <span class="allergen-pill">🥛 มีนมข้นหวาน</span>
+                        </div>
+
+                        <button class="btn-add-cart" onclick="addToCart('กาแฟโบราณอ่างข่าง', 35)">
+                            🛒 เพิ่มลงในตะกร้า
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 14. นมชมพูเย็นหวานมัน -->
+                <div class="menu-card" data-category="drink">
+                    <div class="menu-img-wrapper">
+                        <div class="badge-group">
+                            <span class="menu-tag drink">💖 หวานละมุน</span>
+                        </div>
+                        <img src="images/drink_pink_milk.png" alt="นมชมพูเย็นหวานมัน" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-name-wrapper">
+                            <span class="menu-name">นมชมพูเย็นหวานมัน<br><small style="color:var(--text-muted);">Nom Yen Pink Milk</small></span>
+                            <span class="menu-price">30 ฿</span>
+                        </div>
+                        <p class="menu-desc">นมสดเฮลซ์บลูบอยรสสละ หอมหวานมันกลมกล่อม สีชมพูพาสเทลน่ารัก ขวัญใจคุณหนูๆ และสายหวาน</p>
+
+                        <div class="allergen-pills">
+                            <span class="allergen-pill">🥛 มีนมสด</span>
+                        </div>
+
+                        <button class="btn-add-cart" onclick="addToCart('นมชมพูเย็นหวานมัน', 30)">
+                            🛒 เพิ่มลงในตะกร้า
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 15. น้ำเก๊กฮวยใบเตย -->
+                <div class="menu-card" data-category="drink">
+                    <div class="menu-img-wrapper">
+                        <div class="badge-group">
+                            <span class="menu-tag drink">🌿 สมุนไพร</span>
+                        </div>
+                        <img src="images/drink_chrysanthemum.png" alt="น้ำเก๊กฮวยใบเตย" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-name-wrapper">
+                            <span class="menu-name">น้ำเก๊กฮวยใบเตย<br><small style="color:var(--text-muted);">Chrysanthemum Pandan</small></span>
+                            <span class="menu-price">25 ฿</span>
+                        </div>
+                        <p class="menu-desc">ดอกเก๊กฮวยทองต้มคู่ใบเตยหอมสด รสหวานน้อยกำลังดี แก้ร้อนใน ดับพิษร้อน ปรุงสดใหม่ทุกวัน</p>
+
+                        <div class="allergen-pills">
+                            <span class="allergen-pill">🌱 มังสวิรัติ</span>
+                        </div>
+
+                        <button class="btn-add-cart" onclick="addToCart('น้ำเก๊กฮวยใบเตย', 25)">
+                            🛒 เพิ่มลงในตะกร้า
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 16. น้ำกระเจี๊ยบพุทราจีน -->
+                <div class="menu-card" data-category="drink">
+                    <div class="menu-img-wrapper">
+                        <div class="badge-group">
+                            <span class="menu-tag drink">🌺 ดับกระหาย</span>
+                        </div>
+                        <img src="images/drink_roselle.png" alt="น้ำกระเจี๊ยบพุทราจีน" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-name-wrapper">
+                            <span class="menu-name">น้ำกระเจี๊ยบพุทราจีน<br><small style="color:var(--text-muted);">Roselle Jujube Drink</small></span>
+                            <span class="menu-price">25 ฿</span>
+                        </div>
+                        <p class="menu-desc">ดอกกระเจี๊ยบแดงเคี่ยวพุทราจีน รสเปรี้ยวอมหวานชุ่มคอ บำรุงเลือดและหัวใจ ชื่นใจในทุกจิบ</p>
+
+                        <div class="allergen-pills">
+                            <span class="allergen-pill">🌱 มังสวิรัติ</span>
+                        </div>
+
+                        <button class="btn-add-cart" onclick="addToCart('น้ำกระเจี๊ยบพุทราจีน', 25)">
+                            🛒 เพิ่มลงในตะกร้า
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 17. น้ำมะพร้าวน้ำหอมสด -->
+                <div class="menu-card" data-category="drink">
+                    <div class="menu-img-wrapper">
+                        <div class="badge-group">
+                            <span class="menu-tag drink">🥥 สดจากลูก</span>
+                        </div>
+                        <img src="images/drink_coconut.png" alt="น้ำมะพร้าวน้ำหอมสด" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-name-wrapper">
+                            <span class="menu-name">น้ำมะพร้าวน้ำหอมสด<br><small style="color:var(--text-muted);">Fresh Coconut Water</small></span>
+                            <span class="menu-price">45 ฿</span>
+                        </div>
+                        <p class="menu-desc">น้ำมะพร้าวน้ำหอมคัดเกรด A จากสวน ปราศจากการเติมน้ำตาล สดหวานธรรมชาติ พร้อมเนื้อมะพร้าวอ่อนนุ่ม</p>
+
+                        <div class="allergen-pills">
+                            <span class="allergen-pill">🌱 ธรรมชาติ 100%</span>
+                        </div>
+
+                        <button class="btn-add-cart" onclick="addToCart('น้ำมะพร้าวน้ำหอมสด', 45)">
+                            🛒 เพิ่มลงในตะกร้า
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 18. น้ำอ้อยสดเชียงใหม่ -->
+                <div class="menu-card" data-category="drink">
+                    <div class="menu-img-wrapper">
+                        <div class="badge-group">
+                            <span class="menu-tag drink">🌾 หวานธรรมชาติ</span>
+                        </div>
+                        <img src="images/drink_sugarcane.png" alt="น้ำอ้อยสดเชียงใหม่" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-name-wrapper">
+                            <span class="menu-name">น้ำอ้อยสดเชียงใหม่<br><small style="color:var(--text-muted);">Chiang Mai Sugarcane</small></span>
+                            <span class="menu-price">30 ฿</span>
+                        </div>
+                        <p class="menu-desc">น้ำอ้อยคั้นสดไร้สารปรุงแต่ง สดใหม่หอมหวานกลิ่นอ้อยธรรมชาติ เติมพลังสดชื่นระหว่างวัน</p>
+
+                        <div class="allergen-pills">
+                            <span class="allergen-pill">🌱 มังสวิรัติ</span>
+                        </div>
+
+                        <button class="btn-add-cart" onclick="addToCart('น้ำอ้อยสดเชียงใหม่', 30)">
+                            🛒 เพิ่มลงในตะกร้า
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 19. เฉาก๊วยโบราณใส่น้ำแข็งไส -->
+                <div class="menu-card" data-category="drink">
+                    <div class="menu-img-wrapper">
+                        <div class="badge-group">
+                            <span class="menu-tag drink">🍧 ชื่นใจ</span>
+                        </div>
+                        <img src="images/drink_grass_jelly_ice.png" alt="เฉาก๊วยโบราณใส่น้ำแข็งไส" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-name-wrapper">
+                            <span class="menu-name">เฉาก๊วยโบราณใส่น้ำแข็งไส<br><small style="color:var(--text-muted);">Grass Jelly Shaved Ice</small></span>
+                            <span class="menu-price">35 ฿</span>
+                        </div>
+                        <p class="menu-desc">เฉาก๊วยชากังราวเนื้อหนึบหนับ โปะน้ำแข็งไสฝอย ราดน้ำตาลอ้อยแท้หอมหวาน ดับร้อนแก้กระหาย</p>
+
+                        <div class="allergen-pills">
+                            <span class="allergen-pill">🌱 มังสวิรัติ</span>
+                        </div>
+
+                        <button class="btn-add-cart" onclick="addToCart('เฉาก๊วยโบราณใส่น้ำแข็งไส', 35)">
+                            🛒 เพิ่มลงในตะกร้า
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 20. บิงซูชาไทยเฉาก๊วยหม้อไฟ -->
+                <div class="menu-card" data-category="drink">
+                    <div class="menu-img-wrapper">
+                        <div class="badge-group">
+                            <span class="menu-tag drink">🍧 ท็อปปิ้งล้น</span>
+                        </div>
+                        <img src="images/drink_thai_tea_bingsu.png" alt="บิงซูชาไทยเฉาก๊วยหม้อไฟ" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-name-wrapper">
+                            <span class="menu-name">บิงซูชาไทยเฉาก๊วยหม้อไฟ<br><small style="color:var(--text-muted);">Thai Tea Bingsu Hotpot</small></span>
+                            <span class="menu-price">129 ฿</span>
+                        </div>
+                        <p class="menu-desc">บิงซูเกล็ดชาไทยเข้มข้น จัดเสิร์ฟในชุดหม้อไฟพร้อมควันพวยพุ่ง เครื่องแน่นเฉาก๊วย นมข้น และไข่มุกเหนียวนุ่ม</p>
+
+                        <div class="allergen-pills">
+                            <span class="allergen-pill">🥛 มีผลิตภัณฑ์นม</span>
+                            <span class="allergen-pill">🌾 มีกลูเตน</span>
+                        </div>
+
+                        <button class="btn-add-cart" onclick="addToCart('บิงซูชาไทยเฉาก๊วยหม้อไฟ', 129)">
+                            🛒 เพิ่มลงในตะกร้า
+                        </button>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <!-- 📋 เมนูเพิ่มเติมในระบบของร้าน -->
+        <!-- ⚠️ Allergen Notice & Food Safety Protocol -->
+        <section class="allergen-banner" id="allergen-notice">
+            <div class="allergen-banner-icon">⚠️</div>
+            <div class="allergen-banner-text">
+                <h4>ข้อควรรู้เกี่ยวกับสารก่อภูมิแพ้และมาตรฐานความปลอดภัย (Allergen Notice)</h4>
+                <p>ร้าน iLove.cnx ให้ความสำคัญกับความปลอดภัยของลูกค้าเป็นอันดับหนึ่ง รายการอาหารที่มีส่วนผสมของกุ้ง ถั่วลิสง หมู และนม จะถูกระบุไว้อย่างชัดเจนบนการ์ดเมนู <strong>หากท่านมีอาการแพ้อาหารรุนแรง กรุณาแจ้งพนักงานผ่านช่องทางแชต LINE หรือหมายเหตุในแบบฟอร์มก่อนสั่งซื้อทุกครั้งเจ้า!</strong></p>
+            </div>
+        </section>
+
+        <!-- 💬 ประวัติและรีวิวลูกค้าเก่า (Customer Reviews History) -->
+        <section id="reviews" class="reviews-section">
+            <h2 class="section-title">เสียงสะท้อนจากลูกค้าประทับใจจริง</h2>
+            <div class="reviews-grid">
+                
+                <div class="review-card">
+                    <div>
+                        <div class="review-header">
+                            <div class="reviewer-avatar">คุณนก</div>
+                            <div class="reviewer-info">
+                                <h4>คุณนภาพร (ลูกค้าประจำเป็นนิมมาน)</h4>
+                                <span>ทานเมื่อ 2 วันที่แล้ว • สาขานิมมาน</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"ข้าวซอยไก่อร่อยมากกก น้ำแกงเข้มข้น น่องไก่เปื่อยกำลังดี ไส้อั่วก็หอมสมุนไพรเตาถ่าน สั่งเดลิเวอรีมาส่งที่คอนโดอาหารยังร้อนเป๊ะเหมือนทานที่ร้านเลยค่ะ!"</p>
+                    </div>
+                    <div class="review-verified">✓ ยืนยันการสั่งซื้อจริง (Verified Customer)</div>
+                </div>
+
+                <div class="review-card">
+                    <div>
+                        <div class="review-header">
+                            <div class="reviewer-avatar" style="background-color:#2980B9;">John</div>
+                            <div class="reviewer-info">
+                                <h4>John M. (Tourist from UK)</h4>
+                                <span>Visited 1 week ago • Old City Branch</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"Best Khao Soi in Chiang Mai! The German Pork Knuckle fusion dish is a masterpiece. Friendly staff and super clean kitchen. Highly recommended!"</p>
+                    </div>
+                    <div class="review-verified">✓ ยืนยันการสั่งซื้อจริง (Verified Customer)</div>
+                </div>
+
+                <div class="review-card">
+                    <div>
+                        <div class="review-header">
+                            <div class="reviewer-avatar" style="background-color:#2ECC71;">คุณหมอ</div>
+                            <div class="reviewer-info">
+                                <h4>นพ.สมชาย (ลูกค้าสั่ง Boxset)</h4>
+                                <span>ทานเมื่อสัปดาห์ที่แล้ว • สั่งจัดเลี้ยงสัมมนา</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"สั่ง Bento Boxset 50 ชุดไปงานสัมมนา รพ.สวนดอก อาหารแพ็กแยกซุปอย่างดี สะอาด ตรงเวลา คุณภาพพรีเมียม อาจารย์ทุกท่านชมว่าอร่อยมากครับ"</p>
+                    </div>
+                    <div class="review-verified">✓ ยืนยันการสั่งซื้อจริง (Verified Customer)</div>
+                </div>
+
+                <div class="review-card">
+                    <div>
+                        <div class="review-header">
+                            <div class="reviewer-avatar" style="background-color:#9B59B6;">คุณแก้ว</div>
+                            <div class="reviewer-info">
+                                <h4>คุณแก้วตา (สั่งผ่าน LINE OA)</h4>
+                                <span>ทานเมื่อวานนี้ • สาขาช้างคลาน</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"แอดมินตอบเร็วมาก สั่งข้าวซอยทะเลกับบิงซูหมีขี้เซา กุ้งสดตัวใหญ่มาก บิงซูน่ารักอร่อยชื่นใจ เด็กๆ ที่บ้านชอบมากค่ะ ประทับใจสุดๆ"</p>
+                    </div>
+                    <div class="review-verified">✓ ยืนยันการสั่งซื้อจริง (Verified Customer)</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- รายการเมนูเพิ่มเติมในระบบ -->
         <section class="other-menus-section">
-            <h3 class="other-menus-title">📌 เมนูเพิ่มเติมในระบบของร้าน (Database Records)</h3>
+            <h3 class="other-menus-title">เมนูเพิ่มเติมในระบบของร้าน (Database Records)</h3>
             <div class="other-menus-grid">
                 <div class="other-menu-item">
                     <div class="other-menu-info">
-                        <span class="other-menu-name">ข้าวซอยเนื้อ</span>
+                        <span class="other-menu-name">ข้าวซอยเนื้อ (Khao Soi Beef)</span>
                         <span class="other-menu-price">79 ฿</span>
                     </div>
-                    <button class="btn-add-mini" onclick="addToCart('ข้าวซอยเนื้อ', 79)">+ เพิ่ม</button>
+                    <button class="btn-add-cart-sm" onclick="addToCart('ข้าวซอยเนื้อ', 79)">+ เพิ่ม</button>
                 </div>
                 <div class="other-menu-item">
                     <div class="other-menu-info">
-                        <span class="other-menu-name">ข้าวซอยเจ <span class="badge-vegan" style="position:static; padding:2px 8px;">🌱 เจ</span></span>
+                        <span class="other-menu-name">ข้าวซอยเจ (Khao Soi Vegan)</span>
                         <span class="other-menu-price">69 ฿</span>
                     </div>
-                    <button class="btn-add-mini" onclick="addToCart('ข้าวซอยเจ', 69)">+ เพิ่ม</button>
+                    <button class="btn-add-cart-sm" onclick="addToCart('ข้าวซอยเจ', 69)">+ เพิ่ม</button>
                 </div>
                 <div class="other-menu-item">
                     <div class="other-menu-info">
-                        <span class="other-menu-name">ชาเย็นชงสด</span>
-                        <span class="other-menu-price">29 ฿</span>
-                    </div>
-                    <button class="btn-add-mini" onclick="addToCart('ชาเย็นชงสด', 29)">+ เพิ่ม</button>
-                </div>
-                <div class="other-menu-item">
-                    <div class="other-menu-info">
-                        <span class="other-menu-name">น้ำส้มคั้นสด</span>
+                        <span class="other-menu-name">น้ำส้มคั้นสด 100%</span>
                         <span class="other-menu-price">35 ฿</span>
                     </div>
-                    <button class="btn-add-mini" onclick="addToCart('น้ำส้มคั้นสด', 35)">+ เพิ่ม</button>
+                    <button class="btn-add-cart-sm" onclick="addToCart('น้ำส้มคั้นสด', 35)">+ เพิ่ม</button>
                 </div>
                 <div class="other-menu-item">
                     <div class="other-menu-info">
-                        <span class="other-menu-name">ข้าวเหนียวเขี้ยวงู</span>
+                        <span class="other-menu-name">ข้าวเหนียวเขี้ยวงูนึ่งร้อน</span>
                         <span class="other-menu-price">15 ฿</span>
                     </div>
-                    <button class="btn-add-mini" onclick="addToCart('ข้าวเหนียวเขี้ยวงู', 15)">+ เพิ่ม</button>
+                    <button class="btn-add-cart-sm" onclick="addToCart('ข้าวเหนียวเขี้ยวงู', 15)">+ เพิ่ม</button>
                 </div>
             </div>
         </section>
 
-        <!-- 💬 Section ประวัติรีวิวจากลูกค้า (Customer Reviews Section) -->
-        <section id="reviews" class="reviews-section">
-            <h2 class="section-title">เสียงตอบรับและประวัติรีวิวจากลูกค้า</h2>
-            <div class="reviews-grid">
-
-                <div class="review-card">
-                    <div>
-                        <div class="review-header">
-                            <div class="avatar-circle">ล</div>
-                            <div class="reviewer-info">
-                                <span class="reviewer-name">คุณลัดดาวัลย์ ส.</span>
-                                <span class="review-date">ลูกค้าประจำ - สาขานิมมาน</span>
-                            </div>
-                        </div>
-                        <div class="stars">⭐⭐⭐⭐⭐</div>
-                        <p class="review-comment">"ข้าวซอยไก่เข้มข้นมาก ไก่นุ่มละลายในปาก! สั่ง delivery ผ่านเว็บได้รับร้อนๆ หมี่กรอบยังกรอบเป๊ะ ให้ 5 ดาวเต็มเจ้า"</p>
-                    </div>
-                    <div class="verified-badge">✓ ยืนยันการสั่งซื้อจริง (Verified Customer)</div>
-                </div>
-
-                <div class="review-card">
-                    <div>
-                        <div class="review-header">
-                            <div class="avatar-circle">D</div>
-                            <div class="reviewer-info">
-                                <span class="reviewer-name">Mr. David M.</span>
-                                <span class="review-date">Tourist - Chang Klan Branch</span>
-                            </div>
-                        </div>
-                        <div class="stars">⭐⭐⭐⭐⭐</div>
-                        <p class="review-comment">"Best Khao Soi & German Pork Knuckle in Chiang Mai! Excellent fusion taste and super fast delivery. Highly recommended!"</p>
-                    </div>
-                    <div class="verified-badge">✓ ยืนยันการสั่งซื้อจริง (Verified Customer)</div>
-                </div>
-
-                <div class="review-card">
-                    <div>
-                        <div class="review-header">
-                            <div class="avatar-circle">ธ</div>
-                            <div class="reviewer-info">
-                                <span class="reviewer-name">คุณธนกฤต ว.</span>
-                                <span class="review-date">ลูกค้าองค์กร / สัมมนา</span>
-                            </div>
-                        </div>
-                        <div class="stars">⭐⭐⭐⭐⭐</div>
-                        <p class="review-comment">"สั่งข้าวกล่อง Boxset และไส้อั่วสมุนไพรไปงานสัมมนา แขกประทับใจทุกคน แพ็กเกจสะอาด eco-friendly ร้อนอร่อยตรงเวลาครับ"</p>
-                    </div>
-                    <div class="verified-badge">✓ ยืนยันการสั่งซื้อจริง (Verified Customer)</div>
-                </div>
-
-                <div class="review-card">
-                    <div>
-                        <div class="review-header">
-                            <div class="avatar-circle">ศ</div>
-                            <div class="reviewer-info">
-                                <span class="reviewer-name">คุณศิริพร พ.</span>
-                                <span class="review-date">สั่งผ่าน LINE OA</span>
-                            </div>
-                        </div>
-                        <div class="stars">⭐⭐⭐⭐⭐</div>
-                        <p class="review-comment">"น้ำเงี้ยวรสชาติลำขนาดเหมือนทานที่บ้านผู้ใหญ่ น้องฮักจัง AI ตอบแชทแนะนำดีมาก ได้รับโปรแถมฟรีแคบหมูด้วย ประทับใจมากค่ะ"</p>
-                    </div>
-                    <div class="verified-badge">✓ ยืนยันการสั่งซื้อจริง (Verified Customer)</div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- 🚚 แบนเนอร์บริการจัดส่ง -->
+        <!-- บริการจัดส่งพิเศษ -->
         <section class="service-banner">
             <div class="service-img-wrapper">
                 <img src="images/Service.png" alt="บริการส่งตรงถึงบ้าน" class="service-img" loading="lazy" decoding="async" width="400" height="267" onload="this.style.opacity='1';">
             </div>
-            <div class="service-text">
-                <h3>🚀 บริการจัดส่งด่วน ร้อนสดใหม่ส่งตรงถึงบ้านคุณ</h3>
-                <p>iLove.cnx บรรจุอาหารด้วยบรรจุภัณฑ์รักษ์โลกที่เก็บความร้อนได้อย่างเยี่ยมยอด การันตีความสดใหม่เหมือนนั่งทานที่ร้าน</p>
-                <ul class="service-features">
-                    <li>✅ จัดส่งรวดเร็วภายใน 30-45 นาที ทั่วเขตเมืองเชียงใหม่</li>
-                    <li>✅ บรรจุภัณฑ์ Eco-friendly ฟู้ดเกรด ปลอดภัย 100%</li>
-                    <li>✅ สั่งครบ 500 บาท ฟรีค่าจัดส่ง 5 กิโลเมตรแรก!</li>
+            <div class="service-content">
+                <h3>จัดส่งรวดเร็ว รักษาคุณภาพความร้อน 100%</h3>
+                <p>นอกจากบริการที่ประณีตหน้าร้านแล้ว ร้าน iLove.cnx ยังมีระบบห่ออาหารด้วยบรรจุภัณฑ์รักษ์โลกที่ล็อคอุณหภูมิความร้อนได้อย่างดีเยี่ยม เพื่อให้มั่นใจว่าลูกค้าได้รับประทานอาหารที่สดใหม่ ปลอดภัย และอร่อยเหมือนเสิร์ฟจากเตาครับ:</p>
+                <ul class="service-list">
+                    <li>บรรจุภัณฑ์พิเศษแยกน้ำแกงและเส้นข้าวซอยอย่างปลอดภัย ไม่หกเลอะเทอะ</li>
+                    <li>ส่งฟรีในระยะ 5 กิโลเมตรจากสาขาใกล้บ้านคุณ</li>
+                    <li>สะอาด ถูกสุขอนามัย มั่นใจได้ในมาตรฐานความสะอาดของเชฟ</li>
                 </ul>
             </div>
         </section>
 
-        <!-- 📍 ข้อมูลสาขา -->
+        <!-- สาขาของเรา -->
         <section id="stalls" class="stalls-section">
             <h2 class="section-title">สาขาของเราที่พร้อมให้บริการ</h2>
             <div class="stalls-grid">
                 <div class="stall-card">
                     <div class="stall-name">สาขา Chang Klan Night Market</div>
-                    <p class="stall-detail">📍 ถ.ช้างคลาน อ.เมือง จ.เชียงใหม่</p>
-
-                    <p class="stall-detail">⏰ เปิดบริการทุกวัน: 11:00 - 23:00 น.</p>
-                    <p class="stall-detail">📞 โทร: 053-123-456</p>
+                    <p class="stall-detail">📍 <strong>พิกัด:</strong> ย่านถนนช้างคลาน แหล่งกินเที่ยวยอดนิยมในยามค่ำคืน</p>
+                    <p class="stall-detail">🕒 <strong>เวลาบริการ:</strong> 17:00 - 23:00 น.</p>
+                    <p class="stall-date">📅 ร่วมส่งมอบความอบอุ่นและรสชาติตั้งแต่: 1 มิถุนายน 2023</p>
                 </div>
                 <div class="stall-card">
-                    <div class="stall-name">สาขา Nimman Soi 9</div>
-                    <p class="stall-detail">📍 ถนนนิมมานเฮมินทร์ ซอย 9 อ.เมือง จ.เชียงใหม่</p>
-
-                    <p class="stall-detail">⏰ เปิดบริการทุกวัน: 10:00 - 22:00 น.</p>
-                    <p class="stall-detail">📞 โทร: 053-123-457</p>
+                    <div class="stall-name">สาขา Nimman</div>
+                    <p class="stall-detail">📍 <strong>พิกัด:</strong> ถนนนิมมานเหมินท์ ใจกลางแหล่งกินเที่ยวนักท่องเที่ยวต่างชาติ</p>
+                    <p class="stall-detail">🕒 <strong>เวลาบริการ:</strong> 10:00 - 21:00 น.</p>
+                    <p class="stall-date">📅 ร่วมส่งมอบความอบอุ่นและรสชาติตั้งแต่: 15 กุมภาพันธ์ 2024</p>
                 </div>
                 <div class="stall-card">
-                    <div class="stall-name">สาขา Old City (ประตูท่าแพ)</div>
-                    <p class="stall-detail">📍 ถนนราชดำเนิน อ.เมือง จ.เชียงใหม่</p>
-
-                    <p class="stall-detail">⏰ เปิดบริการทุกวัน: 09:00 - 21:00 น.</p>
-                    <p class="stall-detail">📞 โทร: 053-123-458</p>
+                    <div class="stall-name">สาขา Old City</div>
+                    <p class="stall-detail">📍 <strong>พิกัด:</strong> ประตูท่าแพ แหล่งประวัติศาสตร์เมืองเก่าและจุดแลนด์มาร์กสำคัญ</p>
+                    <p class="stall-detail">🕒 <strong>เวลาบริการ:</strong> 09:00 - 20:00 น.</p>
+                    <p class="stall-date">📅 ร่วมส่งมอบความอบอุ่นและรสชาติตั้งแต่: 10 มกราคม 2025</p>
                 </div>
             </div>
         </section>
 
-        <!-- 🛒 สรุปรายการสั่งซื้อในตะกร้า / ติดต่อสั่งซื้อ -->
+        <!-- ส่วนกิจกรรมของลูกค้า (สรุปรายการสั่งซื้อในตะกร้า + ฟอร์มจัดส่ง) -->
         <section id="order">
             <h2 class="section-title">สรุปรายการสั่งซื้อ / ติดต่อเรา</h2>
             <div class="interaction-container">
                 
                 <div class="order-form-wrapper">
                     <h3>🛒 สรุปรายการอาหารในตะกร้า</h3>
-                    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px;">ตรวจสอบรายการอาหาร เลือกจำนวน และกรอกที่อยู่จัดส่งด้านล่างเจ้า</p>
+                    
+                    <!-- 📦 CART SUMMARY BOX (แสดงสรุปรายการที่กดเพิ่มลงตะกร้าแบบเรียลไทม์) -->
+                    <div class="cart-summary-box">
+                        <div class="cart-summary-header">
+                            <span>รายการที่เลือกสั่งซื้อ</span>
+                            <span id="cartTotalItemsText" style="font-size:0.85rem; color:var(--text-muted);">(0 รายการ)</span>
+                        </div>
 
-                    <table class="cart-table">
-                        <thead>
-                            <tr>
-                                <th>รายการอาหาร</th>
-                                <th>ราคา</th>
-                                <th>จำนวน</th>
-                                <th>รวม</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody id="cartSummaryList">
-                            <tr>
-                                <td colspan="5" style="text-align:center; color:var(--text-muted); padding:30px;">
-                                    ยังไม่มีรายการอาหารในตะกร้าเจ้า<br>
-                                    <small>กดปุ่ม "🛒 เพิ่มลงในตะกร้า" จากเมนูด้านบนได้เลยเจ้า</small>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                        <!-- รายการสินค้าในตะกร้า -->
+                        <div class="cart-summary-list" id="cartSummaryList">
+                            <div class="empty-cart-msg">
+                                ยังไม่มีสินค้าในตะกร้าเจ้า<br>
+                                <small style="color:var(--primary-color);">กดปุ่ม "🛒 เพิ่มลงในตะกร้า" จากรายการเมนูด้านบนได้เลยเจ้า</small>
+                            </div>
+                        </div>
 
-                    <div class="cart-summary-total">
-                        <span>ยอดรวมสุทธิ (Grand Total):</span>
-                        <span id="cartGrandTotal">0 ฿</span>
+                        <!-- ยอดรวมราคาสินค้า -->
+                        <div class="cart-total-row">
+                            <span class="cart-total-label">ยอดรวมสั่งซื้อสุทธิ:</span>
+                            <span class="cart-total-amount" id="cartGrandTotal">0 ฿</span>
+                        </div>
                     </div>
 
-                    <form id="deliveryForm" onsubmit="handleFormSubmit(event)">
+                    <!-- ฟอร์มกรอกข้อมูลการจัดส่ง -->
+                    <form id="deliveryForm" onsubmit="submitForm(event)">
                         <div class="form-group">
-                            <label for="fullName">ชื่อ-นามสกุล ผู้รับ *</label>
-                            <input type="text" id="fullName" class="form-control" placeholder="เช่น คุณสมชาย ใจดี" required>
+                            <label for="fullName">ชื่อ-นามสกุลผู้สั่งซื้อ *</label>
+                            <input type="text" id="fullName" class="form-control" placeholder="กรุณาระบุชื่อของคุณ" required>
                         </div>
                         <div class="form-group">
-                            <label for="phoneNumber">เบอร์โทรศัพท์ติดต่อ *</label>
-                            <input type="tel" id="phoneNumber" class="form-control" placeholder="เช่น 081-234-5678" required>
+                            <label for="phoneNumber">เบอร์โทรศัพท์ติดต่อกลับ *</label>
+                            <input type="tel" id="phoneNumber" class="form-control" placeholder="เช่น 089-XXXXXXX" required>
                         </div>
                         <div class="form-group">
-                            <label for="deliveryAddress">ที่อยู่จัดส่ง / สาขาที่สะดวกรับ *</label>
-                            <textarea id="deliveryAddress" class="form-control" rows="3" placeholder="ระบุบ้านเลขที่ ซอย ถนน หรือเลือกสาขาสำหรับรับหน้าร้าน..." required></textarea>
+                            <label for="deliveryAddress">ที่อยู่จัดส่ง (หรือระบุข้อความ/หมายเหตุอาหารแพ้เพิ่มเติม)</label>
+                            <textarea id="deliveryAddress" class="form-control" rows="3" placeholder="ระบุที่อยู่จัดส่ง หรือหมายเหตุ เช่น ไม่ใส่ผักโรย/แพ้กุ้ง ให้ชัดเจนเจ้า"></textarea>
                         </div>
-                        <button type="submit" class="btn-submit">
-                            ✅ กดยืนยันคำสั่งซื้อ
-                        </button>
+
+                        <button type="submit" class="btn-submit">✅ กดยืนยันคำสั่งซื้อ</button>
                     </form>
+                </div>
+
+                <!-- ช่องทางไลน์ OA แชทพูดคุย -->
+                <div class="contact-wrapper">
+                    <h3>💬 ช่องทางออนไลน์หลัก</h3>
+                    <p style="margin-bottom: 20px;">แอดไลน์ร้านหรือคลิกปุ่มสีเขียวด้านล่าง เพื่อสอบถามเมนูพิเศษจานวันหยุด สั่งจองจัดเลี้ยงสัมมนา หรือรับคูปองโปรโมชันส่วนลดสุดคุ้มผ่าน LINE Official Account สะดวกรวดเร็วคุยตรงกับพนักงานได้ทันที:</p>
+                    
+                    <a href="https://line.me/R/ti/p/@lannaeats" target="_blank" class="line-button">
+                        <span style="font-size: 1.3rem; margin-right: 10px;">🟢</span> แชทสั่งซื้อทาง LINE: @ilovecnx
+                    </a>
+
+                    <div class="contact-details">
+                        <p><strong>📞 เบอร์โทรศัพท์สายตรง:</strong> 053-123-456</p>
+                        <p><strong>✉️ อีเมลติดต่อสำนักงานใหญ่:</strong> contact@ilovecnx.com</p>
+                        <p><strong>⏰ เวลาให้บริการของเจ้าหน้าที่แชท:</strong> ทุกวัน 09:00 - 22:00 น.</p>
+                    </div>
+                    
+                    <div style="background-color: #FAF4F0; padding: 15px; border-radius: 10px; margin-top: 25px; border: 1px dashed var(--primary-color);">
+                        <p style="font-size: 0.85rem; color: var(--primary-color); font-weight: 500; text-align: center; margin-bottom: 0;">🔥 สิทธิพิเศษวันนี้! สมัครสมาชิก LINE OA สั่งซื้อครบ 500 บาท แถมฟรีแคบหมูทอดกรอบ 1 ชุดเจ้า!</p>
+                    </div>
                 </div>
 
             </div>
@@ -1546,189 +2068,235 @@
 
     </div>
 
-    <!-- 📱 Mobile Bottom Bar สำหรับสมาร์ตโฟน (Thumb Zone Friendly) -->
+    <!-- 📱 Mobile Floating Bottom Bar -->
     <div class="mobile-bottom-bar">
         <div class="mobile-cart-info">
-            <span class="mobile-cart-label">รายการในตะกร้า</span>
-            <span class="mobile-cart-price" id="mobileCartTotal">0 ฿ (<span id="mobileCartQty">0</span>)</span>
+            <span class="mobile-cart-title">ยอดรวมในตะกร้า</span>
+            <span class="mobile-cart-total" id="mobileGrandTotal">0 ฿</span>
         </div>
         <div class="mobile-actions">
-            <button class="btn-mobile-order" onclick="scrollToCartSummary()">
-                🛒 ดูตะกร้า/สั่งซื้อ
-            </button>
-            <a href="https://line.me/R/ti/p/@lannaeats" target="_blank" class="btn-mobile-line">
-                💬 แชท LINE
-            </a>
+            <button class="mobile-btn-cart" onclick="scrollToCartSummary()">🛒 ตะกร้า (<span id="mobileCartCount">0</span>)</button>
         </div>
     </div>
 
+    <!-- ลิขสิทธิ์วิชาท้ายหน้าเว็บ -->
     <footer>
-        <p>© 2026 iLove.cnx - ล้านนาอีทส์ แอนด์ ฟิวชันคิทเช่น. All Rights Reserved.</p>
-        <p style="font-size:0.8rem; margin-top:5px; opacity:0.8;">พัฒนาและทดสอบระบบสำหรับวิชา 703311 (Project 2 & 3)</p>
+        <p>&copy; 2026 iLove.cnx. สงวนลิขสิทธิ์ทั้งหมด</p>
+        <p style="font-size: 0.8rem; opacity: 0.7;">โครงงานสร้างสรรค์เว็บไซต์ธุรกิจระบบสารสนเทศ 703311 | จัดทำด้วยเทคโนโลยี Cloud & CI/CD Automated Deployment</p>
     </footer>
 
-    <!-- 💬 Chatbase AI Agent (น้องฮักจัง) Script -->
+    <!-- ========================================================
+         🛒 REAL-TIME SHOPPING CART ENGINE & FILTER LOGIC
+         ======================================================== -->
     <script>
-        (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="LY2SWGVlDYkQC2xpsKG48";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
-    </script>
-
-    <!-- 🛒 JavaScript Cart Engine & Category Filter -->
-    <script>
-        // 1. อาร์เรย์จัดเก็บรายการสินค้าในตะกร้า
+        // ตัวแปรส่วนกลางจัดเก็บอาร์เรย์ตะกร้าสินค้า
         let shoppingCart = [];
 
-        // 2. ฟังก์ชันเพิ่มสินค้าลงตะกร้า
-        function addToCart(itemName, itemPrice) {
-            const existingIndex = shoppingCart.findIndex(item => item.name === itemName);
-
-            if (existingIndex > -1) {
-                shoppingCart[existingIndex].qty += 1;
-            } else {
-                shoppingCart.push({
-                    name: itemName,
-                    price: itemPrice,
-                    qty: 1
-                });
-            }
-
-            updateCartUI();
-            showToast(`เพิ่ม "${itemName}" ลงในตะกร้าแล้วเจ้า! 🛒`);
-        }
-
-        // 3. ฟังก์ชันปรับเพิ่ม-ลดจำนวนสินค้าในตะกร้า
-        function updateItemQty(index, change) {
-            shoppingCart[index].qty += change;
-            if (shoppingCart[index].qty <= 0) {
-                shoppingCart.splice(index, 1);
-            }
-            updateCartUI();
-        }
-
-        // 4. ฟังก์ชันลบรายการสินค้า
-        function removeItem(index) {
-            shoppingCart.splice(index, 1);
-            updateCartUI();
-        }
-
-        // 5. ฟังก์ชันอัปเดตการแสดงผลตะกร้าทั้งหมดแบบ Real-time
-        function updateCartUI() {
-            const listContainer = document.getElementById('cartSummaryList');
-            const totalDisplay = document.getElementById('cartGrandTotal');
-            const navBadge = document.getElementById('navCartCount');
-            const mobileQty = document.getElementById('mobileCartQty');
-            const mobileTotal = document.getElementById('mobileCartTotal');
-
-            let totalItemsCount = 0;
-            let grandTotalSum = 0;
-
-            if (shoppingCart.length === 0) {
-                listContainer.innerHTML = `
-                    <tr>
-                        <td colspan="5" style="text-align:center; color:var(--text-muted); padding:30px;">
-                            ยังไม่มีรายการอาหารในตะกร้าเจ้า<br>
-                            <small>กดปุ่ม "🛒 เพิ่มลงในตะกร้า" จากเมนูด้านบนได้เลยเจ้า</small>
-                        </td>
-                    </tr>
-                `;
-            } else {
-                let htmlRows = '';
-                shoppingCart.forEach((item, index) => {
-                    const rowTotal = item.price * item.qty;
-                    totalItemsCount += item.qty;
-                    grandTotalSum += rowTotal;
-
-                    htmlRows += `
-                        <tr>
-                            <td><strong>${item.name}</strong></td>
-                            <td>${item.price} ฿</td>
-                            <td>
-                                <div class="qty-controls">
-                                    <button class="btn-qty" onclick="updateItemQty(${index}, -1)">-</button>
-                                    <span style="font-weight:700;">${item.qty}</span>
-                                    <button class="btn-qty" onclick="updateItemQty(${index}, 1)">+</button>
-                                </div>
-                            </td>
-                            <td><strong>${rowTotal.toLocaleString('th-TH')} ฿</strong></td>
-                            <td>
-                                <button class="btn-remove" onclick="removeItem(${index})" title="ลบรายการ">🗑️</button>
-                            </td>
-                        </tr>
-                    `;
-                });
-                listContainer.innerHTML = htmlRows;
-            }
-
-            // อัปเดตตัวเลข
-            const formattedTotal = grandTotalSum.toLocaleString('th-TH') + ' ฿';
-            totalDisplay.innerText = formattedTotal;
-            navBadge.innerText = totalItemsCount;
-            if (mobileQty) mobileQty.innerText = totalItemsCount;
-            if (mobileTotal) mobileTotal.innerText = formattedTotal;
-        }
-
-        // 6. ฟังก์ชันแสดง Toast Notification
-        function showToast(message) {
-            const toast = document.getElementById('toastNotification');
-            const toastMsg = document.getElementById('toastMsg');
-            toastMsg.innerText = message;
-            toast.classList.add('active');
-
-            setTimeout(() => {
-                toast.classList.remove('active');
-            }, 2500);
-        }
-
-        // 7. ฟังก์ชัน เลื่อนลงไปยังส่วนสรุปรายการสั่งซื้อ
+        // 1. ฟังก์ชันเลื่อนหน้าจอไปยังส่วนสรุปรายการสั่งซื้อในตะกร้า
         function scrollToCartSummary() {
             document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // 8. ฟังก์ชันกรองหมวดหมู่เมนู (Category Filter Tabs)
+        // 2. ฟังก์ชันกรองหมวดหมู่เมนูอาหาร
         function filterMenu(category, btnElement) {
-            // สลับสถานะ Active ของปุ่ม
-            const tabs = document.querySelectorAll('.cat-tab');
-            tabs.forEach(tab => tab.classList.remove('active'));
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(btn => btn.classList.remove('active'));
             if (btnElement) btnElement.classList.add('active');
 
-            // กรองการ์ดเมนู
-            const cards = document.querySelectorAll('#catalogGrid .menu-card');
-            cards.forEach(card => {
-                const cardCat = card.getAttribute('data-category');
-                if (category === 'all' || cardCat === category) {
+            const menuCards = document.querySelectorAll('#catalogGrid .menu-card');
+            menuCards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+                if (category === 'all' || cardCategory === category) {
                     card.style.display = 'flex';
-                    card.style.animation = 'fadeIn 0.4s ease';
                 } else {
                     card.style.display = 'none';
                 }
             });
         }
 
-        // 9. ฟังก์ชันการส่งแบบฟอร์มสั่งซื้อ
-        function handleFormSubmit(event) {
+        // 3. ฟังก์ชันเพิ่มสินค้าลงในตะกร้า
+        function addToCart(itemName, itemPrice) {
+            const existingIndex = shoppingCart.findIndex(item => item.name === itemName);
+
+            if (existingIndex > -1) {
+                shoppingCart[existingIndex].qty += 1;
+            } else {
+                shoppingCart.push({ name: itemName, price: itemPrice, qty: 1 });
+            }
+
+            updateCartUI();
+            showToast(`เพิ่ม '${itemName}' ลงในตะกร้าแล้ว! 🛒`);
+        }
+
+        // 4. ฟังก์ชันปรับเปลี่ยนจำนวนสินค้าในตะกร้า (+ / -)
+        function updateCartItemQty(index, delta) {
+            shoppingCart[index].qty += delta;
+            if (shoppingCart[index].qty <= 0) {
+                shoppingCart.splice(index, 1);
+            }
+            updateCartUI();
+        }
+
+        // 5. ฟังก์ชันลบรายการสินค้าออกจากตะกร้า
+        function removeCartItem(index) {
+            shoppingCart.splice(index, 1);
+            updateCartUI();
+        }
+
+        // 6. ฟังก์ชันอัปเดตการแสดงผลตะกร้าสินค้าทั้งหน้าแบบเรียลไทม์
+        function updateCartUI() {
+            const navCartCount = document.getElementById('navCartCount');
+            const mobileCartCount = document.getElementById('mobileCartCount');
+            const mobileGrandTotal = document.getElementById('mobileGrandTotal');
+            const cartSummaryList = document.getElementById('cartSummaryList');
+            const cartGrandTotal = document.getElementById('cartGrandTotal');
+            const cartTotalItemsText = document.getElementById('cartTotalItemsText');
+
+            let totalCount = 0;
+            let totalPrice = 0;
+
+            if (shoppingCart.length === 0) {
+                cartSummaryList.innerHTML = `
+                    <div class="empty-cart-msg">
+                        ยังไม่มีสินค้าในตะกร้าเจ้า<br>
+                        <small style="color:var(--primary-color);">กดปุ่ม "🛒 เพิ่มลงในตะกร้า" จากรายการเมนูด้านบนได้เลยเจ้า</small>
+                    </div>
+                `;
+            } else {
+                let htmlStr = '';
+                shoppingCart.forEach((item, index) => {
+                    const subtotal = item.price * item.qty;
+                    totalCount += item.qty;
+                    totalPrice += subtotal;
+
+                    htmlStr += `
+                        <div class="cart-summary-item">
+                            <div>
+                                <div class="cart-item-title">${item.name}</div>
+                                <div class="cart-item-price">${item.price} ฿ x ${item.qty} = ${subtotal.toLocaleString('th-TH')} ฿</div>
+                            </div>
+                            <div class="cart-item-actions">
+                                <button type="button" class="qty-btn" onclick="updateCartItemQty(${index}, -1)">-</button>
+                                <span style="font-weight:700; width:22px; text-align:center;">${item.qty}</span>
+                                <button type="button" class="qty-btn" onclick="updateCartItemQty(${index}, 1)">+</button>
+                                <button type="button" class="delete-btn" onclick="removeCartItem(${index})" title="ลบรายการ">🗑️</button>
+                            </div>
+                        </div>
+                    `;
+                });
+                cartSummaryList.innerHTML = htmlStr;
+            }
+
+            // อัปเดตตัวเลขบน Navbar และ Mobile Bar
+            if (navCartCount) navCartCount.innerText = totalCount;
+            if (mobileCartCount) mobileCartCount.innerText = totalCount;
+            if (mobileGrandTotal) mobileGrandTotal.innerText = totalPrice.toLocaleString('th-TH') + ' ฿';
+            if (cartTotalItemsText) cartTotalItemsText.innerText = `(${totalCount} รายการ)`;
+            if (cartGrandTotal) cartGrandTotal.innerText = totalPrice.toLocaleString('th-TH') + ' ฿';
+        }
+
+        // 7. ฟังก์ชันแสดง Toast Notification ป๊อปอัป
+        function showToast(message) {
+            const toast = document.getElementById('toastNotification');
+            const toastMsg = document.getElementById('toastMsg');
+            if (!toast || !toastMsg) return;
+
+            toastMsg.innerText = message;
+            toast.classList.add('show');
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+        }
+
+        // 8. ฟังก์ชันเมื่อกดยืนยันสั่งซื้อสินค้า
+        function submitForm(event) {
             event.preventDefault();
 
             if (shoppingCart.length === 0) {
-                alert('กรุณาเลือกรายการอาหารลงในตะกร้าก่อนกดยืนยันสั่งซื้อเจ้า!');
+                alert('กรุณาเลือกกดเพิ่มอาหารลงในตะกร้าอย่างน้อย 1 รายการก่อนกดยืนยันเจ้า!');
+                scrollToCartSummary();
                 return;
             }
 
-            const name = document.getElementById('fullName').value;
+            const clientName = document.getElementById('fullName').value;
             const phone = document.getElementById('phoneNumber').value;
             const address = document.getElementById('deliveryAddress').value;
 
-            alert(`✅ ขอบคุณเจ้า คุณ${name}!
+            let summaryText = `ยินดีต้อนรับเจ้าคุณ ${clientName}!
 
-ระบบได้รับคำสั่งซื้อรายการอาหารรวม ${shoppingCart.length} รายการ เรียบร้อยแล้ว
-เจ้าหน้าที่จะติดต่อยืนยันที่เบอร์ ${phone} ภายใน 5 นาทีเจ้า`);
+ร้าน iLove.cnx ได้รับรายการสั่งซื้อสำเร็จเรียบร้อยแล้วเจ้า:
+------------------------------------------
+`;
 
-            // ล้างตะกร้าสินค้า
+            let grandTotal = 0;
+            shoppingCart.forEach(item => {
+                const subtotal = item.price * item.qty;
+                grandTotal += subtotal;
+                summaryText += `• ${item.name} x ${item.qty} ชุด (${subtotal.toLocaleString('th-TH')} ฿)
+`;
+            });
+
+            summaryText += `------------------------------------------
+💰 ยอดรวมสั่งซื้อสุทธิ: ${grandTotal.toLocaleString('th-TH')} ฿
+`;
+            if (grandTotal >= 500) {
+                summaryText += `🎁 รับฟรี! แคบหมูทอดกรอบ 1 ชุด (โปรโมชันสั่งครบ 500 ฿)
+`;
+            }
+            summaryText += `📞 เบอร์โทรศัพท์: ${phone}
+`;
+            if (address) {
+                summaryText += `📍 สถานที่จัดส่ง/หมายเหตุ: ${address}
+`;
+            }
+            summaryText += `
+ขอบพระคุณที่อุดหนุน iLove.cnx เจ้า!`;
+
+            alert(summaryText);
+
+            // รีเซ็ตค่าตะกร้าและฟอร์ม
             shoppingCart = [];
             updateCartUI();
             document.getElementById('deliveryForm').reset();
         }
+
+        // ⚡ ระบบวิเคราะห์พาธรูปภาพอัตโนมัติ (Robust Image Fallback Loader)
+        document.addEventListener("DOMContentLoaded", function() {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.addEventListener('error', function() {
+                    const currentSrc = img.getAttribute('src');
+                    if (!currentSrc) return;
+
+                    if (currentSrc.includes('Seafood-Bucket.png')) {
+                        img.src = 'seafood_bucket_new.jpg';
+                        return;
+                    }
+
+                    if (currentSrc.startsWith('images/')) {
+                        img.src = currentSrc.replace('images/', '');
+                    } else if (!currentSrc.startsWith('http') && !currentSrc.startsWith('images/')) {
+                        img.src = 'images/' + currentSrc;
+                    }
+                });
+            });
+
+            const heroSection = document.querySelector('.hero');
+            if (heroSection) {
+                const testImg = new Image();
+                testImg.src = 'images/Banner.png';
+                testImg.onerror = function() {
+                    heroSection.style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.72)), url('Banner.png')";
+                };
+            }
+        });
     </script>
+
+    <!-- ⚡ CHATBASE EMBED CODE (ฝังมุมขวาล่างโดยไม่โดนตะกร้าบัง) -->
     <script>
-(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="LY2SWGVlDYkQC2xpsKG48";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
-</script>
+        (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="LY2SWGVlDYkQC2xpsKG48";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+    </script>
+
 </body>
 </html>
