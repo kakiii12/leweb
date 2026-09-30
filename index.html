@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iLove.cnx - ล้านนาอีทส์ แอนด์ ฟิวชันคิทเช่น</title>
-
-    <!-- ⚡ Resource Hints: เชื่อมต่อเซิร์ฟเวอร์ฟอนต์ล่วงหน้าเพื่อลดบล็อคการเรนเดอร์และทำให้แสดงผลเร็วที่สุด -->
+    
+    <!-- ⚡ Resource Hints: เชื่อมต่อเซิร์ฟเวอร์ฟอนต์ล่วงหน้าเพื่อลดบล็อคการเรนเดอร์ -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Pacifico&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- ⚡ Preload Critical Images: สั่งโหลดรูปภาพส่วนหัวและโลโก้เป็นอันดับแรกสุดเพื่อความรวดเร็ว -->
+    <!-- ⚡ Preload Critical Images -->
     <link rel="preload" as="image" href="images/ilovecnx_logo.jpg" onerror="this.href='ilovecnx_logo.jpg'">
     <link rel="preload" as="image" href="images/Banner.png" onerror="this.href='Banner.png'">
 
     <style>
         /* CSS Variables ควบคุมโทนสีอบอุ่นสไตล์ร้านอาหารเหนือและฟิวชัน */
         :root {
-            --primary-color: #D35400; /* สีส้มอิฐเข้มกระตุ้นความยากอาหาร */
+            --primary-color: #D35400; /* สีส้มอิฐเข้มกระตุ้นความอยากอาหาร */
             --secondary-color: #F39C12; /* สีเหลืองแกงข้าวซอย */
             --dark-color: #2C3E50;
             --light-color: #FDFEFE;
@@ -53,7 +53,7 @@
             height: 100%;
             background: url('images/Banner.png') no-repeat center center;
             background-size: cover;
-            opacity: 0.05; /* ปรับจางมากๆ 5% เพื่อรักษาความสวยงามและไม่ทำให้อ่านยาก */
+            opacity: 0.05;
             z-index: -1; 
             pointer-events: none; 
         }
@@ -166,7 +166,6 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        /* แสดงผลชื่อร้าน iLove.cnx สวยงามคมชัดไม่ตกหล่น */
         .hero h1 {
             font-family: 'Montserrat', sans-serif;
             font-size: 4.8rem;
@@ -271,7 +270,6 @@
             box-shadow: 0 10px 25px rgba(211, 84, 0, 0.15);
         }
 
-        /* ⚡ Shimmer/Skeleton placeholder ระหว่างที่รอภาพโหลดจริง ป้องกันเลย์เอาต์เว็บเด้งโดด */
         .menu-img-wrapper {
             position: relative;
             width: 100%;
@@ -285,7 +283,7 @@
             height: 100%;
             object-fit: cover; 
             transition: transform 0.5s ease, opacity 0.4s ease;
-            opacity: 0; /* ซ่อนภาพเริ่มต้น แล้วค่อยสว่างขึ้นเมื่อโหลดสำเร็จ 100% */
+            opacity: 0;
         }
 
         .menu-card:hover .menu-img {
@@ -342,6 +340,174 @@
             color: var(--text-muted);
             margin-bottom: 15px;
             flex-grow: 1;
+        }
+
+        /* 🛒 ปุ่มเพิ่มลงตะกร้าในการ์ดเมนู */
+        .btn-add-cart {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+        }
+
+        .btn-add-cart:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(211, 84, 0, 0.35);
+        }
+
+        /* 🛍️ ปุ่มตะกร้าสินค้าแบบลอยมุมขวาล่าง (Floating Cart Button) */
+        .floating-cart-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            cursor: pointer;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .floating-cart-btn:hover {
+            transform: scale(1.12);
+            background-color: var(--secondary-color);
+        }
+
+        /* 🔴 Badge แสดงจำนวนสินค้าในตะกร้า */
+        .cart-badge {
+            position: absolute;
+            top: -3px;
+            right: -3px;
+            background-color: #E74C3C;
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 800;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        /* 📦 หน้าต่างตะกร้าสินค้า (Cart Drawer Modal) */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            max-width: 440px;
+            height: 100%;
+            background-color: white;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.25);
+            z-index: 1002;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+
+        .cart-modal.active {
+            display: flex;
+        }
+
+        .cart-header {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .cart-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid #EEE;
+        }
+
+        .cart-item-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .cart-item-title {
+            font-weight: 600;
+            font-size: 0.98rem;
+            color: var(--dark-color);
+        }
+
+        .cart-item-price {
+            font-size: 0.88rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cart-footer {
+            padding: 20px;
+            background-color: #FAF9F6;
+            border-top: 1px solid #E5E7EB;
+        }
+
+        .cart-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(2px);
+            z-index: 1000;
+        }
+
+        .cart-overlay.active {
+            display: block;
         }
 
         /* เมนูเพิ่มเติมอื่นๆ */
@@ -533,9 +699,6 @@
             border-color: var(--primary-color);
         }
 
-        /* ========================================================
-           🛒 MULTI-ITEM ORDER SHEET STYLING
-           ======================================================== */
         .order-items-list {
             max-height: 350px;
             overflow-y: auto;
@@ -750,7 +913,6 @@
     <!-- แถบเมนูนำทางด้านบน -->
     <nav>
         <div class="nav-container">
-            <!-- ⚡ High Fetch Priority & Smooth Fade-In: โลโก้แบรนด์จะต้องโหลดก่อนสิ่งใดเพื่อสร้าง First Impression ที่ประณีต -->
             <a href="#" class="nav-logo">
                 <img src="images/ilovecnx_logo.jpg" alt="iLove.cnx Logo" class="nav-logo-img" fetchpriority="high" decoding="async" width="48" height="48" onload="this.style.opacity='1';" style="opacity: 0; transition: opacity 0.3s ease;">
                 iLove<span>.cnx</span>
@@ -763,7 +925,7 @@
         </div>
     </nav>
 
-    <!-- แบนเนอร์หน้าแรก (Hero Section) สไตล์แข็งแกร่งคมชัดทุกสภาพแวดล้อม -->
+    <!-- แบนเนอร์หน้าแรก (Hero Section) -->
     <header class="hero">
         <div class="banner-badge">✦ ORIGINAL NORTHERN & FUSION KITCHEN ✦</div>
         <h1>iLove<span class="banner-dot">.</span><span class="banner-cnx">cnx</span></h1>
@@ -773,16 +935,15 @@
 
     <div class="container">
 
-        <!-- แคตตาล็อกเมนูแนะนำสินค้า (Food Catalog) ตรงตามข้อมูลจริงในระบบ -->
+        <!-- แคตตาล็อกเมนูแนะนำสินค้า (Food Catalog) พร้อมปุ่มเพิ่มลงตะกร้า -->
         <section id="menu">
             <h2 class="section-title">เมนูแนะนำแสนอร่อย</h2>
             <div class="catalog-grid">
 
-                <!-- 1. ข้าวซอยไก่ (khao-soikai.png) -->
+                <!-- 1. ข้าวซอยไก่ -->
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag">อาหารเหนือ</span>
-                        <!-- ⚡ High Fetch Priority: เมนูแนะนำใบเบิกทางของร้าน จะถูกดาวน์โหลดทันทีที่ผู้ใช้เปิดเว็บ -->
                         <img src="images/khao-soikai.png" alt="ข้าวซอยไก่" class="menu-img" fetchpriority="high" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
                     </div>
                     <div class="menu-info">
@@ -791,10 +952,13 @@
                             <span class="menu-price">69 ฿</span>
                         </div>
                         <p class="menu-desc">น่องไก่นุ่มชิ้นโตเคี่ยวจนเข้าเนื้อ ในน้ำแกงข้าวซอยสูตรลับเข้มข้นถึงเครื่องแกง โรยหน้าด้วยหมี่กรอบเหลืองทอง</p>
+                        <button class="btn-add-cart" onclick="addToCart('ข้าวซอยไก่', 69)">
+                            🛒 เพิ่มลงตะกร้า
+                        </button>
                     </div>
                 </div>
 
-                <!-- 2. ข้าวซอยทะเล (khao-soiseafood.png) -->
+                <!-- 2. ข้าวซอยทะเล -->
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag">อาหารเหนือ</span>
@@ -806,14 +970,16 @@
                             <span class="menu-price">99 ฿</span>
                         </div>
                         <p class="menu-desc">ฟิวชันรสทะเลเดือด กุ้งแม่น้ำสดและปลาหมึกวงเนื้อหนึบ ในน้ำแกงข้าวซอยสูตรเข้มข้นหอมกลมกล่อม</p>
+                        <button class="btn-add-cart" onclick="addToCart('ข้าวซอยทะเล', 99)">
+                            🛒 เพิ่มลงตะกร้า
+                        </button>
                     </div>
                 </div>
 
-                <!-- 3. ขนมจีนน้ำเงี้ยว (Nam-ngiao.png) -->
+                <!-- 3. ขนมจีนน้ำเงี้ยว -->
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag">อาหารเหนือ</span>
-                        <!-- ⚡ Lazy Loading: เมนูถัดไปจะใช้โหมดเลื่อนจอมาถึงแล้วค่อยโหลดเพื่อความเร็ว -->
                         <img src="images/Nam-ngiao.png" alt="ขนมจีนน้ำเงี้ยว" class="menu-img" loading="lazy" decoding="async" width="300" height="200" onload="this.style.opacity='1';">
                     </div>
                     <div class="menu-info">
@@ -822,10 +988,13 @@
                             <span class="menu-price">59 ฿</span>
                         </div>
                         <p class="menu-desc">ขนมจีนน้ำเงี้ยวสูตรเชียงรายแท้ รสเข้มหอมดอกงิ้ว กระดูกหมูอ่อนเคี่ยวจนเปื่อยนุ่มและเลือดก้อนเต็มคำ</p>
+                        <button class="btn-add-cart" onclick="addToCart('ขนมจีนน้ำเงี้ยว', 59)">
+                            🛒 เพิ่มลงตะกร้า
+                        </button>
                     </div>
                 </div>
 
-                <!-- 4. ไส้อั่วสมุนไพร (Sai-ua.png) -->
+                <!-- 4. ไส้อั่วสมุนไพร -->
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag">อาหารเหนือ</span>
@@ -837,10 +1006,13 @@
                             <span class="menu-price">49 ฿</span>
                         </div>
                         <p class="menu-desc">ไส้อั่วโฮมเมดย่างเตาถ่านจนหอมกรุ่น สมุนไพรอัดแน่น รสชาติเผ็ดร้อนกลมกล่อมกำลังดี</p>
+                        <button class="btn-add-cart" onclick="addToCart('ไส้อั่วสมุนไพร', 49)">
+                            🛒 เพิ่มลงตะกร้า
+                        </button>
                     </div>
                 </div>
 
-                <!-- 5. แคบหมูทอดกรอบ (Pork-crackling.png) -->
+                <!-- 5. แคบหมูทอดกรอบ -->
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag">เครื่องเคียง</span>
@@ -852,10 +1024,13 @@
                             <span class="menu-price">39 ฿</span>
                         </div>
                         <p class="menu-desc">แคบหมูทอดใหม่สด กรอบฟู ไร้กลิ่นหืน อร่อยเข้ากันที่สุดเมื่อกินแกล้มคู่กับข้าวซอยหรือน้ำเงี้ยว</p>
+                        <button class="btn-add-cart" onclick="addToCart('แคบหมูทอดกรอบ', 39)">
+                            🛒 เพิ่มลงตะกร้า
+                        </button>
                     </div>
                 </div>
 
-                <!-- 6. ขาหมูเยอรมัน (German-Pork.png) -->
+                <!-- 6. ขาหมูเยอรมัน -->
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag fusion">ฟิวชัน / อินเตอร์</span>
@@ -867,10 +1042,13 @@
                             <span class="menu-price">399 ฿</span>
                         </div>
                         <p class="menu-desc">ขาหมูเยอรมันคัดพิเศษ ทอดจนหนังกรอบพองฟูสะท้านใจ แต่เนื้อข้างในยังนุ่มฉ่ำ เสิร์ฟพร้อมมันบดและน้ำจิ้มซีฟู้ดรสแซ่บ</p>
+                        <button class="btn-add-cart" onclick="addToCart('ขาหมูเยอรมัน', 399)">
+                            🛒 เพิ่มลงตะกร้า
+                        </button>
                     </div>
                 </div>
 
-                <!-- 7. สเต็กปลาแซลมอน (Salmon-Steak.png) -->
+                <!-- 7. สเต็กปลาแซลมอน -->
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag fusion">ฟิวชัน / อินเตอร์</span>
@@ -882,10 +1060,13 @@
                             <span class="menu-price">320 ฿</span>
                         </div>
                         <p class="menu-desc">ปลาแซลมอนกริลล์สุกกำลังดีหนังกรอบเนื้อฉ่ำหวาน เสิร์ฟเคียงสลัดผักออร์แกนิกและซอสครีมเข้มข้น</p>
+                        <button class="btn-add-cart" onclick="addToCart('สเต็กปลาแซลมอน', 320)">
+                            🛒 เพิ่มลงตะกร้า
+                        </button>
                     </div>
                 </div>
 
-                <!-- 8. กุ้งสาดดด ทะเลถัง (Seafood-Bucket.png) -->
+                <!-- 8. กุ้งสาดดด ทะเลถัง -->
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag fusion">ฟิวชัน / อินเตอร์</span>
@@ -897,10 +1078,13 @@
                             <span class="menu-price">399 ฿</span>
                         </div>
                         <p class="menu-desc">รวมมิตรซีฟู้ดสดใหม่คลุกเคล้าซอสเผ็ดคาจุนเข้มข้นจัดจ้าน รสร้อนแรงหอมเนย เสิร์ฟร้อนเดือดๆ ทานสนุก</p>
+                        <button class="btn-add-cart" onclick="addToCart('กุ้งสาดดด ทะเลถัง', 399)">
+                            🛒 เพิ่มลงตะกร้า
+                        </button>
                     </div>
                 </div>
 
-                <!-- 9. ข้าวไข่ข้นซอสต้มยำกุ้ง (Creamy-Omelet.png) -->
+                <!-- 9. ข้าวไข่ข้นซอสต้มยำกุ้ง -->
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag fusion">ฟิวชัน / อินเตอร์</span>
@@ -912,10 +1096,13 @@
                             <span class="menu-price">180 ฿</span>
                         </div>
                         <p class="menu-desc">ไข่ข้นสีเหลืองทองละมุน ราดซอสต้มยำรสเข้มข้นถึงเครื่องแกง ตกแต่งด้วยกุ้งแม่น้ำตัวใหญ่และไข่กุ้งเคี้ยวกรุบ</p>
+                        <button class="btn-add-cart" onclick="addToCart('ข้าวไข่ข้นซอสต้มยำกุ้ง', 180)">
+                            🛒 เพิ่มลงตะกร้า
+                        </button>
                     </div>
                 </div>
 
-                <!-- 10. บิงซูสายไหมหมีขี้เซา (Bingso.png) -->
+                <!-- 10. บิงซูสายไหมหมีขี้เซา -->
                 <div class="menu-card">
                     <div class="menu-img-wrapper">
                         <span class="menu-tag fusion">ของหวาน</span>
@@ -927,6 +1114,9 @@
                             <span class="menu-price">189 ฿</span>
                         </div>
                         <p class="menu-desc">บิงซูเกล็ดสายไหมรสหวานละมุน นุ่มฟูดุจปุยเมฆ ตกแต่งด้วยไอศกรีมน้องหมีนอนหลับปุ๋ยพร้อมท็อปปิ้งล้นถาดแสนอร่อย</p>
+                        <button class="btn-add-cart" onclick="addToCart('บิงซูสายไหมหมีขี้เซา', 189)">
+                            🛒 เพิ่มลงตะกร้า
+                        </button>
                     </div>
                 </div>
 
@@ -939,28 +1129,28 @@
             <div class="other-menus-grid">
                 <div class="other-menu-item">
                     <span class="other-menu-name">ข้าวซอยเนื้อ (Khao Soi Beef)</span>
-                    <span class="other-menu-price">79 ฿</span>
+                    <span class="other-menu-price">79 ฿ <button class="qty-btn" style="display:inline-flex; width:22px; height:22px; font-size:0.8rem; margin-left:8px;" onclick="addToCart('ข้าวซอยเนื้อ', 79)">+</button></span>
                 </div>
                 <div class="other-menu-item">
                     <span class="other-menu-name">ข้าวซอยเจ (Khao Soi Vegan)</span>
-                    <span class="other-menu-price">69 ฿</span>
+                    <span class="other-menu-price">69 ฿ <button class="qty-btn" style="display:inline-flex; width:22px; height:22px; font-size:0.8rem; margin-left:8px;" onclick="addToCart('ข้าวซอยเจ', 69)">+</button></span>
                 </div>
                 <div class="other-menu-item">
                     <span class="other-menu-name">ชาเย็นชงสดรสหวานมัน (Thai Iced Tea)</span>
-                    <span class="other-menu-price">29 ฿</span>
+                    <span class="other-menu-price">29 ฿ <button class="qty-btn" style="display:inline-flex; width:22px; height:22px; font-size:0.8rem; margin-left:8px;" onclick="addToCart('ชาเย็นชงสด', 29)">+</button></span>
                 </div>
                 <div class="other-menu-item">
                     <span class="other-menu-name">น้ำส้มคั้นสด 100% (Orange Juice)</span>
-                    <span class="other-menu-price">35 ฿</span>
+                    <span class="other-menu-price">35 ฿ <button class="qty-btn" style="display:inline-flex; width:22px; height:22px; font-size:0.8rem; margin-left:8px;" onclick="addToCart('น้ำส้มคั้นสด', 35)">+</button></span>
                 </div>
                 <div class="other-menu-item">
                     <span class="other-menu-name">ข้าวเหนียวเขี้ยวงูนึ่งร้อน (Sticky Rice)</span>
-                    <span class="other-menu-price">15 ฿</span>
+                    <span class="other-menu-price">15 ฿ <button class="qty-btn" style="display:inline-flex; width:22px; height:22px; font-size:0.8rem; margin-left:8px;" onclick="addToCart('ข้าวเหนียวเขี้ยวงู', 15)">+</button></span>
                 </div>
             </div>
         </section>
 
-        <!-- บริการจัดส่งพิเศษพร้อมภาพ Service.png -->
+        <!-- บริการจัดส่งพิเศษ -->
         <section class="service-banner">
             <div class="service-img-wrapper">
                 <img src="images/Service.png" alt="บริการส่งตรงถึงบ้าน" class="service-img" loading="lazy" decoding="async" width="400" height="267" onload="this.style.opacity='1';">
@@ -976,12 +1166,11 @@
             </div>
         </section>
 
-        <!-- ข้อมูลพิกัดและประวัติของสาขาจริง (Stalls) ดึงตรงจาก stalls.csv -->
+        <!-- ข้อมูลพิกัดและประวัติของสาขาจริง -->
         <section id="stalls" class="stalls-section">
             <h2 class="section-title">สาขาของเราที่พร้อมให้บริการ</h2>
             <div class="stalls-grid">
                 
-                <!-- S1: Chang Klan Night Market -->
                 <div class="stall-card">
                     <div class="stall-name">สาขา Chang Klan Night Market</div>
                     <p class="stall-detail">📍 <strong>พิกัด:</strong> ย่านถนนช้างคลาน แหล่งกินเที่ยวยอดนิยมในยามค่ำคืน</p>
@@ -989,7 +1178,6 @@
                     <p class="stall-date">📅 ร่วมส่งมอบความอบอุ่นและรสชาติตั้งแต่: 1 มิถุนายน 2023</p>
                 </div>
 
-                <!-- S2: Nimman -->
                 <div class="stall-card">
                     <div class="stall-name">สาขา Nimman</div>
                     <p class="stall-detail">📍 <strong>พิกัด:</strong> ถนนนิมมานเหมินท์ ใจกลางแหล่งกินเที่ยวนักท่องเที่ยวต่างชาติ</p>
@@ -997,7 +1185,6 @@
                     <p class="stall-date">📅 ร่วมส่งมอบความอบอุ่นและรสชาติตั้งแต่: 15 กุมภาพันธ์ 2024</p>
                 </div>
 
-                <!-- S3: Old City -->
                 <div class="stall-card">
                     <div class="stall-name">สาขา Old City</div>
                     <p class="stall-detail">📍 <strong>พิกัด:</strong> ประตูท่าแพ แหล่งประวัติศาสตร์เมืองเก่าและจุดแลนด์มาร์กสำคัญ</p>
@@ -1008,12 +1195,12 @@
             </div>
         </section>
 
-        <!-- ส่วนร่วมกิจกรรมลูกค้า (Customer Interaction) พร้อมระบบเลือกสั่งได้หลายเมนู -->
+        <!-- ส่วนกิจกรรมของลูกค้า (Customer Interaction) -->
         <section id="order">
             <h2 class="section-title">สั่งอาหารด่วนออนไลน์ / แอดไลน์</h2>
             <div class="interaction-container">
                 
-                <!-- แบบฟอร์มสั่งจองอาหารพร้อมสคริปต์คำนวณเงินสดหลายเมนูเรียลไทม์ (Interactive Multi-Order Form) -->
+                <!-- แบบฟอร์มสั่งจองอาหารพร้อมสคริปต์คำนวณเงินสดหลายเมนูเรียลไทม์ -->
                 <div class="order-form-wrapper">
                     <h3>🛒 สั่งอาหารจานด่วน (สั่งได้หลายเมนูพร้อมกัน)</h3>
                     <form id="deliveryForm" onsubmit="submitForm(event)">
@@ -1026,12 +1213,11 @@
                             <input type="tel" id="phoneNumber" class="form-control" placeholder="เช่น 089-XXXXXXX" required>
                         </div>
 
-                        <!-- ⚡ MULTI-ITEM ORDER SHEET: รายการใบเลือกสั่งอาหาร (UX ปรับปรุงระดับพรีเมียม) -->
+                        <!-- ⚡ MULTI-ITEM ORDER SHEET -->
                         <div class="form-group">
                             <label>เลือกรายการอาหารและจำนวนที่ต้องการสั่งซื้อ *</label>
                             <div class="order-items-list">
                                 
-                                <!-- 1. ข้าวซอยไก่ -->
                                 <div class="order-item-row">
                                     <div class="order-item-details">
                                         <span class="order-item-title">ข้าวซอยไก่</span>
@@ -1044,7 +1230,6 @@
                                     </div>
                                 </div>
 
-                                <!-- 2. ข้าวซอยทะเล -->
                                 <div class="order-item-row">
                                     <div class="order-item-details">
                                         <span class="order-item-title">ข้าวซอยทะเล</span>
@@ -1057,7 +1242,6 @@
                                     </div>
                                 </div>
 
-                                <!-- 3. ขนมจีนน้ำเงี้ยว -->
                                 <div class="order-item-row">
                                     <div class="order-item-details">
                                         <span class="order-item-title">ขนมจีนน้ำเงี้ยว</span>
@@ -1070,7 +1254,6 @@
                                     </div>
                                 </div>
 
-                                <!-- 4. ไส้อั่วสมุนไพร -->
                                 <div class="order-item-row">
                                     <div class="order-item-details">
                                         <span class="order-item-title">ไส้อั่วสมุนไพร</span>
@@ -1083,7 +1266,6 @@
                                     </div>
                                 </div>
 
-                                <!-- 5. แคบหมูทอดกรอบ -->
                                 <div class="order-item-row">
                                     <div class="order-item-details">
                                         <span class="order-item-title">แคบหมูทอดกรอบ</span>
@@ -1096,7 +1278,6 @@
                                     </div>
                                 </div>
 
-                                <!-- 6. ขาหมูเยอรมัน -->
                                 <div class="order-item-row">
                                     <div class="order-item-details">
                                         <span class="order-item-title">ขาหมูเยอรมัน</span>
@@ -1109,7 +1290,6 @@
                                     </div>
                                 </div>
 
-                                <!-- 7. สเต็กปลาแซลมอน -->
                                 <div class="order-item-row">
                                     <div class="order-item-details">
                                         <span class="order-item-title">สเต็กปลาแซลมอน</span>
@@ -1122,7 +1302,6 @@
                                     </div>
                                 </div>
 
-                                <!-- 8. กุ้งสาดดด ทะเลถัง -->
                                 <div class="order-item-row">
                                     <div class="order-item-details">
                                         <span class="order-item-title">กุ้งสาดดด ทะเลถัง</span>
@@ -1135,7 +1314,6 @@
                                     </div>
                                 </div>
 
-                                <!-- 9. ข้าวไข่ข้นซอสต้มยำกุ้ง -->
                                 <div class="order-item-row">
                                     <div class="order-item-details">
                                         <span class="order-item-title">ข้าวไข่ข้นซอสต้มยำกุ้ง</span>
@@ -1148,7 +1326,6 @@
                                     </div>
                                 </div>
 
-                                <!-- 10. บิงซูสายไหมหมีขี้เซา -->
                                 <div class="order-item-row">
                                     <div class="order-item-details">
                                         <span class="order-item-title">บิงซูสายไหมหมีขี้เซา</span>
@@ -1161,7 +1338,6 @@
                                     </div>
                                 </div>
 
-                                <!-- 11. ข้าวซอยเนื้อ (เพิ่มเติม) -->
                                 <div class="order-item-row">
                                     <div class="order-item-details">
                                         <span class="order-item-title">ข้าวซอยเนื้อ (Khao Soi Beef)</span>
@@ -1174,7 +1350,6 @@
                                     </div>
                                 </div>
 
-                                <!-- 12. ข้าวซอยเจ (เพิ่มเติม) -->
                                 <div class="order-item-row">
                                     <div class="order-item-details">
                                         <span class="order-item-title">ข้าวซอยเจ (Khao Soi Vegan)</span>
@@ -1187,7 +1362,6 @@
                                     </div>
                                 </div>
 
-                                <!-- 13. ชาเย็น (เพิ่มเติม) -->
                                 <div class="order-item-row">
                                     <div class="order-item-details">
                                         <span class="order-item-title">ชาเย็นชงสดรสหวานมัน</span>
@@ -1200,7 +1374,6 @@
                                     </div>
                                 </div>
 
-                                <!-- 14. น้ำส้ม (เพิ่มเติม) -->
                                 <div class="order-item-row">
                                     <div class="order-item-details">
                                         <span class="order-item-title">น้ำส้มคั้นสด 100%</span>
@@ -1213,7 +1386,6 @@
                                     </div>
                                 </div>
 
-                                <!-- 15. ข้าวเหนียว (เพิ่มเติม) -->
                                 <div class="order-item-row">
                                     <div class="order-item-details">
                                         <span class="order-item-title">ข้าวเหนียวเขี้ยวงูนึ่งร้อน</span>
@@ -1229,7 +1401,7 @@
                             </div>
                         </div>
                         
-                        <!-- ⚡ Interactive Live Calculator: แสดงผลยอดราคารวมของทุกรายการที่เลือกแบบเรียลไทม์ -->
+                        <!-- ⚡ Live Price Preview -->
                         <div class="price-calculator-preview">
                             <span class="calc-title">💰 ยอดรวมยอดสั่งซื้อสุทธิ:</span>
                             <span class="calc-total" id="liveTotalDisplay">0 ฿</span>
@@ -1268,40 +1440,63 @@
 
     </div>
 
+    <!-- 🛍️ ปุ่มป๊อปอัปตะกร้าสินค้าลอย (Floating Cart Button) -->
+    <button class="floating-cart-btn" onclick="toggleCartModal()">
+        🛒
+        <span class="cart-badge" id="cartBadgeCount">0</span>
+    </button>
+
+    <!-- ⬛ Overlay พื้นหลังสีดำจาง -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCartModal()"></div>
+
+    <!-- 📦 หน้าต่างตะกร้าสินค้า (Cart Drawer Modal) -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3>🛒 ตะกร้าสินค้าของคุณ</h3>
+            <button class="cart-close-btn" onclick="toggleCartModal()">&times;</button>
+        </div>
+        
+        <div class="cart-body" id="cartItemList">
+            <p style="text-align: center; color: #7F8C8D; margin-top: 40px;">ไม่มีสินค้าในตะกร้าเจ้า</p>
+        </div>
+        
+        <div class="cart-footer">
+            <div style="display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: 700; margin-bottom: 15px;">
+                <span>ยอดรวมสุทธิ:</span>
+                <span id="cartGrandTotal" style="color: var(--primary-color);">0 ฿</span>
+            </div>
+            <button class="btn-submit" onclick="proceedToCheckout()">ยืนยันสั่งซื้อสินค้า</button>
+        </div>
+    </div>
+
     <!-- ลิขสิทธิ์วิชาท้ายหน้าเว็บ -->
     <footer>
         <p>&copy; 2026 iLove.cnx. สงวนลิขสิทธิ์ทั้งหมด</p>
         <p style="font-size: 0.8rem; opacity: 0.7;">โครงงานสร้างสรรค์เว็บไซต์ธุรกิจระบบสารสนเทศ 703311 | จัดทำด้วยเทคโนโลยี Cloud & CI/CD Automated Deployment</p>
     </footer>
 
-    <!-- ========================================================
-         ⚡ SMART PERFORMANCE & ROBUST FALLBACK SCRIPT (EXCEEDS UX)
-         ======================================================== -->
+    <!-- SCRIPT FUNCTIONS -->
     <script>
-        // ระบบแก้วิเคราะห์พาธภาพอัตโนมัติ (Dynamic Path Resolver)
-        // เพื่อป้องกันปัญหาภาพไม่ขึ้น 100% ไม่ว่าจะย้ายโฟลเดอร์หรือสลับ Root บน Azure Server
+        // 🛒 ตัวแปรจัดเก็บรายการในตะกร้าสินค้า
+        let shoppingCart = [];
+
+        // 1. ระบบแก้วิเคราะห์พาธภาพอัตโนมัติ (Dynamic Path Resolver)
         document.addEventListener("DOMContentLoaded", function() {
             const images = document.querySelectorAll('img');
             images.forEach(img => {
-                // หากเบราว์เซอร์ไม่สามารถหาภาพตามที่ระบุใน src เจอ
                 img.addEventListener('error', function() {
                     const currentSrc = img.getAttribute('src');
                     if (!currentSrc) return;
 
-                    console.warn("Failed to load image:", currentSrc);
-
-                    // 1. กรณีเป็นรูปกุ้งสาดดดทะเลถัง ลองใช้ไฟล์ภาพใหม่ที่ผ่านการบีบอัดแล้วก่อน
                     if (currentSrc.includes('Seafood-Bucket.png')) {
                         img.src = 'seafood_bucket_new.jpg';
                         return;
                     }
 
-                    // 2. หากพาธมี images/ นำหน้าอยู่ แต่โหลดไม่ขึ้น -> ลองสลับสลับมาดึงจาก Root ด้านนอกสุด
                     if (currentSrc.startsWith('images/')) {
                         const fallbackRoot = currentSrc.replace('images/', '');
                         img.src = fallbackRoot;
                     } 
-                    // 3. หากดึงจาก Root แต่หาไม่เจอ -> ลองใส่ images/ นำหน้าเพื่อตรวจสอบในโฟลเดอร์ย่อย
                     else if (!currentSrc.startsWith('http') && !currentSrc.startsWith('images/')) {
                         const fallbackSub = 'images/' + currentSrc;
                         img.src = fallbackSub;
@@ -1309,26 +1504,128 @@
                 });
             });
 
-            // ตรวจสอบและสลับพาธแบนเนอร์ Hero ด้านบนหาก images/Banner.png พัง
             const heroSection = document.querySelector('.hero');
             if (heroSection) {
                 const testImg = new Image();
                 testImg.src = 'images/Banner.png';
                 testImg.onerror = function() {
-                    // เปลี่ยนมาใช้ Banner.png ด้านนอก
                     heroSection.style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('Banner.png')";
                     
                     const testImgRoot = new Image();
                     testImgRoot.src = 'Banner.png';
                     testImgRoot.onerror = function() {
-                        // ปลอดภัยที่สุด: ใช้สีแกรเดียนต์หากไม่มีภาพแบนเนอร์ใดอยู่เลย
                         heroSection.style.background = "linear-gradient(135deg, #2C3E50, #1A252F)";
                     };
                 };
             }
         });
 
-        // ⚡ ฟังก์ชันปุ่มเพิ่ม-ลดจำนวนสินค้าในแถวใบสั่งซื้อ
+        // 2. ฟังก์ชันเปิด/ปิด หน้าต่างตะกร้าสินค้า
+        function toggleCartModal() {
+            document.getElementById('cartModal').classList.toggle('active');
+            document.getElementById('cartOverlay').classList.toggle('active');
+        }
+
+        // 3. ฟังก์ชันเพิ่มสินค้าลงตะกร้าจากปุ่มในการ์ดเมนู
+        function addToCart(name, price) {
+            const existingIndex = shoppingCart.findIndex(item => item.name === name);
+            
+            if (existingIndex > -1) {
+                shoppingCart[existingIndex].qty += 1;
+            } else {
+                shoppingCart.push({ name: name, price: price, qty: 1 });
+            }
+            
+            // Sync กับแบบฟอร์มสั่งซื้อด้านล่างด้วย
+            syncCartToForm(name, 1);
+            
+            updateCartUI();
+            
+            // เอฟเฟกต์ดึงดูดสายตาที่ Badge
+            const badge = document.getElementById('cartBadgeCount');
+            badge.style.transform = 'scale(1.4)';
+            setTimeout(() => badge.style.transform = 'scale(1)', 200);
+        }
+
+        // 4. ฟังก์ชันปรับเปลี่ยนจำนวนสินค้าในตะกร้า Modal
+        function updateCartItemQty(index, delta) {
+            const item = shoppingCart[index];
+            item.qty += delta;
+            
+            // Sync กับแบบฟอร์มสั่งซื้อ
+            syncCartToForm(item.name, delta);
+
+            if (item.qty <= 0) {
+                shoppingCart.splice(index, 1);
+            }
+            updateCartUI();
+        }
+
+        // 5. Sync ข้อมูลระหว่างตะกร้าสินค้ากับ Input ในแบบฟอร์มด้านล่าง
+        function syncCartToForm(name, delta) {
+            const qtyInputs = document.querySelectorAll('.qty-input');
+            qtyInputs.forEach(input => {
+                if (input.getAttribute('data-name') === name) {
+                    let currentVal = parseInt(input.value) || 0;
+                    let newVal = currentVal + delta;
+                    if (newVal < 0) newVal = 0;
+                    input.value = newVal;
+                }
+            });
+            calculatePrice();
+        }
+
+        // 6. ฟังก์ชันอัปเดตการแสดงผลในตะกร้าและตัวเลข Badge
+        function updateCartUI() {
+            const cartListContainer = document.getElementById('cartItemList');
+            const badgeCount = document.getElementById('cartBadgeCount');
+            const grandTotalDisplay = document.getElementById('cartGrandTotal');
+            
+            let totalItemsCount = 0;
+            let totalPriceSum = 0;
+            
+            if (shoppingCart.length === 0) {
+                cartListContainer.innerHTML = '<p style="text-align: center; color: #7F8C8D; margin-top: 40px;">ไม่มีสินค้าในตะกร้าเจ้า</p>';
+            } else {
+                let htmlContent = '';
+                shoppingCart.forEach((item, index) => {
+                    const subtotal = item.price * item.qty;
+                    totalItemsCount += item.qty;
+                    totalPriceSum += subtotal;
+                    
+                    htmlContent += `
+                        <div class="cart-item">
+                            <div class="cart-item-info">
+                                <span class="cart-item-title">${item.name}</span>
+                                <span class="cart-item-price">${item.price} ฿ x ${item.qty} = ${subtotal.toLocaleString('th-TH')} ฿</span>
+                            </div>
+                            <div class="cart-item-controls">
+                                <button class="qty-btn" onclick="updateCartItemQty(${index}, -1)">-</button>
+                                <span style="font-weight: 700; width: 20px; text-align: center;">${item.qty}</span>
+                                <button class="qty-btn" onclick="updateCartItemQty(${index}, 1)">+</button>
+                            </div>
+                        </div>
+                    `;
+                });
+                cartListContainer.innerHTML = htmlContent;
+            }
+            
+            badgeCount.innerText = totalItemsCount;
+            grandTotalDisplay.innerText = totalPriceSum.toLocaleString('th-TH') + ' ฿';
+        }
+
+        // 7. ฟังก์ชันนำสินค้าจากตะกร้าไปสั่งซื้อในแบบฟอร์ม
+        function proceedToCheckout() {
+            if (shoppingCart.length === 0) {
+                alert('กรุณาเลือกเพิ่มสินค้าลงตะกร้าก่อนเจ้า!');
+                return;
+            }
+            
+            toggleCartModal();
+            document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 8. ฟังก์ชันปรับจำนวนในฟอร์มด้านล่าง
         function adjustQty(btn, delta) {
             const row = btn.closest('.order-item-row');
             const input = row.querySelector('.qty-input');
@@ -1336,10 +1633,25 @@
             let newVal = currentVal + delta;
             if (newVal < 0) newVal = 0;
             input.value = newVal;
-            calculatePrice(); // อัปเดตราคารวมเรียลไทม์
+            
+            const name = input.getAttribute('data-name');
+            const price = parseInt(input.getAttribute('data-price')) || 0;
+            
+            const existingIndex = shoppingCart.findIndex(item => item.name === name);
+            if (existingIndex > -1) {
+                shoppingCart[existingIndex].qty = newVal;
+                if (newVal === 0) {
+                    shoppingCart.splice(existingIndex, 1);
+                }
+            } else if (newVal > 0) {
+                shoppingCart.push({ name: name, price: price, qty: newVal });
+            }
+            
+            updateCartUI();
+            calculatePrice();
         }
 
-        // ⚡ ฟังก์ชันคำนวณราคาสั่งซื้อแบบเรียลไทม์จากเมนูทั้งหมดที่ถูกกรอกจำนวน
+        // 9. คำนวณราคารวมในฟอร์ม
         function calculatePrice() {
             const qtyInputs = document.querySelectorAll('.qty-input');
             let grandTotal = 0;
@@ -1353,7 +1665,7 @@
             document.getElementById('liveTotalDisplay').innerText = grandTotal.toLocaleString('th-TH') + ' ฿';
         }
 
-        // ฟังก์ชันประมวลผลเมื่อกดส่งข้อมูลและสรุปรายการอาหารสั่งรวมแบบมีปฏิสัมพันธ์
+        // 10. ส่งฟอร์มสั่งซื้อ
         function submitForm(event) {
             event.preventDefault();
             const clientName = document.getElementById('fullName').value;
@@ -1380,23 +1692,36 @@
                 return;
             }
             
-            let alertMsg = `ยินดีต้อนรับเจ้าคุณ ${clientName}!\n\n`;
-            alertMsg += `ร้าน iLove.cnx ได้รับรายการสั่งอาหารสำเร็จรูปเรียบร้อยแล้วเจ้า:\n`;
-            alertMsg += `------------------------------------------\n`;
-            alertMsg += orderedItemsList.join('\n') + `\n`;
-            alertMsg += `------------------------------------------\n`;
-            alertMsg += `💰 ยอดรวมสั่งซื้อสุทธิ: ${grandTotal.toLocaleString('th-TH')} ฿\n`;
-            alertMsg += `📞 เบอร์โทรศัพท์ติดต่อกลับ: ${phone}\n`;
+            let alertMsg = `ยินดีต้อนรับเจ้าคุณ ${clientName}!
+
+`;
+            alertMsg += `ร้าน iLove.cnx ได้รับรายการสั่งอาหารสำเร็จรูปเรียบร้อยแล้วเจ้า:
+`;
+            alertMsg += `------------------------------------------
+`;
+            alertMsg += orderedItemsList.join('
+') + `
+`;
+            alertMsg += `------------------------------------------
+`;
+            alertMsg += `💰 ยอดรวมสั่งซื้อสุทธิ: ${grandTotal.toLocaleString('th-TH')} ฿
+`;
+            alertMsg += `📞 เบอร์โทรศัพท์ติดต่อกลับ: ${phone}
+`;
             if (address) {
-                alertMsg += `📍 สถานที่จัดส่ง: ${address}\n`;
+                alertMsg += `📍 สถานที่จัดส่ง: ${address}
+`;
             }
-            alertMsg += `\nทีมงานสาขาที่ใกล้คุณที่สุดกำลังจัดเตรียมอย่างเร่งด่วนเจ้า!`;
+            alertMsg += `
+ทีมงานสาขาที่ใกล้คุณที่สุดกำลังจัดเตรียมอย่างเร่งด่วนเจ้า!`;
             
             alert(alertMsg);
             
             document.getElementById('deliveryForm').reset();
             qtyInputs.forEach(input => input.value = 0);
-            document.getElementById('liveTotalDisplay').innerText = '0 ฿';
+            shoppingCart = [];
+            updateCartUI();
+            calculatePrice();
         }
     </script>
     <script>
